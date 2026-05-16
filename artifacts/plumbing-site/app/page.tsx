@@ -40,39 +40,23 @@ export default function Home() {
   return (
     <main className="min-h-screen">
 
-      {/* ── Hero ── full-bleed photo + left-to-right fade overlay */}
-      <section className="relative min-h-[74vh] flex items-center overflow-hidden">
+      {/* ── Hero ── solid left panel + photo right, blended at seam */}
+      <section className="relative flex min-h-[78vh] overflow-hidden bg-[#040e28]">
 
-        {/* Background photo — anchored right so plumber shows on the light side */}
-        <Image
-          src="/images/hero_crew.png"
-          alt="J&O Pro Bros Construction plumber at work"
-          fill
-          priority
-          className="object-cover object-right"
-          sizes="100vw"
-        />
-
-        {/* Solid navy on far left, fade clears by ~40% so center action stays visible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#040e28] from-[22%] via-[rgba(4,14,40,0.45)] via-[42%] to-[rgba(4,14,40,0.0)]" />
-        {/* Slight top + bottom vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(4,14,40,0.5)] via-transparent to-[rgba(4,14,40,0.45)]" />
-
-        {/* Text content — centered container, text in left half */}
-        <div className="relative z-10 w-full pt-24 pb-16">
-          <div className="max-w-6xl mx-auto px-10 md:px-16 lg:px-20">
-          <div className="max-w-md lg:max-w-lg">
+        {/* ── Left: solid dark panel ── */}
+        <div className="relative z-10 flex items-center w-full lg:w-[46%] shrink-0 py-28 px-8 md:px-12 lg:px-16 bg-[#040e28]">
+          <div className="max-w-md w-full">
 
             <motion.span
               {...fadeUp(0)}
-              className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-7 backdrop-blur-sm"
+              className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-6 backdrop-blur-sm"
             >
               {h.heroBadge}
             </motion.span>
 
             <motion.h1
               {...fadeUp(0.15)}
-              className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white tracking-tight mb-6 leading-[1.08]"
+              className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white tracking-tight mb-5 leading-[1.08]"
             >
               {h.heroLine1}{" "}
               <span className="text-gradient-blue">{h.heroWord1}</span>
@@ -82,7 +66,7 @@ export default function Home() {
 
             <motion.p
               {...fadeUp(0.3)}
-              className="text-lg md:text-xl text-white/75 mb-10 max-w-xl leading-relaxed"
+              className="text-base md:text-lg text-white/70 mb-9 leading-relaxed"
             >
               {h.heroDesc}
             </motion.p>
@@ -93,7 +77,7 @@ export default function Home() {
             >
               <Link
                 href="/estimate"
-                className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-[0_0_28px_rgba(227,90,26,0.4)] hover:shadow-[0_0_42px_rgba(227,90,26,0.6)] flex items-center justify-center gap-2"
+                className="bg-accent hover:bg-accent/90 text-white px-7 py-3.5 rounded-lg font-bold text-base transition-all shadow-[0_0_24px_rgba(227,90,26,0.4)] hover:shadow-[0_0_38px_rgba(227,90,26,0.6)] flex items-center justify-center gap-2"
                 data-testid="hero-estimate-btn"
               >
                 {h.ctaEstimate}
@@ -103,8 +87,37 @@ export default function Home() {
             </motion.div>
 
           </div>
-          </div>
         </div>
+
+        {/* ── Right: photo panel ── */}
+        <div className="hidden lg:block relative flex-1 overflow-hidden">
+          <Image
+            src="/images/hero_crew.png"
+            alt="J&O Pro Bros Construction plumber at work"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="55vw"
+          />
+          {/* Seam fade: blends left edge of photo into the solid navy panel */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#040e28] via-[rgba(4,14,40,0.18)] to-transparent" />
+          {/* Subtle top/bottom vignette */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[rgba(4,14,40,0.35)] via-transparent to-[rgba(4,14,40,0.3)]" />
+        </div>
+
+        {/* Mobile: faint full-bleed photo behind text */}
+        <div className="absolute inset-0 lg:hidden">
+          <Image
+            src="/images/hero_crew.png"
+            alt="J&O Pro Bros Construction plumber at work"
+            fill
+            priority
+            className="object-cover object-right"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-[rgba(4,14,40,0.82)]" />
+        </div>
+
       </section>
 
       {/* ── Services Overview ── */}
