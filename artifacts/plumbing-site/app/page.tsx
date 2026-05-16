@@ -44,7 +44,7 @@ export default function Home() {
       <section className="relative flex min-h-[78vh] overflow-hidden bg-[#040e28]">
 
         {/* ── Left: solid dark panel ── */}
-        <div className="relative z-10 flex items-center w-full lg:w-[46%] shrink-0 py-28 px-8 md:px-12 lg:px-16 bg-[#040e28]">
+        <div className="relative z-10 flex items-center w-full lg:w-[46%] shrink-0 py-28 pl-12 pr-8 md:pl-16 md:pr-10 lg:pl-24 lg:pr-10 bg-[#040e28]">
           <div className="max-w-md w-full">
 
             <motion.span
