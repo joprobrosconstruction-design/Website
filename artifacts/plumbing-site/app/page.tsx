@@ -198,19 +198,40 @@ export default function Home() {
 
       {/* ── Van / Fleet ── */}
       <section className="py-20 bg-foreground">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <motion.p {...revealUp(0)} className="text-accent font-semibold uppercase tracking-widest text-sm mb-3">
-            On The Road Daily
-          </motion.p>
-          <motion.h2 {...revealUp(0.1)} className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-            Professional. Local. Ready.
-          </motion.h2>
-          <motion.p {...revealUp(0.2)} className="text-white/60 text-lg max-w-2xl mx-auto mb-3">
-            Locally rooted in the Gwinnett Area and Atlanta for residential work.
-          </motion.p>
-          <motion.p {...revealUp(0.28)} className="text-white/45 text-base max-w-xl mx-auto mb-10">
-            For large-scale commercial projects, we operate across <span className="text-white/65 font-medium">Georgia · Texas · Arizona · Ohio</span>
-          </motion.p>
+        <div className="container mx-auto px-4 md:px-6">
+
+          {/* Header */}
+          <div className="text-center mb-10">
+            <motion.p {...revealUp(0)} className="text-accent font-semibold uppercase tracking-widest text-sm mb-3">
+              On The Road Daily
+            </motion.p>
+            <motion.h2 {...revealUp(0.1)} className="text-4xl md:text-5xl font-bold text-white leading-tight">
+              Professional. Local. Ready.
+            </motion.h2>
+          </div>
+
+          {/* Service area cards */}
+          <motion.div {...revealUp(0.18)} className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto mb-12">
+            {/* Residential */}
+            <div className="border border-white/10 rounded-2xl px-6 py-5">
+              <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Residential</p>
+              <p className="text-white font-semibold text-base">Gwinnett Area &amp; Atlanta, GA</p>
+              <p className="text-white/50 text-sm mt-1">Local crews — fast response, every time.</p>
+            </div>
+            {/* Commercial */}
+            <div className="border border-white/10 rounded-2xl px-6 py-5">
+              <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Large-Scale Commercial</p>
+              <div className="flex flex-wrap gap-2 mt-1">
+                {["Georgia", "Texas", "Arizona", "Ohio"].map((state) => (
+                  <span key={state} className="text-xs font-semibold bg-white/8 border border-white/15 text-white/80 px-3 py-1 rounded-full">
+                    {state}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Van photo */}
           <motion.div {...revealScale(0.25)} className="rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
             <Image
               src="/images/van.png"
