@@ -115,7 +115,7 @@ export default function Home() {
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
             <Image
-              src="/images/samsung_logo.png"
+              src="/images/samsung_logo.avif"
               alt="Samsung"
               width={300}
               height={90}
