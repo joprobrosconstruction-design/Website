@@ -176,10 +176,6 @@ export default function CareersPage() {
                     ))}
                   </ul>
                 </div>
-                <div className="flex items-start gap-3 bg-primary/5 border border-primary/20 rounded-xl px-4 py-3">
-                  <Info className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  <p className="text-sm text-muted-foreground">{c.agreementNote}</p>
-                </div>
               </div>
 
               {/* Modal Footer */}

@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense, useRef } from "react";
 import { motion } from "framer-motion";
 import {
-  Upload, FileText, CheckCircle2, AlertCircle, Info,
+  Upload, FileText, CheckCircle2, AlertCircle,
   ArrowLeft, Languages, User, Phone, Briefcase, FileUp, ShieldCheck, PenLine,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -141,12 +141,6 @@ function ApplyForm() {
                 <Languages className="w-3.5 h-3.5 shrink-0" />
                 {lang === "es" ? "English" : "Español"}
               </button>
-            </div>
-
-            {/* Agreement note */}
-            <div className="flex items-start gap-3 bg-primary/5 border border-primary/20 rounded-xl px-4 py-3 mb-8">
-              <Info className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-              <p className="text-sm text-muted-foreground leading-relaxed">{c.agreementNote}</p>
             </div>
 
             {/* Error banner */}
