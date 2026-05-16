@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Droplets, Menu, X, Globe } from "lucide-react";
+import { Droplets, Menu, X, Globe, Phone, ShieldCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -20,9 +20,7 @@ function LanguageToggle({ compact = false }: { compact?: boolean }) {
       <button
         onClick={() => setLang("en")}
         className={`px-3 py-1 rounded-full text-xs font-bold tracking-wide transition-all duration-200 ${
-          lang === "en"
-            ? "bg-accent text-white shadow-sm"
-            : "text-white/60 hover:text-white"
+          lang === "en" ? "bg-accent text-white shadow-sm" : "text-white/60 hover:text-white"
         }`}
         data-testid="lang-en-btn"
         aria-label="Switch to English"
@@ -32,9 +30,7 @@ function LanguageToggle({ compact = false }: { compact?: boolean }) {
       <button
         onClick={() => setLang("es")}
         className={`px-3 py-1 rounded-full text-xs font-bold tracking-wide transition-all duration-200 ${
-          lang === "es"
-            ? "bg-accent text-white shadow-sm"
-            : "text-white/60 hover:text-white"
+          lang === "es" ? "bg-accent text-white shadow-sm" : "text-white/60 hover:text-white"
         }`}
         data-testid="lang-es-btn"
         aria-label="Cambiar a Español"
@@ -69,61 +65,88 @@ export default function Navigation() {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass border-b border-white/10 shadow-lg py-3"
-          : "bg-foreground/70 backdrop-blur-md border-b border-white/10 py-4"
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-3 group shrink-0" data-testid="nav-logo">
-            <div className="bg-accent/20 border border-accent/30 p-2 rounded-lg group-hover:bg-accent/30 transition-colors">
-              <Droplets className="w-6 h-6 text-accent" />
-            </div>
-            <span className="text-2xl font-extrabold tracking-tight text-white drop-shadow-sm">
-              J&amp;O Pro Bro&apos;s
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Top bar */}
+      <div className="bg-[#07101f] border-b border-white/10">
+        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between py-2">
+          <a
+            href={t.nav.phoneHref}
+            className="flex items-center gap-2 text-sm font-bold text-white hover:text-accent transition-colors"
+            data-testid="nav-phone"
+          >
+            <Phone className="w-4 h-4 text-accent" />
+            {t.nav.phone}
+          </a>
+          <div className="hidden md:flex items-center gap-3 text-xs text-white/60">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-accent/80" />
+              {t.nav.topBarLicensed}
             </span>
-          </Link>
+            <span className="text-white/20">|</span>
+            <span>{t.nav.topBarExperience}</span>
+            <span className="text-white/20">|</span>
+            <span>{t.nav.topBarEmergency}</span>
+          </div>
+        </div>
+      </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === link.path ? "text-primary" : "text-muted-foreground"
-                }`}
-                data-testid={`nav-link-${link.path === "/" ? "home" : link.path.slice(1)}`}
-              >
-                {link.name}
-              </Link>
-            ))}
-
-            <LanguageToggle />
-
-            <Link
-              href="/estimate"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-5 py-2.5 rounded-full font-medium transition-colors shadow-lg shadow-primary/25 shrink-0"
-              data-testid="nav-cta"
-            >
-              {t.nav.cta}
+      {/* Main nav */}
+      <div
+        className={`transition-all duration-300 ${
+          scrolled
+            ? "glass border-b border-white/10 shadow-lg py-3"
+            : "bg-foreground/80 backdrop-blur-md border-b border-white/10 py-3"
+        }`}
+      >
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex items-center justify-between gap-4">
+            <Link href="/" className="flex items-center gap-3 group shrink-0" data-testid="nav-logo">
+              <div className="bg-accent/20 border border-accent/30 p-2 rounded-lg group-hover:bg-accent/30 transition-colors">
+                <Droplets className="w-6 h-6 text-accent" />
+              </div>
+              <span className="text-2xl font-extrabold tracking-tight text-white drop-shadow-sm">
+                J&amp;O Pro Bro&apos;s
+              </span>
             </Link>
-          </nav>
 
-          {/* Mobile: toggle + hamburger */}
-          <div className="md:hidden flex items-center gap-3">
-            <LanguageToggle compact />
-            <button
-              className="p-2 text-foreground"
-              onClick={() => setIsOpen(!isOpen)}
-              data-testid="nav-mobile-toggle"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                    pathname === link.path ? "text-primary" : "text-white/70"
+                  }`}
+                  data-testid={`nav-link-${link.path === "/" ? "home" : link.path.slice(1)}`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+              <LanguageToggle />
+
+              <Link
+                href="/estimate"
+                className="bg-accent hover:bg-accent/90 text-white px-5 py-2.5 rounded-full font-semibold transition-colors shadow-lg shadow-accent/25 shrink-0 text-sm"
+                data-testid="nav-cta"
+              >
+                {t.nav.cta}
+              </Link>
+            </nav>
+
+            {/* Mobile: toggle + hamburger */}
+            <div className="md:hidden flex items-center gap-3">
+              <LanguageToggle compact />
+              <button
+                className="p-2 text-white"
+                onClick={() => setIsOpen(!isOpen)}
+                data-testid="nav-mobile-toggle"
+                aria-label="Toggle menu"
+              >
+                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -137,22 +160,29 @@ export default function Navigation() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden glass border-t border-white/10 overflow-hidden"
           >
-            <nav className="flex flex-col p-4 gap-4">
+            <nav className="flex flex-col p-4 gap-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
                   className={`text-lg font-medium p-2 rounded-md ${
-                    pathname === link.path ? "bg-primary/10 text-primary" : "text-foreground"
+                    pathname === link.path ? "bg-primary/10 text-primary" : "text-white"
                   }`}
                   data-testid={`nav-mobile-link-${link.path === "/" ? "home" : link.path.slice(1)}`}
                 >
                   {link.name}
                 </Link>
               ))}
+              <a
+                href={t.nav.phoneHref}
+                className="flex items-center gap-2 text-accent font-bold p-2 text-lg"
+              >
+                <Phone className="w-5 h-5" />
+                {t.nav.phone}
+              </a>
               <Link
                 href="/estimate"
-                className="bg-primary text-primary-foreground text-center py-3 rounded-md font-medium mt-2"
+                className="bg-accent text-white text-center py-3 rounded-md font-semibold mt-1"
               >
                 {t.nav.cta}
               </Link>

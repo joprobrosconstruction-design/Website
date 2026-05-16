@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { SiSamsung } from "react-icons/si";
-import { Building2, Droplet, ArrowRight } from "lucide-react";
+import { Building2, Droplet, ArrowRight, Phone, ShieldCheck, Clock, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
@@ -13,12 +13,12 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-foreground">
+      <section className="relative pt-44 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-foreground">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/30 via-foreground to-foreground z-0"></div>
         <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxyZWN0IHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxIiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPg==')] z-0"></div>
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl">
+          <div className="max-w-3xl">
             <motion.div
               initial={{ y: 20 }}
               animate={{ y: 0 }}
@@ -27,31 +27,52 @@ export default function Home() {
               <span className="inline-block py-1 px-3 rounded-full bg-primary/20 border border-primary/30 text-primary-foreground text-sm font-medium mb-6">
                 {h.heroBadge}
               </span>
-              <h1 className="text-5xl md:text-7xl font-extrabold text-primary-foreground tracking-tight mb-6 leading-tight">
-                {h.heroLine1} <span className="text-gradient-blue">{h.heroWord1}</span>
+
+              <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 leading-[1.05]">
+                {h.heroLine1}{" "}
+                <span className="text-gradient-blue">{h.heroWord1}</span>
                 <br />
-                {h.heroLine2} <span className="text-gradient-orange">{h.heroWord2}</span>
+                <span className="text-gradient-orange">{h.heroWord2}</span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted/80 mb-10 max-w-2xl leading-relaxed">
+
+              <p className="text-lg md:text-xl text-white/70 mb-8 max-w-xl leading-relaxed">
                 {h.heroDesc}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-8">
                 <Link
                   href="/estimate"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all shadow-[0_0_20px_rgba(227,90,26,0.3)] hover:shadow-[0_0_30px_rgba(227,90,26,0.5)] flex items-center justify-center gap-2"
+                  className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-[0_0_24px_rgba(227,90,26,0.35)] hover:shadow-[0_0_36px_rgba(227,90,26,0.5)] flex items-center justify-center gap-2"
                   data-testid="hero-estimate-btn"
                 >
                   {h.ctaEstimate}
                   <ArrowRight className="w-5 h-5" />
                 </Link>
-                <Link
-                  href="/careers"
-                  className="glass-dark hover:bg-white/10 text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all flex items-center justify-center"
-                  data-testid="hero-careers-btn"
+                <a
+                  href={t.nav.phoneHref}
+                  className="glass-dark hover:bg-white/10 text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2"
+                  data-testid="hero-call-btn"
                 >
-                  {h.ctaCareers}
-                </Link>
+                  <Phone className="w-5 h-5 text-accent" />
+                  {h.ctaCall}: {t.nav.phone}
+                </a>
+              </div>
+
+              {/* Inline trust badges */}
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <span className="flex items-center gap-1.5 text-white/60 text-sm">
+                  <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
+                  {h.trustLicensed}
+                </span>
+                <span className="flex items-center gap-1.5 text-white/60 text-sm">
+                  <Clock className="w-4 h-4 text-accent shrink-0" />
+                  {h.trustEmergency}
+                </span>
+                <span className="flex items-center gap-1.5 text-white/60 text-sm">
+                  <Star className="w-4 h-4 text-accent shrink-0" />
+                  {h.trustExperience}
+                </span>
               </div>
             </motion.div>
           </div>
@@ -191,7 +212,7 @@ export default function Home() {
                   <div className={`absolute inset-0 ${bgs[i]} opacity-90 transition-transform duration-500 group-hover:scale-105`}></div>
                   <div className="absolute inset-0 bg-black/40"></div>
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <span className="inline-block py-1 px-3 rounded-md bg-accent text-accent-foreground text-xs font-bold mb-3 w-max">
+                    <span className="inline-block py-1 px-3 rounded-md bg-accent text-white text-xs font-bold mb-3 w-max">
                       {project.type}
                     </span>
                     <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
@@ -210,23 +231,22 @@ export default function Home() {
           <div className="glass-dark rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-primary/20 z-0"></div>
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-                {h.ctaTitle}
-              </h2>
-              <p className="text-xl text-primary-foreground/80 mb-10">{h.ctaDesc}</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{h.ctaTitle}</h2>
+              <p className="text-xl text-white/70 mb-10">{h.ctaDesc}</p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/estimate"
-                  className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+                  className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors"
                 >
                   {h.ctaEstimateBtn}
                 </Link>
-                <Link
-                  href="/careers"
-                  className="bg-white/10 hover:bg-white/20 text-primary-foreground border border-white/20 px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+                <a
+                  href={t.nav.phoneHref}
+                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-lg transition-colors flex items-center justify-center gap-2"
                 >
-                  {h.ctaCareersBtn}
-                </Link>
+                  <Phone className="w-5 h-5" />
+                  {t.nav.phone}
+                </a>
               </div>
             </div>
           </div>
