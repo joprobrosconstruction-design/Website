@@ -737,6 +737,9 @@
       border-color: color-mix(in oklab, hsl(var(--accent)) 70%, transparent);
     }
   }
+  .border-border {
+    border-color: hsl(var(--border));
+  }
   .border-border\/50 {
     border-color: hsl(var(--border));
     @supports (color: color-mix(in lab, red, red)) {
@@ -750,6 +753,12 @@
     border-color: hsl(var(--muted));
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, hsl(var(--muted)) 20%, transparent);
+    }
+  }
+  .border-primary\/20 {
+    border-color: hsl(var(--primary));
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, hsl(var(--primary)) 20%, transparent);
     }
   }
   .border-primary\/30 {
@@ -1043,6 +1052,9 @@
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
+  .p-10 {
+    padding: calc(var(--spacing) * 10);
+  }
   .p-12 {
     padding: calc(var(--spacing) * 12);
   }
@@ -1275,6 +1287,12 @@
   .text-primary-foreground {
     color: hsl(var(--primary-foreground));
   }
+  .text-primary-foreground\/70 {
+    color: hsl(var(--primary-foreground));
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, hsl(var(--primary-foreground)) 70%, transparent);
+    }
+  }
   .text-primary-foreground\/80 {
     color: hsl(var(--primary-foreground));
     @supports (color: color-mix(in lab, red, red)) {
@@ -1472,6 +1490,11 @@
         --tw-scale-z: 105%;
         scale: var(--tw-scale-x) var(--tw-scale-y);
       }
+    }
+  }
+  .placeholder\:text-muted-foreground {
+    &::placeholder {
+      color: hsl(var(--muted-foreground));
     }
   }
   .last\:border-0 {
@@ -1681,6 +1704,11 @@
   .sm\:grid-cols-2 {
     @media (width >= 40rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .sm\:grid-cols-3 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
   .sm\:flex-row {
