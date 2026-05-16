@@ -3,8 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { SiSamsung } from "react-icons/si";
-import { Building2, Droplet, ArrowRight, Phone, ShieldCheck, Clock, Star } from "lucide-react";
+import { Building2, Droplet, ArrowRight, Phone, ShieldCheck, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
@@ -32,7 +31,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center overflow-hidden bg-foreground">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/25 via-foreground to-foreground z-0" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-28 pb-16 lg:pt-32 lg:pb-20">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-24 pb-16 lg:pt-28 lg:pb-20">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — text */}
             <motion.div
@@ -82,10 +81,6 @@ export default function Home() {
                   {h.trustLicensed}
                 </span>
                 <span className="flex items-center gap-1.5 text-white/60 text-sm">
-                  <Clock className="w-4 h-4 text-accent shrink-0" />
-                  {h.trustEmergency}
-                </span>
-                <span className="flex items-center gap-1.5 text-white/60 text-sm">
                   <Star className="w-4 h-4 text-accent shrink-0" />
                   {h.trustExperience}
                 </span>
@@ -110,30 +105,8 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-foreground/40 via-transparent to-transparent" />
               </div>
-              {/* Floating stat card */}
-              <div className="absolute -bottom-6 -left-6 glass-dark rounded-xl px-6 py-4 border border-white/10 shadow-xl">
-                <div className="text-3xl font-black text-accent">500+</div>
-                <div className="text-sm text-white/70 font-medium">{h.stat1}</div>
-              </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Stats Bar */}
-      <section className="relative z-20 container mx-auto px-4 md:px-6 -mt-1 pb-4">
-        <div className="glass-dark rounded-2xl p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10">
-          {[
-            { label: h.stat1, value: "500+" },
-            { label: h.stat2, value: "25+" },
-            { label: h.stat3, value: "100%" },
-            { label: h.stat4, value: "24/7" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center px-4">
-              <div className="text-3xl md:text-5xl font-black text-accent mb-2">{stat.value}</div>
-              <div className="text-sm md:text-base text-primary-foreground/80 font-medium">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -144,7 +117,13 @@ export default function Home() {
             {h.trustedBy}
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
-            <SiSamsung className="w-40 h-20 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+            <Image
+              src="/images/samsung_logo.png"
+              alt="Samsung"
+              width={300}
+              height={90}
+              className="h-20 w-auto opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
+            />
           </div>
         </div>
       </section>

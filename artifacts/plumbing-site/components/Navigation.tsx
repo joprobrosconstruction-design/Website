@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Menu, X, Globe, Phone, ShieldCheck } from "lucide-react";
+import { Menu, X, Globe, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -67,30 +67,6 @@ export default function Navigation() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top bar */}
-      <div className="bg-[#07101f] border-b border-white/10">
-        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between py-2">
-          <a
-            href={t.nav.phoneHref}
-            className="flex items-center gap-2 text-sm font-bold text-white hover:text-accent transition-colors"
-            data-testid="nav-phone"
-          >
-            <Phone className="w-4 h-4 text-accent" />
-            {t.nav.phone}
-          </a>
-          <div className="hidden md:flex items-center gap-3 text-xs text-white/60">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-accent/80" />
-              {t.nav.topBarLicensed}
-            </span>
-            <span className="text-white/20">|</span>
-            <span>{t.nav.topBarExperience}</span>
-            <span className="text-white/20">|</span>
-            <span>{t.nav.topBarEmergency}</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main nav */}
       <div
         className={`transition-all duration-300 ${
@@ -105,14 +81,14 @@ export default function Navigation() {
               <Image
                 src="/images/logo.png"
                 alt="J&O Pro Bros Construction logo"
-                width={56}
-                height={56}
-                className="h-11 w-11 object-contain"
+                width={72}
+                height={72}
+                className="h-14 w-14 object-contain"
                 priority
               />
-              <span className="text-white font-extrabold tracking-tight leading-tight text-lg hidden sm:block">
+              <span className="text-white font-extrabold tracking-tight leading-tight text-xl hidden sm:block">
                 J&amp;O Pro Bros<br />
-                <span className="text-accent text-sm font-semibold tracking-widest uppercase">Construction</span>
+                <span className="text-accent text-sm font-bold tracking-widest uppercase">Construction</span>
               </span>
             </Link>
 
