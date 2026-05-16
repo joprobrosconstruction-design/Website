@@ -324,6 +324,9 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
+  .mt-2\.5 {
+    margin-top: calc(var(--spacing) * 2.5);
+  }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
@@ -661,6 +664,9 @@
   }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
+  }
+  .gap-2\.5 {
+    gap: calc(var(--spacing) * 2.5);
   }
   .gap-3 {
     gap: calc(var(--spacing) * 3);
@@ -1339,6 +1345,9 @@
   .py-28 {
     padding-block: calc(var(--spacing) * 28);
   }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
   }
@@ -1347,6 +1356,9 @@
   }
   .pt-24 {
     padding-top: calc(var(--spacing) * 24);
+  }
+  .pb-2 {
+    padding-bottom: calc(var(--spacing) * 2);
   }
   .pb-3 {
     padding-bottom: calc(var(--spacing) * 3);
@@ -1612,6 +1624,9 @@
   .uppercase {
     text-transform: uppercase;
   }
+  .italic {
+    font-style: italic;
+  }
   .accent-primary {
     accent-color: hsl(var(--primary));
   }
@@ -1783,6 +1798,14 @@
   .placeholder\:text-muted-foreground {
     &::placeholder {
       color: hsl(var(--muted-foreground));
+    }
+  }
+  .placeholder\:text-muted-foreground\/40 {
+    &::placeholder {
+      color: hsl(var(--muted-foreground));
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, hsl(var(--muted-foreground)) 40%, transparent);
+      }
     }
   }
   .last\:border-0 {
@@ -2033,6 +2056,19 @@
   .focus\:ring-primary {
     &:focus {
       --tw-ring-color: hsl(var(--primary));
+    }
+  }
+  .focus\:ring-primary\/20 {
+    &:focus {
+      --tw-ring-color: hsl(var(--primary));
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, hsl(var(--primary)) 20%, transparent);
+      }
+    }
+  }
+  .focus\:ring-red-200 {
+    &:focus {
+      --tw-ring-color: var(--color-red-200);
     }
   }
   .disabled\:cursor-not-allowed {

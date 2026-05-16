@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   Upload, FileText, CheckCircle2, AlertCircle, Info,
-  ArrowLeft, Languages, User, Phone, Briefcase, FileUp, ShieldCheck,
+  ArrowLeft, Languages, User, Phone, Briefcase, FileUp, ShieldCheck, PenLine,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { jobs } from "@/lib/jobs";
@@ -30,15 +30,15 @@ function ApplyForm() {
   const roleParam = searchParams.get("role") || "";
   const activeJobs = jobs.filter((j) => j.active);
 
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus]             = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [resumeName, setResumeName] = useState("");
-  const [idName, setIdName] = useState("");
+  const [resumeName, setResumeName]     = useState("");
+  const [idName, setIdName]             = useState("");
   const [selectedRole, setSelectedRole] = useState(roleParam);
-  const [agreed, setAgreed] = useState(false);
-  const [consentError, setConsentError] = useState(false);
-  const [termsOpen, setTermsOpen] = useState(false);
-  const termsRef = useRef<HTMLDivElement>(null);
+  const [termsOpen, setTermsOpen]       = useState(false);
+  const [signatureName, setSignatureName] = useState("");
+  const [signatureError, setSignatureError] = useState("");
+  const signatureRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (roleParam) setSelectedRole(roleParam);
@@ -46,15 +46,24 @@ function ApplyForm() {
 
   const handleSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    if (!agreed) {
-      setConsentError(true);
-      termsRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    const formData = new FormData(ev.currentTarget);
+    const enteredName = (formData.get("name") as string ?? "").trim();
+
+    if (!signatureName.trim()) {
+      setSignatureError(c.signatureRequired);
+      signatureRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
-    setConsentError(false);
+    if (signatureName.trim().toLowerCase() !== enteredName.toLowerCase()) {
+      setSignatureError(c.signatureMatchError);
+      signatureRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    setSignatureError("");
     setStatus("submitting");
     setErrorMessage("");
-    const formData = new FormData(ev.currentTarget);
+
     try {
       const response = await fetch("/api/careers", { method: "POST", body: formData });
       const result = await response.json();
@@ -277,13 +286,12 @@ function ApplyForm() {
                 </div>
               </div>
 
-              {/* ── Section 4: Terms ── */}
-              <div>
-                <SectionHeader icon={ShieldCheck} label={lang === "es" ? "Términos y Condiciones" : "Terms & Conditions"} />
-                <div
-                  ref={termsRef}
-                  className={`rounded-2xl border overflow-hidden transition-colors ${consentError ? "border-red-400 bg-red-50/20" : "border-border"}`}
-                >
+              {/* ── Section 4: Terms & Signature ── */}
+              <div ref={signatureRef}>
+                <SectionHeader icon={ShieldCheck} label={lang === "es" ? "Términos y Firma" : "Terms & Signature"} />
+
+                {/* Terms accordion */}
+                <div className="rounded-2xl border border-border overflow-hidden mb-5">
                   <button
                     type="button"
                     onClick={() => setTermsOpen((v) => !v)}
@@ -299,17 +307,45 @@ function ApplyForm() {
                       </pre>
                     </div>
                   )}
-                  <label className="flex items-start gap-3 px-5 py-4 border-t border-border cursor-pointer hover:bg-muted/30 transition-colors">
-                    <input
-                      type="checkbox"
-                      checked={agreed}
-                      onChange={(e) => { setAgreed(e.target.checked); if (e.target.checked) setConsentError(false); }}
-                      className="mt-0.5 w-4 h-4 accent-primary shrink-0"
-                    />
-                    <span className={`text-sm leading-relaxed ${consentError ? "text-red-500 font-semibold" : "text-foreground"}`}>
-                      {consentError ? c.consentRequired : c.consentLabel}
-                    </span>
-                  </label>
+                </div>
+
+                {/* Signature field */}
+                <div className={`rounded-2xl border-2 overflow-hidden transition-colors ${signatureError ? "border-red-400" : "border-border"}`}>
+                  <div className="bg-muted/30 px-5 py-3 border-b border-border flex items-center gap-2.5">
+                    <PenLine className="w-4 h-4 text-primary shrink-0" />
+                    <p className="text-sm font-bold text-foreground">{c.signatureLabel}</p>
+                    <span className="text-accent text-sm">*</span>
+                  </div>
+                  <div className="px-5 pt-4 pb-2">
+                    <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+                      {lang === "es"
+                        ? "Escriba exactamente como aparece en la sección Información Personal:"
+                        : "Type exactly as entered in the Personal Info section:"}
+                    </p>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        value={signatureName}
+                        onChange={(e) => { setSignatureName(e.target.value); setSignatureError(""); }}
+                        placeholder={c.signaturePlaceholder}
+                        className={`w-full px-4 py-4 rounded-xl border bg-background outline-none transition-all text-foreground text-xl placeholder:text-muted-foreground/40 ${
+                          signatureError
+                            ? "border-red-400 focus:ring-2 focus:ring-red-200"
+                            : "border-border focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        }`}
+                        style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }}
+                      />
+                    </div>
+                    {signatureError ? (
+                      <div className="flex items-start gap-2 mt-2.5">
+                        <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                        <p className="text-sm text-red-500">{signatureError}</p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="px-5 py-3 border-t border-border bg-primary/5">
+                    <p className="text-xs text-muted-foreground leading-relaxed">{c.signatureHint}</p>
+                  </div>
                 </div>
               </div>
 

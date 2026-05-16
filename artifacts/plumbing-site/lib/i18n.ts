@@ -185,25 +185,30 @@ export const translations = {
       submitAnother: "Submit another application",
       networkError: "Network error. Please try again later.",
       required: "*",
-      consentLabel: "I have read and agree to the Terms & Conditions below.",
-      consentRequired: "You must agree to the terms before submitting.",
+      signatureLabel: "Sign your full legal name to submit",
+      signaturePlaceholder: "Type your full legal name",
+      signatureRequired: "Please type your full legal name to submit your application.",
+      signatureMatchError: "Name must match the full name entered in the Personal Info section above.",
+      signatureHint: "By signing above, you confirm you have read and agree to all terms, that your government-issued ID is genuine and legally belongs to you, and that all information submitted is accurate and truthfully represents you.",
       termsToggle: "Read Terms & Conditions",
       termsTitle: "Application Terms & Conditions",
-      termsBody: `By submitting this application, you acknowledge and agree to the following:
+      termsBody: `By signing and submitting this application, you acknowledge and agree to the following:
 
 1. Use of Submitted Documents. Any resume, identification document, or personal information you provide is submitted voluntarily for the purpose of employment consideration with J&O Pro Bros Construction. Your government-issued ID will be used solely for identity verification purposes and will not be shared with third parties outside of J&O Pro Bros Construction without your consent, except as required by law.
 
-2. Data Storage & Retention. Documents and personal information submitted through this form are stored securely using Supabase cloud storage. J&O Pro Bros Construction will make reasonable efforts to delete uploaded files within 30 days of submission. However, no guarantee is made regarding the exact timing of deletion. Retention periods may vary based on operational needs or legal requirements.
+2. Identity & ID Authenticity. You certify that any government-issued identification document submitted with this application is genuine, has not been altered or falsified in any way, and truthfully and legally represents your identity. You further certify that you are the individual depicted in and named on the submitted ID. Submission of a fraudulent, forged, altered, or third-party identification document is a violation of these terms and may constitute a criminal offense. J&O Pro Bros Construction reserves the right to report suspected identity fraud to the appropriate authorities.
 
-3. Security. We take reasonable technical measures to protect your information. However, J&O Pro Bros Construction is not liable for unauthorized access, data breaches, or other security incidents beyond our reasonable control.
+3. Data Storage & Retention. Documents and personal information submitted through this form are stored securely using Supabase cloud storage. J&O Pro Bros Construction will make reasonable efforts to delete uploaded files within 30 days of a final decision on your application. Retention periods may vary based on operational needs or legal requirements.
 
-4. No Employment Guarantee. Submission of this application does not guarantee an interview, offer of employment, or any contractual relationship. J&O Pro Bros Construction reserves the right to accept or reject any application at its sole discretion.
+4. Security. We take reasonable technical measures to protect your information. However, J&O Pro Bros Construction is not liable for unauthorized access, data breaches, or other security incidents beyond our reasonable control.
 
-5. Accuracy. You certify that all information and documents submitted are accurate, complete, and belong to you. Submission of false or fraudulent information will result in immediate disqualification.
+5. No Employment Guarantee. Submission of this application does not guarantee an interview, offer of employment, or any contractual relationship. J&O Pro Bros Construction reserves the right to accept or reject any application at its sole discretion.
 
-6. Limitation of Liability. J&O Pro Bros Construction is not responsible for any damages, direct or indirect, arising from the submission or storage of your application materials. Your use of this form is at your own risk.
+6. Accuracy. You certify that all information and documents submitted are accurate, complete, and belong to you. Submission of false or fraudulent information will result in immediate disqualification and may be referred to law enforcement.
 
-7. Consent. By checking the box and submitting this form, you confirm that you have read, understood, and agree to these terms.`,
+7. Limitation of Liability. J&O Pro Bros Construction is not responsible for any damages, direct or indirect, arising from the submission or storage of your application materials. Your use of this form is at your own risk.
+
+8. Electronic Signature & Consent. By typing your full legal name and submitting this form, you are providing your electronic signature and confirm that you have read, understood, and agree to all terms stated above.`,
     },
     footer: {
       tagline:
@@ -408,25 +413,30 @@ export const translations = {
       submitAnother: "Enviar otra solicitud",
       networkError: "Error de red. Por favor, inténtelo de nuevo más tarde.",
       required: "*",
-      consentLabel: "He leído y acepto los Términos y Condiciones a continuación.",
-      consentRequired: "Debe aceptar los términos antes de enviar.",
+      signatureLabel: "Firme con su nombre legal completo para enviar",
+      signaturePlaceholder: "Escriba su nombre legal completo",
+      signatureRequired: "Por favor escriba su nombre legal completo para enviar su solicitud.",
+      signatureMatchError: "El nombre debe coincidir con el nombre completo ingresado en la sección de Información Personal.",
+      signatureHint: "Al firmar arriba, confirma que ha leído y acepta todos los términos, que su identificación oficial es genuina y le pertenece legalmente, y que toda la información enviada es precisa y lo representa fielmente.",
       termsToggle: "Leer Términos y Condiciones",
       termsTitle: "Términos y Condiciones de la Solicitud",
-      termsBody: `Al enviar esta solicitud, usted reconoce y acepta lo siguiente:
+      termsBody: `Al firmar y enviar esta solicitud, usted reconoce y acepta lo siguiente:
 
 1. Uso de los Documentos Enviados. Cualquier currículum, documento de identificación o información personal que proporcione se envía voluntariamente con el propósito de consideración de empleo en J&O Pro Bros Construction. Su identificación oficial se utilizará únicamente para fines de verificación de identidad y no se compartirá con terceros fuera de J&O Pro Bros Construction sin su consentimiento, excepto según lo exija la ley.
 
-2. Almacenamiento y Retención de Datos. Los documentos e información personal enviados a través de este formulario se almacenan de forma segura mediante Supabase cloud storage. J&O Pro Bros Construction hará esfuerzos razonables para eliminar los archivos cargados dentro de los 30 días posteriores al envío. Sin embargo, no se garantiza el momento exacto de la eliminación. Los períodos de retención pueden variar según las necesidades operativas o los requisitos legales.
+2. Identidad y Autenticidad de la Identificación. Usted certifica que cualquier documento de identificación oficial enviado con esta solicitud es genuino, no ha sido alterado ni falsificado de ninguna manera, y representa su identidad de forma veraz y legal. Además, certifica que usted es el individuo retratado y nombrado en la identificación presentada. La presentación de una identificación fraudulenta, falsificada, alterada o de un tercero constituye una violación de estos términos y puede ser un delito penal. J&O Pro Bros Construction se reserva el derecho de reportar sospechas de fraude de identidad a las autoridades correspondientes.
 
-3. Seguridad. Tomamos medidas técnicas razonables para proteger su información. Sin embargo, J&O Pro Bros Construction no es responsable de accesos no autorizados, violaciones de datos u otros incidentes de seguridad fuera de nuestro control razonable.
+3. Almacenamiento y Retención de Datos. Los documentos e información personal enviados a través de este formulario se almacenan de forma segura mediante Supabase cloud storage. J&O Pro Bros Construction hará esfuerzos razonables para eliminar los archivos cargados dentro de los 30 días posteriores a una decisión final sobre su solicitud. Los períodos de retención pueden variar según las necesidades operativas o los requisitos legales.
 
-4. Sin Garantía de Empleo. El envío de esta solicitud no garantiza una entrevista, oferta de empleo ni ninguna relación contractual. J&O Pro Bros Construction se reserva el derecho de aceptar o rechazar cualquier solicitud a su entera discreción.
+4. Seguridad. Tomamos medidas técnicas razonables para proteger su información. Sin embargo, J&O Pro Bros Construction no es responsable de accesos no autorizados, violaciones de datos u otros incidentes de seguridad fuera de nuestro control razonable.
 
-5. Exactitud. Usted certifica que toda la información y los documentos enviados son precisos, completos y le pertenecen. El envío de información falsa o fraudulenta resultará en descalificación inmediata.
+5. Sin Garantía de Empleo. El envío de esta solicitud no garantiza una entrevista, oferta de empleo ni ninguna relación contractual. J&O Pro Bros Construction se reserva el derecho de aceptar o rechazar cualquier solicitud a su entera discreción.
 
-6. Limitación de Responsabilidad. J&O Pro Bros Construction no es responsable de ningún daño, directo o indirecto, derivado del envío o almacenamiento de sus materiales de solicitud. El uso de este formulario es bajo su propio riesgo.
+6. Exactitud. Usted certifica que toda la información y los documentos enviados son precisos, completos y le pertenecen. El envío de información falsa o fraudulenta resultará en descalificación inmediata y podrá ser referido a las autoridades.
 
-7. Consentimiento. Al marcar la casilla y enviar este formulario, confirma que ha leído, entendido y acepta estos términos.`,
+7. Limitación de Responsabilidad. J&O Pro Bros Construction no es responsable de ningún daño, directo o indirecto, derivado del envío o almacenamiento de sus materiales de solicitud. El uso de este formulario es bajo su propio riesgo.
+
+8. Firma Electrónica y Consentimiento. Al escribir su nombre legal completo y enviar este formulario, usted proporciona su firma electrónica y confirma que ha leído, entendido y acepta todos los términos indicados anteriormente.`,
     },
     footer: {
       tagline:
