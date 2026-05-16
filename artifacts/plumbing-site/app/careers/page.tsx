@@ -80,26 +80,25 @@ export default function CareersPage() {
               <div className="w-14 h-14 bg-accent/15 text-accent rounded-full flex items-center justify-center mb-4">
                 <perk.Icon className="w-7 h-7" />
               </div>
-              <h3 className="font-bold text-lg mb-2 text-primary-foreground">{perk.title}</h3>
-              <p className="text-sm text-primary-foreground/70">{perk.desc}</p>
+              <h3 className="font-bold text-lg text-primary-foreground">{perk.title}</h3>
             </div>
           ))}
         </div>
       </section>
 
       {/* Open Roles */}
-      <section className="container mx-auto px-4 md:px-6 mb-24">
+      <section className="container mx-auto px-4 md:px-6 mb-24 text-center">
         <h2 className="text-3xl font-bold mb-8 text-foreground">{c.openPositions}</h2>
         {activeJobs.length === 0 ? (
-          <div className="glass p-10 rounded-2xl text-center text-muted-foreground border border-border/50">
+          <div className="glass p-10 rounded-2xl text-center text-muted-foreground border border-border/50 max-w-2xl mx-auto">
             {c.noPositions}
           </div>
         ) : (
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {activeJobs.map((job) => (
               <div
                 key={job.id}
-                className="border border-border/50 rounded-2xl p-6 bg-card hover:shadow-md transition-shadow flex flex-col sm:flex-row justify-between sm:items-center gap-6"
+                className="border border-border/50 rounded-2xl p-6 bg-card hover:shadow-md transition-shadow flex flex-col sm:flex-row justify-between sm:items-center gap-6 text-left"
               >
                 <div>
                   <div className="flex items-center gap-3 mb-2 flex-wrap">
