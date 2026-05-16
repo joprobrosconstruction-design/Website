@@ -1399,6 +1399,9 @@
   .pl-12 {
     padding-left: calc(var(--spacing) * 12);
   }
+  .pl-14 {
+    padding-left: calc(var(--spacing) * 14);
+  }
   .text-center {
     text-align: center;
   }
@@ -2130,6 +2133,11 @@
       padding-left: calc(var(--spacing) * 16);
     }
   }
+  .md\:pl-20 {
+    @media (width >= 48rem) {
+      padding-left: calc(var(--spacing) * 20);
+    }
+  }
   .md\:text-3xl {
     @media (width >= 48rem) {
       font-size: var(--text-3xl);
@@ -2270,6 +2278,11 @@
   .lg\:pl-24 {
     @media (width >= 64rem) {
       padding-left: calc(var(--spacing) * 24);
+    }
+  }
+  .lg\:pl-32 {
+    @media (width >= 64rem) {
+      padding-left: calc(var(--spacing) * 32);
     }
   }
   .xl\:text-6xl {
