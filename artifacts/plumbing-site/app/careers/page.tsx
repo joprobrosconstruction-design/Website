@@ -206,19 +206,20 @@ export default function CareersPage() {
             {c.noPositions}
           </div>
         ) : (
-          <div className="grid lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {activeJobs.map((job) => (
               <div
                 key={job.id}
                 className="border border-border/50 rounded-2xl p-6 bg-card hover:shadow-md transition-shadow flex flex-col gap-4 text-left"
               >
                 <div>
-                  <div className="flex items-center gap-3 mb-1 flex-wrap">
+                  <div className="flex items-center gap-3 mb-2 flex-wrap">
                     <h3 className="text-xl font-bold text-foreground">{job.title}</h3>
                     <span className="text-xs font-semibold bg-accent/10 text-accent px-2 py-1 rounded-md border border-accent/20">
                       {c.contractorBadge}
                     </span>
                   </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{job.desc}</p>
                 </div>
                 <div className="flex items-center gap-3 mt-auto">
                   <button
