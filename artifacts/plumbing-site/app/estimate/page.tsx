@@ -126,7 +126,6 @@ export default function EstimatePage() {
                       <option value="" disabled>{e.selectOption}</option>
                       <option value="commercial">{e.optCommercial}</option>
                       <option value="residential">{e.optResidential}</option>
-                      <option value="industrial">{e.optIndustrial}</option>
                       <option value="other">{e.optOther}</option>
                     </select>
                   </div>
