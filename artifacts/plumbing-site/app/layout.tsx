@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"], variable: "--app-font-sans" });
 
@@ -18,6 +19,8 @@ export const metadata: Metadata = {
     "pipe installation",
     "plumbing repair",
     "J&O Pro Bros",
+    "plomería comercial",
+    "plomería residencial",
   ],
   openGraph: {
     title: "J&O Pro Bro's | Commercial & Residential Plumbing Contractors",
@@ -34,10 +37,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans flex flex-col min-h-screen`}>
-        <Navigation />
-        <div className="flex-1">{children}</div>
-        <Footer />
+      <body className={inter.variable}>
+        <LanguageProvider>
+          <Navigation />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

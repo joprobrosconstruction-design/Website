@@ -1,7 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { Droplets, Mail, MapPin, Phone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+  const f = t.footer;
+
   return (
     <footer className="bg-foreground text-muted pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-6">
@@ -14,59 +20,60 @@ export default function Footer() {
                 J&amp;O Pro Bro&apos;s
               </span>
             </Link>
-            <p className="text-muted/80 mb-6 leading-relaxed">
-              Full-service plumbing contractor handling massive commercial projects and
-              residential work with deep expertise and unwavering reliability.
-            </p>
+            <p className="text-muted/80 mb-6 leading-relaxed">{f.tagline}</p>
             <div className="text-sm text-muted/60">
-              <p>License #C-36 1234567</p>
-              <p>Fully Insured & Bonded</p>
+              <p>{f.license}</p>
+              <p>{f.insured}</p>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-primary-foreground font-semibold mb-6">Quick Links</h3>
+            <h3 className="text-primary-foreground font-semibold mb-6">{f.quickLinks}</h3>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="hover:text-primary transition-colors">
-                  Home
-                </Link>
+                <Link href="/" className="hover:text-primary transition-colors">{f.home}</Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-primary transition-colors">
-                  Services
-                </Link>
+                <Link href="/services" className="hover:text-primary transition-colors">{f.services}</Link>
               </li>
               <li>
-                <Link href="/estimate" className="hover:text-primary transition-colors">
-                  Request Estimate
-                </Link>
+                <Link href="/estimate" className="hover:text-primary transition-colors">{f.requestEstimate}</Link>
               </li>
               <li>
-                <Link href="/careers" className="hover:text-primary transition-colors">
-                  Careers
-                </Link>
+                <Link href="/careers" className="hover:text-primary transition-colors">{f.careers}</Link>
               </li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-primary-foreground font-semibold mb-6">Services</h3>
+            <h3 className="text-primary-foreground font-semibold mb-6">{f.servicesHeader}</h3>
             <ul className="space-y-4">
-              <li className="text-muted/80">Commercial Pipe Routing</li>
-              <li className="text-muted/80">Medical Gas Systems</li>
-              <li className="text-muted/80">Fire Suppression</li>
-              <li className="text-muted/80">Industrial Process Piping</li>
-              <li className="text-muted/80">Residential Repiping</li>
-              <li className="text-muted/80">24/7 Emergency Service</li>
+              <li className="text-muted/80">
+                {t.lang === "en" ? "Commercial Pipe Routing" : "Ruteo de Tuberías Comerciales"}
+              </li>
+              <li className="text-muted/80">
+                {t.lang === "en" ? "Medical Gas Systems" : "Sistemas de Gas Médico"}
+              </li>
+              <li className="text-muted/80">
+                {t.lang === "en" ? "Fire Suppression" : "Supresión de Incendios"}
+              </li>
+              <li className="text-muted/80">
+                {t.lang === "en" ? "Industrial Process Piping" : "Tuberías de Proceso Industrial"}
+              </li>
+              <li className="text-muted/80">
+                {t.lang === "en" ? "Residential Repiping" : "Retuberización Residencial"}
+              </li>
+              <li className="text-muted/80">
+                {t.lang === "en" ? "24/7 Emergency Service" : "Servicio de Emergencia 24/7"}
+              </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-primary-foreground font-semibold mb-6">Contact Us</h3>
+            <h3 className="text-primary-foreground font-semibold mb-6">{f.contactHeader}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
@@ -81,17 +88,17 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-muted/80">estimates@premierplumbing.com</span>
+                <span className="text-muted/80">estimates@joprobros.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-muted/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted/60">
-          <p>&copy; {new Date().getFullYear()} J&amp;O Pro Bro&apos;s. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} J&amp;O Pro Bro&apos;s. {f.copyright}</p>
           <div className="flex gap-4">
-            <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
+            <Link href="#" className="hover:text-primary transition-colors">{f.privacy}</Link>
+            <Link href="#" className="hover:text-primary transition-colors">{f.terms}</Link>
           </div>
         </div>
       </div>
