@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useRef } from "react";
 import { motion } from "framer-motion";
 import { Upload, FileText, CheckCircle2, AlertCircle, Info, ArrowLeft, Languages } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -21,6 +21,10 @@ function ApplyForm() {
   const [resumeName, setResumeName] = useState("");
   const [idName, setIdName] = useState("");
   const [selectedRole, setSelectedRole] = useState(roleParam);
+  const [agreed, setAgreed] = useState(false);
+  const [consentError, setConsentError] = useState(false);
+  const [termsOpen, setTermsOpen] = useState(false);
+  const termsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (roleParam) setSelectedRole(roleParam);
@@ -28,6 +32,12 @@ function ApplyForm() {
 
   const handleSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
+    if (!agreed) {
+      setConsentError(true);
+      termsRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    setConsentError(false);
     setStatus("submitting");
     setErrorMessage("");
     const formData = new FormData(ev.currentTarget);
@@ -241,6 +251,45 @@ function ApplyForm() {
                       </div>
                     </label>
                   </div>
+                </div>
+
+                {/* ── Terms & Consent ── */}
+                <div ref={termsRef} className={`rounded-xl border ${consentError ? "border-red-400 bg-red-50/40" : "border-border bg-muted/30"} overflow-hidden transition-colors`}>
+
+                  {/* Toggle header */}
+                  <button
+                    type="button"
+                    onClick={() => setTermsOpen((v) => !v)}
+                    className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors"
+                  >
+                    <span>{c.termsTitle}</span>
+                    <span className={`text-xs transition-transform duration-200 ${termsOpen ? "rotate-180" : ""}`}>▼</span>
+                  </button>
+
+                  {/* Scrollable terms body */}
+                  {termsOpen && (
+                    <div className="px-4 pb-4 max-h-56 overflow-y-auto border-t border-border">
+                      <pre className="text-xs text-muted-foreground leading-relaxed whitespace-pre-wrap font-sans mt-3">
+                        {c.termsBody}
+                      </pre>
+                    </div>
+                  )}
+
+                  {/* Checkbox */}
+                  <label className="flex items-start gap-3 px-4 py-3 border-t border-border cursor-pointer hover:bg-muted/40 transition-colors">
+                    <input
+                      type="checkbox"
+                      checked={agreed}
+                      onChange={(e) => {
+                        setAgreed(e.target.checked);
+                        if (e.target.checked) setConsentError(false);
+                      }}
+                      className="mt-0.5 w-4 h-4 accent-primary shrink-0"
+                    />
+                    <span className={`text-sm ${consentError ? "text-red-500 font-medium" : "text-foreground"}`}>
+                      {consentError ? c.consentRequired : c.consentLabel}
+                    </span>
+                  </label>
                 </div>
 
                 <button
