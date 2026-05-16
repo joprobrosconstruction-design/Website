@@ -53,8 +53,8 @@ export default function Home() {
           sizes="100vw"
         />
 
-        {/* Solid navy on far left, hard fade through center, barely-there on right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#040e28] from-[30%] via-[rgba(4,14,40,0.75)] via-[58%] to-[rgba(4,14,40,0.08)]" />
+        {/* Solid navy on far left, fade clears by ~40% so center action stays visible */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#040e28] from-[22%] via-[rgba(4,14,40,0.45)] via-[42%] to-[rgba(4,14,40,0.0)]" />
         {/* Slight top + bottom vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(4,14,40,0.5)] via-transparent to-[rgba(4,14,40,0.45)]" />
 

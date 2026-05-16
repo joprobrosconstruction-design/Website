@@ -227,6 +227,9 @@
   .pointer-events-none {
     pointer-events: none;
   }
+  .visible {
+    visibility: visible;
+  }
   .absolute {
     position: absolute;
   }
@@ -1101,8 +1104,16 @@
     --tw-gradient-from: var(--color-slate-900);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .from-\[22\%\] {
+    --tw-gradient-from-position: 22%;
+  }
   .from-\[30\%\] {
     --tw-gradient-from-position: 30%;
+  }
+  .via-\[rgba\(4\,14\,40\,0\.45\)\] {
+    --tw-gradient-via: rgba(4,14,40,0.45);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
   .via-\[rgba\(4\,14\,40\,0\.75\)\] {
     --tw-gradient-via: rgba(4,14,40,0.75);
@@ -1148,8 +1159,15 @@
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
+  .via-\[42\%\] {
+    --tw-gradient-via-position: 42%;
+  }
   .via-\[58\%\] {
     --tw-gradient-via-position: 58%;
+  }
+  .to-\[rgba\(4\,14\,40\,0\.0\)\] {
+    --tw-gradient-to: rgba(4,14,40,0.0);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-\[rgba\(4\,14\,40\,0\.4\)\] {
     --tw-gradient-to: rgba(4,14,40,0.4);
