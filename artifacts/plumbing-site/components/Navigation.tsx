@@ -98,8 +98,8 @@ export default function Navigation() {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    pathname === link.path ? "text-primary" : "text-white/70"
+                  className={`text-sm font-medium transition-colors hover:text-accent ${
+                    pathname === link.path ? "text-accent font-semibold" : "text-white/70"
                   }`}
                   data-testid={`nav-link-${link.path === "/" ? "home" : link.path.slice(1)}`}
                 >
@@ -149,7 +149,7 @@ export default function Navigation() {
                   key={link.path}
                   href={link.path}
                   className={`text-lg font-medium p-2 rounded-md ${
-                    pathname === link.path ? "bg-primary/10 text-primary" : "text-white"
+                    pathname === link.path ? "bg-accent/15 text-accent font-semibold" : "text-white"
                   }`}
                   data-testid={`nav-mobile-link-${link.path === "/" ? "home" : link.path.slice(1)}`}
                 >
