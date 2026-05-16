@@ -84,23 +84,28 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right — crew photo */}
+            {/* Right — logo + company name */}
             <motion.div
               initial={{ x: 40 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className="relative hidden lg:block"
+              className="hidden lg:flex flex-col items-center justify-center gap-8"
             >
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl shadow-black/50">
-                <Image
-                  src="/images/hero_crew.jpg"
-                  alt="J&O Pro Bro's crew working on commercial plumbing project"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-foreground/40 via-transparent to-transparent" />
+              <Image
+                src="/images/logo.png"
+                alt="J&O Pro Bros Construction logo"
+                width={320}
+                height={320}
+                className="w-72 h-72 object-contain drop-shadow-[0_0_60px_rgba(30,100,220,0.35)]"
+                priority
+              />
+              <div className="text-center">
+                <div className="text-4xl font-black text-white tracking-tight leading-tight">
+                  J&amp;O Pro Bros
+                </div>
+                <div className="text-accent font-bold tracking-[0.25em] uppercase text-lg mt-1">
+                  Construction
+                </div>
               </div>
             </motion.div>
           </div>
