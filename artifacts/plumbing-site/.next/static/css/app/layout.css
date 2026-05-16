@@ -1256,6 +1256,9 @@
   .object-center {
     object-position: center;
   }
+  .object-left {
+    object-position: left;
+  }
   .object-right {
     object-position: right;
   }
@@ -2236,6 +2239,11 @@
   .lg\:hidden {
     @media (width >= 64rem) {
       display: none;
+    }
+  }
+  .lg\:w-1\/2 {
+    @media (width >= 64rem) {
+      width: calc(1 / 2 * 100%);
     }
   }
   .lg\:w-\[46\%\] {
