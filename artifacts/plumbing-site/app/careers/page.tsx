@@ -199,11 +199,17 @@ export default function CareersPage() {
         </div>
         <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {perks.map((perk, i) => (
-            <div key={i} className="glass-dark p-6 rounded-2xl text-center flex flex-col items-center border border-white/10">
-              <div className="w-14 h-14 bg-accent/15 text-accent rounded-full flex items-center justify-center mb-4">
-                <perk.Icon className="w-7 h-7" />
+            <div
+              key={i}
+              className="relative p-7 rounded-2xl text-center flex flex-col items-center border border-white/15 overflow-hidden"
+              style={{ background: "rgba(4,14,40,0.92)" }}
+            >
+              {/* Subtle glow behind icon */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-20 bg-accent/10 blur-2xl rounded-full pointer-events-none" />
+              <div className="relative w-16 h-16 bg-accent/20 text-accent rounded-2xl flex items-center justify-center mb-5 shadow-[0_0_20px_rgba(227,90,26,0.25)] border border-accent/25">
+                <perk.Icon className="w-8 h-8" />
               </div>
-              <h3 className="font-bold text-lg text-primary-foreground">{perk.title}</h3>
+              <h3 className="relative font-bold text-lg text-white">{perk.title}</h3>
             </div>
           ))}
         </div>
