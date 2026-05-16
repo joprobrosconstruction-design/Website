@@ -16,6 +16,15 @@ export default function CareersPage() {
   const [resumeName, setResumeName] = useState("");
   const [idName, setIdName] = useState("");
   const [selectedRole, setSelectedRole] = useState("");
+  const [expandedJobs, setExpandedJobs] = useState<Set<string>>(new Set());
+
+  const toggleExpand = (id: string) => {
+    setExpandedJobs((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
 
   const activeJobs = jobs.filter((j) => j.active);
 
@@ -93,30 +102,43 @@ export default function CareersPage() {
             {c.noPositions}
           </div>
         ) : (
-          <div className="grid lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {activeJobs.map((job) => (
-              <div
-                key={job.id}
-                className="border border-border/50 rounded-2xl p-6 bg-card hover:shadow-md transition-shadow flex flex-col sm:flex-row justify-between sm:items-center gap-6 text-left"
-              >
-                <div>
-                  <div className="flex items-center gap-3 mb-2 flex-wrap">
-                    <h3 className="text-xl font-bold text-foreground">{job.title}</h3>
-                    <span className="text-xs font-semibold bg-accent/10 text-accent px-2 py-1 rounded-md border border-accent/20">
-                      {c.contractorBadge}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{job.desc}</p>
-                </div>
-                <button
-                  onClick={() => handleApplyClick(job.title)}
-                  className="shrink-0 bg-accent hover:bg-accent/90 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors text-sm shadow-sm"
-                  data-testid={`apply-btn-${job.id}`}
+          <div className="grid lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {activeJobs.map((job) => {
+              const expanded = expandedJobs.has(job.id);
+              return (
+                <div
+                  key={job.id}
+                  className="border border-border/50 rounded-2xl p-6 bg-card hover:shadow-md transition-shadow flex flex-col gap-4 text-left"
                 >
-                  {c.applyNow}
-                </button>
-              </div>
-            ))}
+                  <div>
+                    <div className="flex items-center gap-3 mb-3 flex-wrap">
+                      <h3 className="text-xl font-bold text-foreground">{job.title}</h3>
+                      <span className="text-xs font-semibold bg-accent/10 text-accent px-2 py-1 rounded-md border border-accent/20">
+                        {c.contractorBadge}
+                      </span>
+                    </div>
+                    {expanded && (
+                      <p className="text-sm text-muted-foreground leading-relaxed">{job.desc}</p>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-3 mt-auto">
+                    <button
+                      onClick={() => toggleExpand(job.id)}
+                      className="text-sm font-semibold text-primary hover:underline"
+                    >
+                      {expanded ? "View Less" : "View More"}
+                    </button>
+                    <button
+                      onClick={() => handleApplyClick(job.title)}
+                      className="bg-accent hover:bg-accent/90 text-white font-semibold px-5 py-2 rounded-lg transition-colors text-sm shadow-sm"
+                      data-testid={`apply-btn-${job.id}`}
+                    >
+                      {c.applyNow}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </section>
