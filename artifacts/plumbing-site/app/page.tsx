@@ -249,42 +249,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Recent Projects ── */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...revealUp(0)} className="mb-12">
-            <h2 className="text-4xl font-bold mb-4">{h.recentProjects}</h2>
-            <p className="text-muted-foreground max-w-xl">{h.recentProjectsDesc}</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {h.projects.map((project, i) => (
-              <motion.div
-                key={i}
-                {...revealScale(i * 0.12)}
-                className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
-              >
-                <Image
-                  src={projectImages[i].src}
-                  alt={projectImages[i].alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <span className="inline-block py-1 px-3 rounded-md bg-accent text-white text-xs font-bold mb-3 w-max">
-                    {project.type}
-                  </span>
-                  <h3 className="text-2xl font-bold text-white mb-1">{project.title}</h3>
-                  <p className="text-white/75 text-sm">{project.scale}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Trusted By ── */}
       <section className="py-14 bg-background border-t border-border/40">
         <div className="container mx-auto px-4 md:px-6 text-center">
