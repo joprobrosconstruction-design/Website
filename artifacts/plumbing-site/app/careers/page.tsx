@@ -43,13 +43,13 @@ export default function CareersPage() {
   const activeJobs = jobs.filter((j) => j.active);
 
   const openModal = (job: Job) => {
-    playOpenSound();
     setModalJob(job);
     setModalEs(false);
     if (job.es) {
       if (hintTimer.current) clearTimeout(hintTimer.current);
-      // Delay 3.5s before showing, then show for 4s
+      // Delay 3.5s, then play sound + show hint for 4s
       hintTimer.current = setTimeout(() => {
+        playOpenSound();
         setShowHint(true);
         hintTimer.current = setTimeout(() => setShowHint(false), 4000);
       }, 3500);
