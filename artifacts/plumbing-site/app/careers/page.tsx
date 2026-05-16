@@ -47,9 +47,12 @@ export default function CareersPage() {
     setModalJob(job);
     setModalEs(false);
     if (job.es) {
-      setShowHint(true);
       if (hintTimer.current) clearTimeout(hintTimer.current);
-      hintTimer.current = setTimeout(() => setShowHint(false), 4000);
+      // Delay 3.5s before showing, then show for 4s
+      hintTimer.current = setTimeout(() => {
+        setShowHint(true);
+        hintTimer.current = setTimeout(() => setShowHint(false), 4000);
+      }, 3500);
     }
   };
 
