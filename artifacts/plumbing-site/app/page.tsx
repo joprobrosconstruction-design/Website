@@ -257,16 +257,16 @@ export default function Home() {
       {/* Corporate Clients Section */}
       <section className="py-14 bg-background border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-10">
             {h.trustedBy}
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
             <Image
               src="/images/samsung_logo.avif"
               alt="Samsung"
-              width={400}
-              height={120}
-              className="h-28 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
+              width={500}
+              height={160}
+              className="h-40 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
             />
           </div>
         </div>
