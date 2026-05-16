@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import { translations } from "@/lib/i18n";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
@@ -24,11 +25,7 @@ export default function Footer() {
                 className="h-16 w-auto object-contain"
               />
             </Link>
-            <p className="text-muted/80 mb-6 leading-relaxed">{f.tagline}</p>
-            <div className="text-sm text-muted/60">
-              <p>{f.license}</p>
-              <p>{f.insured}</p>
-            </div>
+            <p className="text-muted/80 leading-relaxed">{f.tagline}</p>
           </div>
 
           {/* Quick Links */}
@@ -70,7 +67,7 @@ export default function Footer() {
                 {t.lang === "en" ? "Residential Repiping" : "Retuberización Residencial"}
               </li>
               <li className="text-muted/80">
-                {t.lang === "en" ? "24/7 Emergency Service" : "Servicio de Emergencia 24/7"}
+                {t.lang === "en" ? "Emergency Plumbing Services" : "Servicio de Plomería de Emergencia"}
               </li>
             </ul>
           </div>
@@ -80,19 +77,23 @@ export default function Footer() {
             <h3 className="text-primary-foreground font-semibold mb-6">{f.contactHeader}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-muted/80">
-                  1234 Contractor Way, Suite 100<br />
-                  Metropolis, CA 90210
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-muted/80">(555) 123-4567</span>
+                <Phone className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <div className="text-muted/80 space-y-1">
+                  <a href={translations.en.nav.phoneHref} className="flex items-center gap-2 hover:text-primary transition-colors">
+                    <span className="text-xs font-bold text-accent border border-accent/30 rounded px-1.5 py-0.5">EN</span>
+                    {translations.en.nav.phone}
+                  </a>
+                  <a href={translations.es.nav.phoneHref} className="flex items-center gap-2 hover:text-primary transition-colors">
+                    <span className="text-xs font-bold text-accent border border-accent/30 rounded px-1.5 py-0.5">ES</span>
+                    {translations.es.nav.phone}
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-muted/80">estimates@joprobros.com</span>
+                <a href="mailto:joprobros.construction@gmail.com" className="text-muted/80 hover:text-primary transition-colors break-all">
+                  joprobros.construction@gmail.com
+                </a>
               </li>
             </ul>
           </div>
