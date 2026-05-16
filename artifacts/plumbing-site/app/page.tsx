@@ -93,24 +93,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Corporate Clients Section */}
-      <section className="py-14 bg-background border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">
-            {h.trustedBy}
-          </h2>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
-            <Image
-              src="/images/samsung_logo.avif"
-              alt="Samsung"
-              width={400}
-              height={120}
-              className="h-28 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* Services Overview */}
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
@@ -190,25 +172,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Van / Fleet Banner */}
-      <section className="relative h-[420px] md:h-[520px] overflow-hidden">
-        <Image
-          src="/images/van.png"
-          alt="J&O Pro Bros Construction service van"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
-        <div className="absolute inset-0 flex items-center">
-          <div className="container mx-auto px-4 md:px-6 max-w-xl">
-            <p className="text-accent font-semibold uppercase tracking-widest text-sm mb-3">On The Road Daily</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-              Professional. Local. Ready.
-            </h2>
-            <p className="text-white/70 text-lg">
-              From Atlanta to your doorstep — our crews show up on time and get the job done right.
-            </p>
+      {/* Van / Fleet Section */}
+      <section className="py-20 bg-foreground">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <p className="text-accent font-semibold uppercase tracking-widest text-sm mb-3">On The Road Daily</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            Professional. Local. Ready.
+          </h2>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto mb-10">
+            From Atlanta to your doorstep — our crews show up on time and get the job done right.
+          </p>
+          <div className="rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
+            <Image
+              src="/images/van.png"
+              alt="J&O Pro Bros Construction service van"
+              width={1200}
+              height={800}
+              className="w-full h-auto object-contain"
+              sizes="(max-width: 1024px) 100vw, 896px"
+            />
           </div>
         </div>
       </section>
@@ -248,6 +230,24 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Corporate Clients Section */}
+      <section className="py-14 bg-background border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">
+            {h.trustedBy}
+          </h2>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
+            <Image
+              src="/images/samsung_logo.avif"
+              alt="Samsung"
+              width={400}
+              height={120}
+              className="h-28 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
+            />
           </div>
         </div>
       </section>

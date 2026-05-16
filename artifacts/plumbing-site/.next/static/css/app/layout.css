@@ -445,6 +445,9 @@
   .h-\[420px\] {
     height: 420px;
   }
+  .h-auto {
+    height: auto;
+  }
   .h-full {
     height: 100%;
   }
