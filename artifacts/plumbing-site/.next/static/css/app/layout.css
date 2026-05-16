@@ -423,6 +423,9 @@
   .h-72 {
     height: calc(var(--spacing) * 72);
   }
+  .h-\[420px\] {
+    height: 420px;
+  }
   .h-full {
     height: 100%;
   }
@@ -476,6 +479,9 @@
   }
   .w-72 {
     width: calc(var(--spacing) * 72);
+  }
+  .w-\[420px\] {
+    width: 420px;
   }
   .w-auto {
     width: auto;
@@ -1336,6 +1342,11 @@
   }
   .drop-shadow-\[0_0_60px_rgba\(30\,100\,220\,0\.35\)\] {
     --tw-drop-shadow-size: drop-shadow(0 0 60px var(--tw-drop-shadow-color, rgba(30,100,220,0.35)));
+    --tw-drop-shadow: var(--tw-drop-shadow-size);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .drop-shadow-\[0_0_80px_rgba\(30\,100\,220\,0\.4\)\] {
+    --tw-drop-shadow-size: drop-shadow(0 0 80px var(--tw-drop-shadow-color, rgba(30,100,220,0.4)));
     --tw-drop-shadow: var(--tw-drop-shadow-size);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }

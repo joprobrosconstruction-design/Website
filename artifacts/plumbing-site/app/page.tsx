@@ -94,19 +94,11 @@ export default function Home() {
               <Image
                 src="/images/logo.png"
                 alt="J&O Pro Bros Construction logo"
-                width={320}
-                height={320}
-                className="w-72 h-72 object-contain drop-shadow-[0_0_60px_rgba(30,100,220,0.35)]"
+                width={480}
+                height={480}
+                className="w-[420px] h-[420px] object-contain drop-shadow-[0_0_80px_rgba(30,100,220,0.4)]"
                 priority
               />
-              <div className="text-center">
-                <div className="text-4xl font-black text-white tracking-tight leading-tight">
-                  J&amp;O Pro Bros
-                </div>
-                <div className="text-accent font-bold tracking-[0.25em] uppercase text-lg mt-1">
-                  Construction
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
