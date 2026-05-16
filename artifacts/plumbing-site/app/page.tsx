@@ -205,8 +205,11 @@ export default function Home() {
           <motion.h2 {...revealUp(0.1)} className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
             Professional. Local. Ready.
           </motion.h2>
-          <motion.p {...revealUp(0.2)} className="text-white/60 text-lg max-w-2xl mx-auto mb-10">
-            From Atlanta to your doorstep — our crews show up on time and get the job done right.
+          <motion.p {...revealUp(0.2)} className="text-white/60 text-lg max-w-2xl mx-auto mb-3">
+            Locally rooted in the Gwinnett Area and Atlanta for residential work.
+          </motion.p>
+          <motion.p {...revealUp(0.28)} className="text-white/45 text-base max-w-xl mx-auto mb-10">
+            For large-scale commercial projects, we operate across <span className="text-white/65 font-medium">Georgia · Texas · Arizona · Ohio</span>
           </motion.p>
           <motion.div {...revealScale(0.25)} className="rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
             <Image
