@@ -17,12 +17,12 @@ export const translations = {
     },
     home: {
       heroBadge: "Residential & Commercial Plumbing — Done Right",
-      heroLine1: "Your",
-      heroWord1: "Local Plumbers.",
+      heroLine1: "Professional",
+      heroWord1: "Plumbing & Property Services",
       heroLine2: "",
-      heroWord2: "Any Job, Any Size.",
+      heroWord2: "for Projects of Every Scale.",
       heroDesc:
-        "From a leaky faucet to a full commercial buildout — we show up, get it done right, and stand behind our work.",
+        "From residential repairs to large-scale commercial plumbing systems, we deliver reliable plumbing solutions backed by quality workmanship, responsive service, and the experience to support projects from start to finish.",
       ctaEstimate: "Get a Free Estimate",
       ctaCall: "Call Now",
       ctaCareers: "Join Our Team",
@@ -239,12 +239,12 @@ export const translations = {
     },
     home: {
       heroBadge: "Plomería Residencial y Comercial — Bien Hecha",
-      heroLine1: "Sus",
-      heroWord1: "Plomeros Locales.",
+      heroLine1: "Servicios Profesionales de",
+      heroWord1: "Plomería y Construcción",
       heroLine2: "",
-      heroWord2: "Cualquier Trabajo, Cualquier Tamaño.",
+      heroWord2: "para Proyectos de Toda Escala.",
       heroDesc:
-        "Desde una llave que gotea hasta una obra comercial completa — llegamos, lo hacemos bien y respondemos por nuestro trabajo.",
+        "Desde reparaciones residenciales hasta sistemas de plomería comercial a gran escala, ofrecemos soluciones confiables respaldadas por mano de obra de calidad, servicio ágil y la experiencia para apoyar proyectos de inicio a fin.",
       ctaEstimate: "Obtener Estimado Gratis",
       ctaCall: "Llamar Ahora",
       ctaCareers: "Únase al Equipo",
