@@ -1,0 +1,93 @@
+
+Deployment Details
+Build Failed
+Command "next build" exited with 1
+Created
+github/nexgensecureus
+nexgensecureus
+50s ago
+Status
+Error
+Latest
+Duration
+29s
+Just now
+Environment
+Production
+Domains
+website-plumbing-site-git-main-joprobro-s-projects.vercel.app
+website-plumbing-site-l9oif1bbh-joprobro-s-projects.vercel.app
+Source
+main
+da30164
+ff
+
+Deployment Settings
+3 Recommendations
+Build Logs
+29s
+51 lines
+Find in logs
+CtrlF
+14:45:19.101 
+│   to run scripts.                                                            │
+14:45:19.101 
+│                                                                              │
+14:45:19.102 
+╰──────────────────────────────────────────────────────────────────────────────╯
+14:45:19.107 
+Done in 2s using pnpm v10.28.0
+14:45:19.128 
+Detected Next.js version: 15.5.18
+14:45:19.129 
+Running "next build"
+14:45:20.183 
+   ▲ Next.js 15.5.18
+14:45:20.184 
+14:45:20.224 
+   Creating an optimized production build ...
+14:45:33.238 
+ ✓ Compiled successfully in 10.4s
+14:45:33.322 
+   Linting and checking validity of types ...
+14:45:38.518 
+Failed to compile.
+14:45:38.519 
+14:45:38.519 
+./app/page.tsx:50:14
+14:45:38.520 
+Type error: Type '{ children: "Residential & Commercial Plumbing — Done Right"; className: string; initial: { opacity: number; y: number; }; animate: { opacity: number; y: number; }; transition: { duration: number; ease: string; delay: number; }; }' is not assignable to type 'Omit<HTMLMotionProps<"span">, "ref">'.
+14:45:38.520 
+  Types of property 'transition' are incompatible.
+14:45:38.520 
+    Type '{ duration: number; ease: string; delay: number; }' is not assignable to type 'Transition<any> | undefined'.
+14:45:38.521 
+      Type '{ duration: number; ease: string; delay: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+14:45:38.521 
+        Type '{ duration: number; ease: string; delay: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+14:45:38.521 
+          Types of property 'ease' are incompatible.
+14:45:38.522 
+            Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+14:45:38.522 
+14:45:38.522 
+  48 |           <div className="max-w-md lg:max-w-xl">
+14:45:38.523 
+  49 |
+14:45:38.523 
+> 50 |             <motion.span
+14:45:38.523 
+     |              ^
+14:45:38.523 
+  51 |               {...fadeUp(0)}
+14:45:38.524 
+  52 |               className="inline-block py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-10 backdrop-blur-sm"
+14:45:38.524 
+  53 |             >
+14:45:38.549 
+Next.js build worker exited with code: 1 and signal: null
+14:45:38.573 
+Error: Command "next build" exited with 1
+Deployment Summary
+Deployment Checks
+Assigning Custom Domains

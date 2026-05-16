@@ -10,21 +10,21 @@ import { CallNowDropdown } from "@/components/CallNowDropdown";
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, ease: "easeOut", delay },
+  transition: { duration: 0.65, ease: "easeOut" as const, delay },
 });
 
 const revealUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.6, ease: "easeOut", delay },
+  transition: { duration: 0.6, ease: "easeOut" as const, delay },
 });
 
 const revealScale = (delay = 0) => ({
   initial: { opacity: 0, scale: 0.95 },
   whileInView: { opacity: 1, scale: 1 },
   viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.55, ease: "easeOut", delay },
+  transition: { duration: 0.55, ease: "easeOut" as const, delay },
 });
 
 export default function Home() {
