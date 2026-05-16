@@ -269,7 +269,7 @@ export default function CareersPage() {
                 <div className="h-1 w-full bg-gradient-to-r from-primary to-accent opacity-60 group-hover:opacity-100 transition-opacity" />
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="text-xl font-bold text-foreground leading-tight">{job.title}</h3>
+                    <h3 className="text-2xl font-bold text-foreground leading-tight">{job.title}</h3>
                     <span className="text-xs font-semibold bg-accent/10 text-accent px-2.5 py-1 rounded-lg border border-accent/20 shrink-0 whitespace-nowrap">
                       {c.contractorBadge}
                     </span>
