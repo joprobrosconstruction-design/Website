@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "862Jcjc3akOu1JLlnpp8u"
@@ -24,3 +23,33 @@ id = "Wg2eqc7qhSpBkytBeUj3F"
 uri = "file://artifacts/plumbing-site/public/images/office.png"
 type = "image"
 title = "Office tower mechanical room"
+
+[[outputs]]
+id = "dJeBmT0yUHE_LxNEmDU55"
+uri = "file://attached_assets/image_search/plumber_worker_pipe.jpg"
+type = "image"
+title = "Plumber repairing pipe — worker shot (hero/project use)"
+
+[[outputs]]
+id = "P94tKB8pkk7rW9_Vs7SAf"
+uri = "file://attached_assets/image_search/industrial_pipes_gauges.jpg"
+type = "image"
+title = "Industrial pressure gauges & red pipes (commercial section)"
+
+[[outputs]]
+id = "P85oa35Y8IjcylbxEKEmF"
+uri = "file://attached_assets/image_search/stainless_pipes_complex.jpg"
+type = "image"
+title = "Complex stainless steel commercial pipes (commercial section)"
+
+[[outputs]]
+id = "QmDIr7UpLpzvjh5sDxAZm"
+uri = "file://attached_assets/image_search/modern_bathroom_marble.jpg"
+type = "image"
+title = "Modern marble bathroom (residential section)"
+
+[[outputs]]
+id = "BgrF4uZ4BQdfd2j8DCanY"
+uri = "file://attached_assets/image_search/modern_bathroom_window.jpg"
+type = "image"
+title = "Modern bathroom with window (residential section)"
