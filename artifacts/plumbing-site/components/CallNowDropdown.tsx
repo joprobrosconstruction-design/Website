@@ -60,16 +60,16 @@ export function CallNowDropdown({ label, className = "", testId }: Props) {
               key={opt.code}
               href={opt.href}
               onClick={() => setOpen(false)}
-              className="flex items-center gap-4 px-5 py-4 hover:bg-white/10 transition-colors border-b border-white/10 last:border-0"
+              className="flex items-center gap-4 px-6 py-5 hover:bg-white/10 transition-colors border-b border-white/10 last:border-0"
             >
-              <div className="bg-accent/20 border border-accent/30 rounded-md px-2 py-0.5 text-accent font-black text-xs tracking-wider shrink-0">
+              <div className="bg-accent/20 border border-accent/30 rounded-md px-2.5 py-1 text-accent font-black text-xs tracking-wider shrink-0">
                 {opt.code}
               </div>
-              <div className="min-w-0">
-                <div className="text-white/50 text-xs font-medium">{opt.lang}</div>
-                <div className="text-white font-bold text-base">{opt.number}</div>
+              <div className="min-w-0 flex-1">
+                <div className="text-white/50 text-xs font-medium mb-0.5">{opt.lang}</div>
+                <div className="text-white font-bold text-lg">{opt.number}</div>
               </div>
-              <Phone className="w-4 h-4 text-accent ml-auto shrink-0" />
+              <Phone className="w-4 h-4 text-accent shrink-0" />
             </a>
           ))}
         </div>
