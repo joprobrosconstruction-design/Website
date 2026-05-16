@@ -44,19 +44,19 @@ export default function Home() {
       <section className="relative flex min-h-[78vh] overflow-hidden bg-[#040e28]">
 
         {/* ── Left: solid dark panel ── */}
-        <div className="relative z-10 flex items-center w-full lg:w-[46%] shrink-0 py-28 pl-14 pr-8 md:pl-20 md:pr-10 lg:pl-32 lg:pr-10 bg-[#040e28]">
-          <div className="max-w-md w-full">
+        <div className="relative z-10 flex items-center justify-center w-full lg:w-[58%] shrink-0 py-28 px-8 md:px-12 lg:px-16 bg-[#040e28]">
+          <div className="max-w-md lg:max-w-xl">
 
             <motion.span
               {...fadeUp(0)}
-              className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-6 backdrop-blur-sm"
+              className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-8 backdrop-blur-sm"
             >
               {h.heroBadge}
             </motion.span>
 
             <motion.h1
               {...fadeUp(0.15)}
-              className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white tracking-tight mb-5 leading-[1.08]"
+              className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white tracking-tight mb-7 leading-[1.1]"
             >
               {h.heroLine1}{" "}
               <span className="text-gradient-blue">{h.heroWord1}</span>
@@ -66,7 +66,7 @@ export default function Home() {
 
             <motion.p
               {...fadeUp(0.3)}
-              className="text-base md:text-lg text-white/70 mb-9 leading-relaxed"
+              className="text-base md:text-lg text-white/70 mb-10 leading-relaxed"
             >
               {h.heroDesc}
             </motion.p>
