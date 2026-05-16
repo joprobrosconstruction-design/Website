@@ -2,13 +2,13 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { motion } from "framer-motion";
-import { Upload, FileText, CheckCircle2, AlertCircle, Info, ArrowLeft } from "lucide-react";
+import { Upload, FileText, CheckCircle2, AlertCircle, Info, ArrowLeft, Languages } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { jobs } from "@/lib/jobs";
 import { useSearchParams, useRouter } from "next/navigation";
 
 function ApplyForm() {
-  const { t } = useLanguage();
+  const { t, lang, setLang } = useLanguage();
   const c = t.careers;
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -86,10 +86,24 @@ function ApplyForm() {
             </motion.div>
           ) : (
             <>
-              <h1 className="text-3xl font-bold mb-2 text-foreground relative z-10">{c.formTitle}</h1>
+              <div className="flex items-start justify-between gap-4 mb-2 relative z-10">
+                <h1 className="text-3xl font-bold text-foreground">{c.formTitle}</h1>
+                <button
+                  type="button"
+                  onClick={() => setLang(lang === "en" ? "es" : "en")}
+                  className={`flex items-center gap-2 px-4 py-1.5 rounded-lg border text-sm font-semibold transition-colors shrink-0 mt-1 ${
+                    lang === "es"
+                      ? "bg-primary text-white border-primary"
+                      : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+                  }`}
+                >
+                  <Languages className="w-4 h-4 shrink-0" />
+                  {lang === "es" ? "View in English" : "Ver en Español"}
+                </button>
+              </div>
               {roleParam && (
                 <p className="text-muted-foreground mb-6 relative z-10">
-                  Applying for: <span className="font-semibold text-foreground">{roleParam}</span>
+                  {lang === "es" ? "Aplicando para:" : "Applying for:"} <span className="font-semibold text-foreground">{roleParam}</span>
                 </p>
               )}
 
