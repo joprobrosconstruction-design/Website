@@ -54,7 +54,7 @@ export function CallNowDropdown({ label, className = "", testId }: Props) {
       </button>
 
       {open && (
-        <div className="absolute top-full mt-2 left-0 right-0 z-50 glass-dark border border-white/20 rounded-xl overflow-hidden shadow-2xl">
+        <div className="absolute top-full mt-2 left-0 z-50 glass-dark border border-white/20 rounded-xl overflow-hidden shadow-2xl min-w-[240px]">
           {options.map((opt) => (
             <a
               key={opt.code}
@@ -67,7 +67,7 @@ export function CallNowDropdown({ label, className = "", testId }: Props) {
               </div>
               <div className="min-w-0 flex-1">
                 <div className="text-white/50 text-xs font-medium mb-0.5">{opt.lang}</div>
-                <div className="text-white font-bold text-lg">{opt.number}</div>
+                <div className="text-white font-bold text-base whitespace-nowrap">{opt.number}</div>
               </div>
               <Phone className="w-4 h-4 text-accent shrink-0" />
             </a>

@@ -516,6 +516,9 @@
   .min-w-0 {
     min-width: calc(var(--spacing) * 0);
   }
+  .min-w-\[240px\] {
+    min-width: 240px;
+  }
   .flex-1 {
     flex: 1;
   }
@@ -1199,6 +1202,9 @@
   }
   .break-all {
     word-break: break-all;
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
   }
   .text-accent {
     color: hsl(var(--accent));
