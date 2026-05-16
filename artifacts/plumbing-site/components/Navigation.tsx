@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Droplets, Menu, X, Globe, Phone, ShieldCheck } from "lucide-react";
+import { Menu, X, Globe, Phone, ShieldCheck } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -100,12 +101,18 @@ export default function Navigation() {
       >
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between gap-4">
-            <Link href="/" className="flex items-center gap-3 group shrink-0" data-testid="nav-logo">
-              <div className="bg-accent/20 border border-accent/30 p-2 rounded-lg group-hover:bg-accent/30 transition-colors">
-                <Droplets className="w-6 h-6 text-accent" />
-              </div>
-              <span className="text-2xl font-extrabold tracking-tight text-white drop-shadow-sm">
-                J&amp;O Pro Bro&apos;s
+            <Link href="/" className="flex items-center gap-3 shrink-0" data-testid="nav-logo">
+              <Image
+                src="/images/logo.png"
+                alt="J&O Pro Bros Construction logo"
+                width={56}
+                height={56}
+                className="h-11 w-11 object-contain"
+                priority
+              />
+              <span className="text-white font-extrabold tracking-tight leading-tight text-lg hidden sm:block">
+                J&amp;O Pro Bros<br />
+                <span className="text-accent text-sm font-semibold tracking-widest uppercase">Construction</span>
               </span>
             </Link>
 

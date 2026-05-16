@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Droplets, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Footer() {
@@ -14,11 +15,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <Droplets className="w-6 h-6 text-primary-foreground" />
-              <span className="text-xl font-bold text-primary-foreground tracking-tight">
-                J&amp;O Pro Bro&apos;s
-              </span>
+            <Link href="/" className="flex items-center mb-6">
+              <Image
+                src="/images/logo.png"
+                alt="J&O Pro Bros Construction"
+                width={160}
+                height={60}
+                className="h-16 w-auto object-contain"
+              />
             </Link>
             <p className="text-muted/80 mb-6 leading-relaxed">{f.tagline}</p>
             <div className="text-sm text-muted/60">
@@ -95,7 +99,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-muted/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted/60">
-          <p>&copy; {new Date().getFullYear()} J&amp;O Pro Bro&apos;s. {f.copyright}</p>
+          <p>&copy; {new Date().getFullYear()} J&amp;O Pro Bros Construction. {f.copyright}</p>
           <div className="flex gap-4">
             <Link href="#" className="hover:text-primary transition-colors">{f.privacy}</Link>
             <Link href="#" className="hover:text-primary transition-colors">{f.terms}</Link>
