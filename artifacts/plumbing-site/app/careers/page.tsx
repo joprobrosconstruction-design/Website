@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   DollarSign, FileSignature, CalendarCheck, Info, X,
@@ -11,23 +11,57 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { jobs, type Job } from "@/lib/jobs";
 import { useRouter } from "next/navigation";
 
+function playOpenSound() {
+  try {
+    const ctx = new AudioContext();
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(480, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(640, ctx.currentTime + 0.07);
+    gain.gain.setValueAtTime(0.10, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.28);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.28);
+    setTimeout(() => ctx.close(), 500);
+  } catch {
+    // AudioContext unavailable — fail silently
+  }
+}
+
 export default function CareersPage() {
   const { t } = useLanguage();
   const c = t.careers;
   const router = useRouter();
 
   const [modalJob, setModalJob] = useState<Job | null>(null);
-  const [modalEs, setModalEs] = useState(false);
+  const [modalEs, setModalEs]   = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const hintTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeJobs = jobs.filter((j) => j.active);
 
-  const openModal = (job: Job) => { setModalJob(job); setModalEs(false); };
+  const openModal = (job: Job) => {
+    playOpenSound();
+    setModalJob(job);
+    setModalEs(false);
+    if (job.es) {
+      setShowHint(true);
+      if (hintTimer.current) clearTimeout(hintTimer.current);
+      hintTimer.current = setTimeout(() => setShowHint(false), 4000);
+    }
+  };
+
+  useEffect(() => () => { if (hintTimer.current) clearTimeout(hintTimer.current); }, []);
+
   const handleApplyClick = (title: string) => {
     setModalJob(null);
     router.push(`/careers/apply?role=${encodeURIComponent(title)}`);
   };
 
   const perks = [
-    { Icon: DollarSign, title: c.benefit1Title, desc: c.benefit1Desc },
+    { Icon: DollarSign,    title: c.benefit1Title, desc: c.benefit1Desc },
     { Icon: FileSignature, title: c.benefit2Title, desc: c.benefit2Desc },
     { Icon: CalendarCheck, title: c.benefit3Title, desc: c.benefit3Desc },
   ];
@@ -65,17 +99,38 @@ export default function CareersPage() {
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   {modalJob.es && (
-                    <button
-                      onClick={() => setModalEs((v) => !v)}
-                      className={`flex items-center gap-2 px-4 py-1.5 rounded-lg border text-sm font-semibold transition-colors ${
-                        modalEs
-                          ? "bg-primary text-white border-primary"
-                          : "border-border text-muted-foreground hover:border-primary hover:text-primary"
-                      }`}
-                    >
-                      <Languages className="w-4 h-4 shrink-0" />
-                      {modalEs ? "View in English" : "Ver en Español"}
-                    </button>
+                    <div className="relative">
+                      <button
+                        onClick={() => { setModalEs((v) => !v); setShowHint(false); }}
+                        className={`flex items-center gap-2 px-4 py-1.5 rounded-lg border text-sm font-semibold transition-colors ${
+                          modalEs
+                            ? "bg-primary text-white border-primary"
+                            : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+                        }`}
+                      >
+                        <Languages className="w-4 h-4 shrink-0" />
+                        {modalEs ? "View in English" : "Ver en Español"}
+                      </button>
+
+                      {/* Translate hint tooltip */}
+                      <AnimatePresence>
+                        {showHint && !modalEs && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -6, scale: 0.94 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -4, scale: 0.96 }}
+                            transition={{ duration: 0.18 }}
+                            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-20 pointer-events-none"
+                          >
+                            {/* Arrow */}
+                            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-[#040e28] rounded-sm" />
+                            <div className="bg-[#040e28] text-white text-xs font-semibold px-3 py-1.5 rounded-xl whitespace-nowrap shadow-lg border border-white/10">
+                              Available in Spanish
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   )}
                   <button
                     onClick={() => setModalJob(null)}
@@ -93,10 +148,10 @@ export default function CareersPage() {
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
-                    { Icon: DollarSign, label: modalEs ? "Pago" : "Pay", val: jobText(modalJob)?.pay ?? modalJob.pay },
-                    { Icon: Clock, label: modalEs ? "Horas" : "Hours", val: jobText(modalJob)?.hours ?? modalJob.hours },
-                    { Icon: Calendar, label: modalEs ? "Horario" : "Schedule", val: jobText(modalJob)?.schedule ?? modalJob.schedule },
-                    { Icon: Briefcase, label: modalEs ? "Experiencia" : "Experience", val: jobText(modalJob)?.experience ?? modalJob.experience },
+                    { Icon: DollarSign, label: modalEs ? "Pago" : "Pay",             val: jobText(modalJob)?.pay        ?? modalJob.pay },
+                    { Icon: Clock,      label: modalEs ? "Horas" : "Hours",           val: jobText(modalJob)?.hours      ?? modalJob.hours },
+                    { Icon: Calendar,   label: modalEs ? "Horario" : "Schedule",      val: jobText(modalJob)?.schedule   ?? modalJob.schedule },
+                    { Icon: Briefcase,  label: modalEs ? "Experiencia" : "Experience",val: jobText(modalJob)?.experience ?? modalJob.experience },
                   ].map(({ Icon, label, val }) => (
                     <div key={label} className="bg-muted/40 rounded-2xl p-4 flex gap-3">
                       <Icon className="w-5 h-5 text-accent shrink-0 mt-0.5" />
@@ -212,22 +267,15 @@ export default function CareersPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="group relative border border-border/60 rounded-2xl bg-card overflow-hidden flex flex-col hover:border-accent/40 hover:shadow-lg transition-all duration-200"
               >
-                {/* Card top accent bar */}
                 <div className="h-1 w-full bg-gradient-to-r from-primary to-accent opacity-60 group-hover:opacity-100 transition-opacity" />
-
                 <div className="p-6 flex flex-col flex-1">
-                  {/* Title row */}
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <h3 className="text-xl font-bold text-foreground leading-tight">{job.title}</h3>
                     <span className="text-xs font-semibold bg-accent/10 text-accent px-2.5 py-1 rounded-lg border border-accent/20 shrink-0 whitespace-nowrap">
                       {c.contractorBadge}
                     </span>
                   </div>
-
-                  {/* Description */}
                   <p className="text-sm text-muted-foreground leading-relaxed mb-5">{job.desc}</p>
-
-                  {/* Key details chips */}
                   <div className="grid grid-cols-1 gap-2 mb-6">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <DollarSign className="w-4 h-4 text-accent shrink-0" />
@@ -246,8 +294,6 @@ export default function CareersPage() {
                       <span>{job.experience}</span>
                     </div>
                   </div>
-
-                  {/* Actions */}
                   <div className="flex items-center gap-3 mt-auto">
                     <button
                       onClick={() => handleApplyClick(job.title)}

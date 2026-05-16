@@ -255,6 +255,9 @@
   .inset-0 {
     inset: calc(var(--spacing) * 0);
   }
+  .-top-1\.5 {
+    top: calc(var(--spacing) * -1.5);
+  }
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
@@ -287,6 +290,9 @@
   }
   .z-10 {
     z-index: 10;
+  }
+  .z-20 {
+    z-index: 20;
   }
   .z-50 {
     z-index: 50;
@@ -426,6 +432,9 @@
   .h-1\.5 {
     height: calc(var(--spacing) * 1.5);
   }
+  .h-3 {
+    height: calc(var(--spacing) * 3);
+  }
   .h-3\.5 {
     height: calc(var(--spacing) * 3.5);
   }
@@ -494,6 +503,9 @@
   }
   .w-1\.5 {
     width: calc(var(--spacing) * 1.5);
+  }
+  .w-3 {
+    width: calc(var(--spacing) * 3);
   }
   .w-3\.5 {
     width: calc(var(--spacing) * 3.5);
@@ -604,6 +616,9 @@
     --tw-scale-y: 95%;
     --tw-scale-z: 95%;
     scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+  .rotate-45 {
+    rotate: 45deg;
   }
   .rotate-180 {
     rotate: 180deg;
@@ -765,6 +780,9 @@
   }
   .rounded-md {
     border-radius: calc(var(--radius) - 2px);
+  }
+  .rounded-sm {
+    border-radius: calc(var(--radius) - 4px);
   }
   .rounded-xl {
     border-radius: calc(var(--radius) + 4px);
