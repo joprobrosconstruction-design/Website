@@ -2,10 +2,24 @@
 
 import { useState, useEffect, Suspense, useRef } from "react";
 import { motion } from "framer-motion";
-import { Upload, FileText, CheckCircle2, AlertCircle, Info, ArrowLeft, Languages } from "lucide-react";
+import {
+  Upload, FileText, CheckCircle2, AlertCircle, Info,
+  ArrowLeft, Languages, User, Phone, Briefcase, FileUp, ShieldCheck,
+} from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { jobs } from "@/lib/jobs";
 import { useSearchParams, useRouter } from "next/navigation";
+
+function SectionHeader({ icon: Icon, label }: { icon: React.ElementType; label: string }) {
+  return (
+    <div className="flex items-center gap-3 pb-3 border-b border-border mb-5">
+      <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+        <Icon className="w-4 h-4" />
+      </div>
+      <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">{label}</h2>
+    </div>
+  );
+}
 
 function ApplyForm() {
   const { t, lang, setLang } = useLanguage();
@@ -57,12 +71,12 @@ function ApplyForm() {
   };
 
   const inputCls =
-    "w-full px-4 py-3 rounded-xl border border-border bg-background/50 focus:bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-foreground placeholder:text-muted-foreground";
-  const selectCls = `${inputCls} appearance-none`;
+    "w-full px-4 py-3 rounded-xl border border-border bg-background/60 focus:bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-foreground placeholder:text-muted-foreground text-sm";
+  const selectCls = `${inputCls} appearance-none cursor-pointer`;
 
   return (
-    <main className="min-h-screen bg-background pt-24 pb-24">
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+    <main className="min-h-screen bg-background pt-24 pb-32">
+      <div className="container mx-auto px-4 md:px-6 max-w-2xl">
 
         {/* Back link */}
         <button
@@ -73,100 +87,110 @@ function ApplyForm() {
           Back to Open Roles
         </button>
 
-        <div className="glass p-8 md:p-12 rounded-3xl border border-border/50 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
-
-          {status === "success" ? (
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-12 relative z-10"
+        {/* Success state */}
+        {status === "success" ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="glass rounded-3xl border border-border/50 p-12 text-center shadow-sm"
+          >
+            <div className="inline-flex justify-center items-center w-20 h-20 rounded-full bg-green-100 text-green-600 mb-6">
+              <CheckCircle2 className="w-10 h-10" />
+            </div>
+            <h2 className="text-3xl font-bold mb-3 text-foreground">{c.successTitle}</h2>
+            <p className="text-muted-foreground text-base max-w-md mx-auto mb-8 leading-relaxed">{c.successDesc}</p>
+            <button
+              onClick={() => router.push("/careers")}
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
             >
-              <div className="inline-flex justify-center items-center w-20 h-20 rounded-full bg-green-100 text-green-600 mb-6">
-                <CheckCircle2 className="w-10 h-10" />
-              </div>
-              <h2 className="text-3xl font-bold mb-4 text-foreground">{c.successTitle}</h2>
-              <p className="text-muted-foreground text-lg max-w-md mx-auto mb-8">{c.successDesc}</p>
-              <button
-                onClick={() => router.push("/careers")}
-                className="text-primary font-semibold hover:underline"
-              >
-                Back to Open Roles
-              </button>
-            </motion.div>
-          ) : (
-            <>
-              <div className="flex items-start justify-between gap-4 mb-2 relative z-10">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Open Roles
+            </button>
+          </motion.div>
+        ) : (
+          <>
+            {/* Page header */}
+            <div className="flex items-start justify-between gap-4 mb-2">
+              <div>
                 <h1 className="text-3xl font-bold text-foreground">{c.formTitle}</h1>
-                <button
-                  type="button"
-                  onClick={() => setLang(lang === "en" ? "es" : "en")}
-                  className={`flex items-center gap-2 px-4 py-1.5 rounded-lg border text-sm font-semibold transition-colors shrink-0 mt-1 ${
-                    lang === "es"
-                      ? "bg-primary text-white border-primary"
-                      : "border-border text-muted-foreground hover:border-primary hover:text-primary"
-                  }`}
-                >
-                  <Languages className="w-4 h-4 shrink-0" />
-                  {lang === "es" ? "View in English" : "Ver en Español"}
-                </button>
-              </div>
-              {roleParam && (
-                <p className="text-muted-foreground mb-6 relative z-10">
-                  {lang === "es" ? "Aplicando para:" : "Applying for:"} <span className="font-semibold text-foreground">{roleParam}</span>
-                </p>
-              )}
-
-              <div className="flex items-start gap-3 bg-primary/5 border border-primary/20 rounded-xl px-4 py-3 mb-8 relative z-10">
-                <Info className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                <p className="text-sm text-muted-foreground">{c.agreementNote}</p>
-              </div>
-
-              <form
-                onSubmit={handleSubmit}
-                className="space-y-6 relative z-10"
-                encType="multipart/form-data"
-              >
-                {status === "error" && (
-                  <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-center gap-3 border border-red-200">
-                    <AlertCircle className="w-5 h-5 shrink-0" />
-                    <p>{errorMessage}</p>
-                  </div>
+                {roleParam && (
+                  <p className="text-muted-foreground mt-1 text-sm">
+                    {lang === "es" ? "Aplicando para:" : "Applying for:"}{" "}
+                    <span className="font-semibold text-foreground">{roleParam}</span>
+                  </p>
                 )}
+              </div>
+              <button
+                type="button"
+                onClick={() => setLang(lang === "en" ? "es" : "en")}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs font-bold transition-colors shrink-0 mt-1 ${
+                  lang === "es"
+                    ? "bg-primary text-white border-primary"
+                    : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+                }`}
+              >
+                <Languages className="w-3.5 h-3.5 shrink-0" />
+                {lang === "es" ? "English" : "Español"}
+              </button>
+            </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground" htmlFor="name">
-                      {c.labelName} {c.required}
-                    </label>
-                    <input type="text" id="name" name="name" required className={inputCls} placeholder={c.placeholderName} />
+            {/* Agreement note */}
+            <div className="flex items-start gap-3 bg-primary/5 border border-primary/20 rounded-xl px-4 py-3 mb-8">
+              <Info className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+              <p className="text-sm text-muted-foreground leading-relaxed">{c.agreementNote}</p>
+            </div>
+
+            {/* Error banner */}
+            {status === "error" && (
+              <div className="bg-red-50 text-red-600 p-4 rounded-xl flex items-center gap-3 border border-red-200 mb-6">
+                <AlertCircle className="w-5 h-5 shrink-0" />
+                <p className="text-sm">{errorMessage}</p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-10" encType="multipart/form-data">
+
+              {/* ── Section 1: Personal Info ── */}
+              <div>
+                <SectionHeader icon={User} label={lang === "es" ? "Información Personal" : "Personal Info"} />
+                <div className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-semibold text-foreground" htmlFor="name">
+                        {c.labelName} <span className="text-accent">{c.required}</span>
+                      </label>
+                      <input type="text" id="name" name="name" required className={inputCls} placeholder={c.placeholderName} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-semibold text-foreground" htmlFor="email">
+                        {c.labelEmail} <span className="text-accent">{c.required}</span>
+                      </label>
+                      <input type="email" id="email" name="email" required className={inputCls} placeholder={c.placeholderEmail} />
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground" htmlFor="email">
-                      {c.labelEmail} {c.required}
+                  <div className="space-y-1.5 max-w-xs">
+                    <label className="text-sm font-semibold text-foreground" htmlFor="phone">
+                      {c.labelPhone} <span className="text-accent">{c.required}</span>
                     </label>
-                    <input type="email" id="email" name="email" required className={inputCls} placeholder={c.placeholderEmail} />
+                    <div className="relative">
+                      <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                      <input type="tel" id="phone" name="phone" required className={`${inputCls} pl-10`} placeholder={c.placeholderPhone} />
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground" htmlFor="phone">
-                      {c.labelPhone} {c.required}
-                    </label>
-                    <input type="tel" id="phone" name="phone" required className={inputCls} placeholder={c.placeholderPhone} />
-                  </div>
-                  <div className="space-y-2">
+              {/* ── Section 2: Position ── */}
+              <div>
+                <SectionHeader icon={Briefcase} label={lang === "es" ? "Puesto e Experiencia" : "Position & Experience"} />
+                <div className="space-y-4">
+                  <div className="space-y-1.5">
                     <label className="text-sm font-semibold text-foreground" htmlFor="position">
-                      {c.labelPosition} {c.required}
+                      {c.labelPosition} <span className="text-accent">{c.required}</span>
                     </label>
                     <select
-                      id="position"
-                      name="position"
-                      required
-                      className={selectCls}
-                      value={selectedRole}
-                      onChange={(e) => setSelectedRole(e.target.value)}
+                      id="position" name="position" required className={selectCls}
+                      value={selectedRole} onChange={(e) => setSelectedRole(e.target.value)}
                     >
                       <option value="" disabled>{c.selectRole}</option>
                       {activeJobs.map((j) => (
@@ -175,135 +199,137 @@ function ApplyForm() {
                       <option value="Other">{c.optOther}</option>
                     </select>
                   </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-foreground" htmlFor="experience">
-                    {c.labelExperience} {c.required}
-                  </label>
-                  <select id="experience" name="experience" required className={selectCls} defaultValue="">
-                    <option value="" disabled>{c.selectExperience}</option>
-                    <option value="No experience">{c.optEntryLevel}</option>
-                    <option value="1-2 years">{c.opt12Years}</option>
-                    <option value="3-5 years">{c.opt35Years}</option>
-                    <option value="5-10 years">{c.opt510Years}</option>
-                    <option value="10+ years">{c.opt10Plus}</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-foreground" htmlFor="message">
-                    {c.labelMessage}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={3}
-                    className={`${inputCls} resize-y`}
-                    placeholder={c.placeholderMessage}
-                  />
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground block">
-                      {c.resumeLabel}
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-semibold text-foreground" htmlFor="experience">
+                      {c.labelExperience} <span className="text-accent">{c.required}</span>
                     </label>
-                    <label className="flex items-center justify-center w-full px-4 py-6 border-2 border-dashed border-border rounded-xl cursor-pointer hover:bg-muted/50 transition-colors bg-background/30 text-center">
+                    <select id="experience" name="experience" required className={selectCls} defaultValue="">
+                      <option value="" disabled>{c.selectExperience}</option>
+                      <option value="No experience">{c.optEntryLevel}</option>
+                      <option value="1-2 years">{c.opt12Years}</option>
+                      <option value="3-5 years">{c.opt35Years}</option>
+                      <option value="5-10 years">{c.opt510Years}</option>
+                      <option value="10+ years">{c.opt10Plus}</option>
+                    </select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-semibold text-foreground" htmlFor="message">
+                      {c.labelMessage}
+                    </label>
+                    <textarea
+                      id="message" name="message" rows={3}
+                      className={`${inputCls} resize-y`}
+                      placeholder={c.placeholderMessage}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Section 3: Documents ── */}
+              <div>
+                <SectionHeader icon={FileUp} label={lang === "es" ? "Documentos" : "Documents"} />
+                <div className="grid md:grid-cols-2 gap-5">
+                  {/* Resume */}
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-semibold text-foreground block">{c.resumeLabel}</label>
+                    <label className="flex flex-col items-center justify-center w-full px-4 py-8 border-2 border-dashed rounded-2xl cursor-pointer transition-colors bg-background/30 text-center hover:border-primary/50 hover:bg-primary/5 border-border group">
                       <input
-                        type="file"
-                        name="resume"
-                        accept=".pdf,.doc,.docx"
-                        className="hidden"
+                        type="file" name="resume" accept=".pdf,.doc,.docx" className="hidden"
                         onChange={(ev) => setResumeName(ev.target.files?.[0]?.name || "")}
                       />
-                      <div className="flex flex-col items-center">
-                        <FileText className="w-8 h-8 text-muted-foreground mb-2" />
-                        <span className="text-sm font-medium">
-                          {resumeName
-                            ? <span className="text-primary">{resumeName}</span>
-                            : <span className="text-muted-foreground">{c.resumeUploadText}</span>}
-                        </span>
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-colors ${resumeName ? "bg-primary/15 text-primary" : "bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary"}`}>
+                        <FileText className="w-6 h-6" />
                       </div>
+                      {resumeName ? (
+                        <span className="text-sm font-semibold text-primary break-all">{resumeName}</span>
+                      ) : (
+                        <>
+                          <span className="text-sm font-semibold text-foreground mb-1">{lang === "es" ? "Subir Currículum" : "Upload Resume"}</span>
+                          <span className="text-xs text-muted-foreground">PDF, DOC, DOCX</span>
+                        </>
+                      )}
                     </label>
                   </div>
 
-                  <div className="space-y-2">
+                  {/* Government ID */}
+                  <div className="space-y-1.5">
                     <label className="text-sm font-semibold text-foreground block">
-                      {c.idLabel} {c.required}
+                      {c.idLabel} <span className="text-accent">{c.required}</span>
                     </label>
-                    <label className="flex items-center justify-center w-full px-4 py-6 border-2 border-dashed border-border rounded-xl cursor-pointer hover:bg-muted/50 transition-colors bg-background/30 text-center">
+                    <label className="flex flex-col items-center justify-center w-full px-4 py-8 border-2 border-dashed rounded-2xl cursor-pointer transition-colors bg-background/30 text-center hover:border-primary/50 hover:bg-primary/5 border-border group">
                       <input
-                        type="file"
-                        name="id"
-                        accept=".pdf,.jpg,.jpeg,.png"
-                        required
-                        className="hidden"
+                        type="file" name="id" accept=".pdf,.jpg,.jpeg,.png" required className="hidden"
                         onChange={(ev) => setIdName(ev.target.files?.[0]?.name || "")}
                       />
-                      <div className="flex flex-col items-center">
-                        <Upload className="w-8 h-8 text-muted-foreground mb-2" />
-                        <span className="text-sm font-medium">
-                          {idName
-                            ? <span className="text-primary">{idName}</span>
-                            : <span className="text-muted-foreground">{c.idUploadText}</span>}
-                        </span>
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-colors ${idName ? "bg-primary/15 text-primary" : "bg-muted text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary"}`}>
+                        <Upload className="w-6 h-6" />
                       </div>
+                      {idName ? (
+                        <span className="text-sm font-semibold text-primary break-all">{idName}</span>
+                      ) : (
+                        <>
+                          <span className="text-sm font-semibold text-foreground mb-1">{lang === "es" ? "Subir Identificación" : "Upload ID"}</span>
+                          <span className="text-xs text-muted-foreground">JPG, PNG, PDF</span>
+                        </>
+                      )}
                     </label>
                   </div>
                 </div>
+              </div>
 
-                {/* ── Terms & Consent ── */}
-                <div ref={termsRef} className={`rounded-xl border ${consentError ? "border-red-400 bg-red-50/40" : "border-border bg-muted/30"} overflow-hidden transition-colors`}>
-
-                  {/* Toggle header */}
+              {/* ── Section 4: Terms ── */}
+              <div>
+                <SectionHeader icon={ShieldCheck} label={lang === "es" ? "Términos y Condiciones" : "Terms & Conditions"} />
+                <div
+                  ref={termsRef}
+                  className={`rounded-2xl border overflow-hidden transition-colors ${consentError ? "border-red-400 bg-red-50/20" : "border-border"}`}
+                >
                   <button
                     type="button"
                     onClick={() => setTermsOpen((v) => !v)}
-                    className="w-full flex items-center justify-between px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors"
+                    className="w-full flex items-center justify-between px-5 py-3.5 text-sm font-semibold text-foreground hover:bg-muted/50 transition-colors"
                   >
                     <span>{c.termsTitle}</span>
-                    <span className={`text-xs transition-transform duration-200 ${termsOpen ? "rotate-180" : ""}`}>▼</span>
+                    <span className={`text-muted-foreground text-xs transition-transform duration-200 ${termsOpen ? "rotate-180" : ""}`}>▼</span>
                   </button>
-
-                  {/* Scrollable terms body */}
                   {termsOpen && (
-                    <div className="px-4 pb-4 max-h-56 overflow-y-auto border-t border-border">
+                    <div className="px-5 pb-4 max-h-52 overflow-y-auto border-t border-border">
                       <pre className="text-xs text-muted-foreground leading-relaxed whitespace-pre-wrap font-sans mt-3">
                         {c.termsBody}
                       </pre>
                     </div>
                   )}
-
-                  {/* Checkbox */}
-                  <label className="flex items-start gap-3 px-4 py-3 border-t border-border cursor-pointer hover:bg-muted/40 transition-colors">
+                  <label className="flex items-start gap-3 px-5 py-4 border-t border-border cursor-pointer hover:bg-muted/30 transition-colors">
                     <input
                       type="checkbox"
                       checked={agreed}
-                      onChange={(e) => {
-                        setAgreed(e.target.checked);
-                        if (e.target.checked) setConsentError(false);
-                      }}
+                      onChange={(e) => { setAgreed(e.target.checked); if (e.target.checked) setConsentError(false); }}
                       className="mt-0.5 w-4 h-4 accent-primary shrink-0"
                     />
-                    <span className={`text-sm ${consentError ? "text-red-500 font-medium" : "text-foreground"}`}>
+                    <span className={`text-sm leading-relaxed ${consentError ? "text-red-500 font-semibold" : "text-foreground"}`}>
                       {consentError ? c.consentRequired : c.consentLabel}
                     </span>
                   </label>
                 </div>
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={status === "submitting"}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-4 rounded-xl font-bold text-lg transition-all shadow-md flex items-center justify-center gap-2 mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
-                  data-testid="submit-application-btn"
-                >
-                  {status === "submitting" ? c.submitting : c.submitBtn}
-                </button>
-              </form>
-            </>
-          )}
-        </div>
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                data-testid="submit-application-btn"
+                className="w-full bg-accent hover:bg-accent/90 text-white py-4 rounded-2xl font-bold text-base transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {status === "submitting" ? (
+                  <>
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    {c.submitting}
+                  </>
+                ) : c.submitBtn}
+              </button>
+            </form>
+          </>
+        )}
       </div>
     </main>
   );
