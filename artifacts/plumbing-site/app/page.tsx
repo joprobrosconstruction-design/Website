@@ -49,14 +49,14 @@ export default function Home() {
 
             <motion.span
               {...fadeUp(0)}
-              className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-8 backdrop-blur-sm"
+              className="inline-block py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm font-medium mb-10 backdrop-blur-sm"
             >
               {h.heroBadge}
             </motion.span>
 
             <motion.h1
               {...fadeUp(0.15)}
-              className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white tracking-tight mb-7 leading-[1.1]"
+              className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white tracking-tight mb-8 leading-[1.15]"
             >
               {h.heroLine1}{" "}
               <span className="text-gradient-blue">{h.heroWord1}</span>
@@ -66,14 +66,14 @@ export default function Home() {
 
             <motion.p
               {...fadeUp(0.3)}
-              className="text-base md:text-lg text-white/70 mb-10 leading-relaxed"
+              className="text-lg md:text-xl text-white/70 mb-12 leading-[1.75]"
             >
               {h.heroDesc}
             </motion.p>
 
             <motion.div
               {...fadeUp(0.45)}
-              className="flex flex-col sm:flex-row gap-3"
+              className="flex flex-col sm:flex-row gap-4"
             >
               <Link
                 href="/estimate"
