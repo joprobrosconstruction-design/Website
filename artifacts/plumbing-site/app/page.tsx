@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Building2, Droplet, ArrowRight, Phone, ShieldCheck, Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { CallNowDropdown } from "@/components/CallNowDropdown";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -64,14 +65,10 @@ export default function Home() {
                   {h.ctaEstimate}
                   <ArrowRight className="w-5 h-5" />
                 </Link>
-                <a
-                  href={t.nav.phoneHref}
-                  className="glass-dark hover:bg-white/10 text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2"
-                  data-testid="hero-call-btn"
-                >
-                  <Phone className="w-5 h-5 text-accent" />
-                  {h.ctaCall}: {t.nav.phone}
-                </a>
+                <CallNowDropdown
+                  label={h.ctaCall}
+                  testId="hero-call-btn"
+                />
               </div>
 
               {/* Trust badges */}
@@ -257,13 +254,10 @@ export default function Home() {
                 >
                   {h.ctaEstimateBtn}
                 </Link>
-                <a
-                  href={t.nav.phoneHref}
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-lg transition-colors flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-5 h-5" />
-                  {t.nav.phone}
-                </a>
+                <CallNowDropdown
+                  label={h.ctaCall}
+                  testId="footer-call-btn"
+                />
               </div>
             </div>
           </div>
