@@ -41,7 +41,7 @@ export default function Home() {
     <main className="min-h-screen">
 
       {/* ── Hero ── full-bleed photo + left-to-right fade overlay */}
-      <section className="relative min-h-[82vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[74vh] flex items-center overflow-hidden">
 
         {/* Background photo — anchored right so plumber shows on the light side */}
         <Image
@@ -58,10 +58,10 @@ export default function Home() {
         {/* Slight top + bottom vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(4,14,40,0.5)] via-transparent to-[rgba(4,14,40,0.45)]" />
 
-        {/* Text content — left-aligned, capped at ~half the screen */}
-        <div className="relative z-10 w-full pt-28 pb-20">
-          <div className="container mx-auto px-4 md:px-6 max-w-full">
-          <div className="max-w-xl lg:max-w-2xl">
+        {/* Text content — centered container, text in left half */}
+        <div className="relative z-10 w-full pt-24 pb-16">
+          <div className="max-w-6xl mx-auto px-10 md:px-16 lg:px-20">
+          <div className="max-w-md lg:max-w-lg">
 
             <motion.span
               {...fadeUp(0)}
@@ -72,7 +72,7 @@ export default function Home() {
 
             <motion.h1
               {...fadeUp(0.15)}
-              className="text-5xl md:text-6xl xl:text-7xl font-extrabold text-white tracking-tight mb-6 leading-[1.05]"
+              className="text-4xl md:text-5xl xl:text-6xl font-extrabold text-white tracking-tight mb-6 leading-[1.08]"
             >
               {h.heroLine1}{" "}
               <span className="text-gradient-blue">{h.heroWord1}</span>
