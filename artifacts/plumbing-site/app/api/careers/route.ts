@@ -35,7 +35,6 @@ export async function POST(req: NextRequest) {
     if (supabase) {
       const slug = `${Date.now()}-${name.replace(/\s+/g, "-")}`;
 
-      // ── Upload resume → Applications/Resume/ ──
       if (resumeFile && resumeFile.size > 0) {
         const ext      = resumeFile.name.split(".").pop() ?? "pdf";
         const filePath = `Resume/${slug}-resume.${ext}`;
@@ -51,10 +50,11 @@ export async function POST(req: NextRequest) {
             .from(BUCKET)
             .createSignedUrl(filePath, SIGNED_URL_EXPIRES_IN);
           resumeSignedUrl = signed?.signedUrl ?? null;
+        } else if (error) {
+          console.error("Resume upload error:", error.message);
         }
       }
 
-      // ── Upload ID → Applications/ID/ ──
       if (idFile && idFile.size > 0) {
         const ext      = idFile.name.split(".").pop() ?? "pdf";
         const filePath = `ID/${slug}-id.${ext}`;
@@ -70,22 +70,21 @@ export async function POST(req: NextRequest) {
             .from(BUCKET)
             .createSignedUrl(filePath, SIGNED_URL_EXPIRES_IN);
           idSignedUrl = signed?.signedUrl ?? null;
+        } else if (error) {
+          console.error("ID upload error:", error.message);
         }
       }
     }
 
     if (!resend) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Email service is not configured yet. Please add your RESEND_API_KEY.",
-        },
+        { success: false, error: "Email service is not configured." },
         { status: 503 }
       );
     }
 
-    // ── Internal notification email ──
-    await resend.emails.send({
+    // Internal notification email
+    const { error: notifyError } = await resend.emails.send({
       from: FROM_EMAIL,
       to: CONTACT_EMAIL,
       subject: `New Job Application — ${name} for ${position}`,
@@ -94,7 +93,6 @@ export async function POST(req: NextRequest) {
           <h2 style="color: #1a4a8a; border-bottom: 2px solid #e35a1a; padding-bottom: 8px; margin-bottom: 20px;">
             New Job Application — J&amp;O Pro Bros Construction
           </h2>
-
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <tr><td style="padding: 8px 0; font-weight: bold; color: #555; width: 160px;">Name</td><td style="padding: 8px 0;">${name}</td></tr>
             <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Email</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color:#1a4a8a;">${email}</a></td></tr>
@@ -102,42 +100,39 @@ export async function POST(req: NextRequest) {
             <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Position</td><td style="padding: 8px 0;">${position}</td></tr>
             <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Experience</td><td style="padding: 8px 0;">${experience || "Not specified"}</td></tr>
           </table>
-
           ${message ? `
           <div style="padding: 14px 16px; background: #f5f8ff; border-radius: 8px; border-left: 4px solid #1a4a8a; margin-bottom: 20px;">
             <strong style="color: #1a4a8a;">Additional Notes:</strong>
             <p style="margin: 8px 0 0; line-height: 1.6; color: #444;">${message}</p>
           </div>` : ""}
-
           ${resumeSignedUrl || idSignedUrl ? `
           <div style="padding: 14px 16px; background: #fff8f0; border-radius: 8px; border-left: 4px solid #e35a1a; margin-bottom: 20px;">
             <strong style="color: #e35a1a; display: block; margin-bottom: 10px;">Uploaded Documents</strong>
-            <p style="margin: 0 0 6px; font-size: 13px; color: #888;">
-              These are private signed links — they expire in 7 days and require no login to view.
-            </p>
+            <p style="margin: 0 0 6px; font-size: 13px; color: #888;">Private signed links — expire in 7 days, no login required.</p>
             ${resumeSignedUrl ? `
             <p style="margin: 10px 0 4px;"><strong>Resume:</strong></p>
-            <a href="${resumeSignedUrl}" style="display:inline-block; padding: 8px 16px; background:#1a4a8a; color:#fff; border-radius:6px; text-decoration:none; font-size:14px;">
-              View Resume
-            </a>` : ""}
+            <a href="${resumeSignedUrl}" style="display:inline-block; padding: 8px 16px; background:#1a4a8a; color:#fff; border-radius:6px; text-decoration:none; font-size:14px;">View Resume</a>` : ""}
             ${idSignedUrl ? `
             <p style="margin: 14px 0 4px;"><strong>Government-Issued ID:</strong></p>
-            <a href="${idSignedUrl}" style="display:inline-block; padding: 8px 16px; background:#1a4a8a; color:#fff; border-radius:6px; text-decoration:none; font-size:14px;">
-              View ID Document
-            </a>` : ""}
-          </div>` : `
-          <p style="color: #999; font-style: italic;">No documents uploaded or Supabase is not yet configured.</p>`}
-
+            <a href="${idSignedUrl}" style="display:inline-block; padding: 8px 16px; background:#1a4a8a; color:#fff; border-radius:6px; text-decoration:none; font-size:14px;">View ID Document</a>` : ""}
+          </div>` : `<p style="color: #999; font-style: italic;">No documents uploaded.</p>`}
           <p style="font-size: 12px; color: #aaa; margin-top: 24px; border-top: 1px solid #eee; padding-top: 12px;">
-            Files are stored securely in a private Supabase bucket. Signed URLs expire after 7 days.
             Storage path: ${resumePath ? `Resume/${resumePath.split("/").pop()}` : "—"} &nbsp;|&nbsp; ${idPath ? `ID/${idPath.split("/").pop()}` : "—"}
           </p>
         </div>
       `,
     });
 
-    // ── Applicant confirmation email ──
-    await resend.emails.send({
+    if (notifyError) {
+      console.error("Resend notification error:", notifyError);
+      return NextResponse.json(
+        { success: false, error: `Email failed: ${notifyError.message}` },
+        { status: 500 }
+      );
+    }
+
+    // Applicant confirmation email
+    const { error: confirmError } = await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
       subject: "Your application was received — J&O Pro Bros Construction",
@@ -150,6 +145,10 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+
+    if (confirmError) {
+      console.error("Resend confirmation error:", confirmError);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

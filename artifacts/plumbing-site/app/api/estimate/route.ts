@@ -21,23 +21,19 @@ export async function POST(req: NextRequest) {
 
     if (!resend) {
       return NextResponse.json(
-        {
-          success: false,
-          error:
-            "Email service is not configured yet. Please add your RESEND_API_KEY.",
-        },
+        { success: false, error: "Email service is not configured." },
         { status: 503 }
       );
     }
 
-    await resend.emails.send({
+    const { error: notifyError } = await resend.emails.send({
       from: FROM_EMAIL,
       to: CONTACT_EMAIL,
       subject: `New Estimate Request — ${data.name} (${data.projectType})`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1a4a8a; border-bottom: 2px solid #e35a1a; padding-bottom: 8px;">
-            New Estimate Request
+            New Estimate Request — J&amp;O Pro Bros Construction
           </h2>
           <table style="width: 100%; border-collapse: collapse;">
             <tr><td style="padding: 8px 0; font-weight: bold; color: #555; width: 140px;">Name</td><td style="padding: 8px 0;">${data.name}</td></tr>
@@ -57,10 +53,18 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    await resend.emails.send({
+    if (notifyError) {
+      console.error("Resend estimate notification error:", notifyError);
+      return NextResponse.json(
+        { success: false, error: `Email failed: ${notifyError.message}` },
+        { status: 500 }
+      );
+    }
+
+    const { error: confirmError } = await resend.emails.send({
       from: FROM_EMAIL,
       to: data.email,
-      subject: "We received your estimate request — Premier Plumbing",
+      subject: "We received your estimate request — J&O Pro Bros Construction",
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #1a4a8a;">Thank you, ${data.name}!</h2>
@@ -73,9 +77,14 @@ export async function POST(req: NextRequest) {
               <li>Timeline: ${data.timeline || "Not specified"}</li>
             </ul>
           </div>
+          <p style="color: #777; margin-top: 24px; font-size: 13px;">J&amp;O Pro Bros Construction<br/>joprobros.construction@gmail.com</p>
         </div>
       `,
     });
+
+    if (confirmError) {
+      console.error("Resend estimate confirmation error:", confirmError);
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
