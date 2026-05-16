@@ -61,31 +61,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { error: confirmError } = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: data.email,
-      subject: "We received your estimate request — J&O Pro Bros Construction",
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1a4a8a;">Thank you, ${data.name}!</h2>
-          <p>We've received your estimate request and will get back to you within 24–48 business hours.</p>
-          <p style="color: #777;">If you have any urgent questions, please call us directly.</p>
-          <div style="margin-top: 24px; padding: 16px; background: #f5f8ff; border-radius: 8px;">
-            <strong>Your request summary:</strong>
-            <ul style="margin: 8px 0 0; padding-left: 20px;">
-              <li>Project Type: ${data.projectType}</li>
-              <li>Timeline: ${data.timeline || "Not specified"}</li>
-            </ul>
-          </div>
-          <p style="color: #777; margin-top: 24px; font-size: 13px;">J&amp;O Pro Bros Construction<br/>joprobros.construction@gmail.com</p>
-        </div>
-      `,
-    });
-
-    if (confirmError) {
-      console.error("Resend estimate confirmation error:", confirmError);
-    }
-
     return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof z.ZodError) {

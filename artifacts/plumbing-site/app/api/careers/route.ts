@@ -131,25 +131,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Applicant confirmation email
-    const { error: confirmError } = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: email,
-      subject: "Your application was received — J&O Pro Bros Construction",
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #222;">
-          <h2 style="color: #1a4a8a;">Thank you for applying, ${name}!</h2>
-          <p>We've received your application for the <strong>${position}</strong> position and will be reviewing it shortly.</p>
-          <p>Our team typically follows up within 3–5 business days. We appreciate your interest in joining the J&amp;O Pro Bros crew.</p>
-          <p style="color: #777; margin-top: 24px; font-size: 13px;">J&amp;O Pro Bros Construction<br/>joprobros.construction@gmail.com</p>
-        </div>
-      `,
-    });
-
-    if (confirmError) {
-      console.error("Resend confirmation error:", confirmError);
-    }
-
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Careers route error:", error);
