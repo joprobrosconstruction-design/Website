@@ -11,6 +11,9 @@ export default function EstimatePage() {
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const today = new Date().toISOString().split("T")[0];
 
   const handleSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
@@ -138,18 +141,40 @@ export default function EstimatePage() {
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-foreground" htmlFor="timeline">
+                    <div className="space-y-2 md:col-span-2">
+                      <label className="text-sm font-semibold text-foreground">
                         {e.labelTimeline}
                       </label>
-                      <select id="timeline" name="timeline" className={selectCls} defaultValue="">
-                        <option value="" disabled>{e.selectOption}</option>
-                        <option value="ASAP">{e.optASAP}</option>
-                        <option value="Within 1 month">{e.opt1Month}</option>
-                        <option value="1-3 months">{e.opt13Months}</option>
-                        <option value="3-6 months">{e.opt36Months}</option>
-                        <option value="Flexible">{e.optFlexible}</option>
-                      </select>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-1">
+                          <span className="text-xs text-muted-foreground font-medium">Start Date</span>
+                          <input
+                            type="date"
+                            id="timelineStart"
+                            name="timelineStart"
+                            min={today}
+                            value={startDate}
+                            onChange={ev => {
+                              setStartDate(ev.target.value);
+                              if (endDate && ev.target.value > endDate) setEndDate("");
+                            }}
+                            className={inputCls}
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-xs text-muted-foreground font-medium">End Date</span>
+                          <input
+                            type="date"
+                            id="timelineEnd"
+                            name="timelineEnd"
+                            min={startDate || today}
+                            value={endDate}
+                            onChange={ev => setEndDate(ev.target.value)}
+                            disabled={!startDate}
+                            className={`${inputCls} disabled:opacity-40 disabled:cursor-not-allowed`}
+                          />
+                        </div>
+                      </div>
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-semibold text-foreground" htmlFor="budget">
