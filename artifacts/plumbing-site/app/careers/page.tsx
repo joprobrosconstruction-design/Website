@@ -185,16 +185,9 @@ export default function CareersPage() {
                 <div className="flex items-center gap-3 mt-auto">
                   <button
                     onClick={() => setModalJob(job)}
-                    className="text-sm font-semibold text-primary hover:underline"
+                    className="bg-accent hover:bg-accent/90 text-white font-semibold px-5 py-2 rounded-lg transition-colors text-sm shadow-sm"
                   >
                     View More
-                  </button>
-                  <button
-                    onClick={() => handleApplyClick(job.title)}
-                    className="bg-accent hover:bg-accent/90 text-white font-semibold px-5 py-2 rounded-lg transition-colors text-sm shadow-sm"
-                    data-testid={`apply-btn-${job.id}`}
-                  >
-                    {c.applyNow}
                   </button>
                 </div>
               </div>
