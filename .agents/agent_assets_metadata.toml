@@ -53,3 +53,27 @@ id = "BgrF4uZ4BQdfd2j8DCanY"
 uri = "file://attached_assets/image_search/modern_bathroom_window.jpg"
 type = "image"
 title = "Modern bathroom with window (residential section)"
+
+[[outputs]]
+id = "XLCMgUq9FMe5WsHpHYJKF"
+uri = "file://attached_assets/image_search/crew_construction_workers_group.jpg"
+type = "image"
+title = "Group of workers — helmets & safety vests, industrial room"
+
+[[outputs]]
+id = "Q2OZQAE-rEVpX0CqoGExG"
+uri = "file://attached_assets/image_search/crew_two_workers_site.jpg"
+type = "image"
+title = "Two workers in hard hats at building site"
+
+[[outputs]]
+id = "fVg74Y-rIUey_N-TVG9Db"
+uri = "file://attached_assets/image_search/crew_technicians_valve.jpg"
+type = "image"
+title = "Two technicians working on industrial valve"
+
+[[outputs]]
+id = "UDuF7AL5GssOjtbgXmLJU"
+uri = "file://attached_assets/image_search/worker_inspects_pipes.jpg"
+type = "image"
+title = "Worker inspecting industrial pipes & equipment"
