@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resend, CONTACT_EMAIL, FROM_EMAIL } from "@/lib/resend";
 import { createServerSupabase } from "@/lib/supabase";
+import { signApproveToken } from "@/lib/approve-token";
 
 const BUCKET = "Applications";
-const SIGNED_URL_EXPIRES_IN = 60 * 60 * 24 * 7; // 7 days in seconds
+const SIGNED_URL_EXPIRES_IN = 60 * 60 * 24 * 7;
 
 export async function POST(req: NextRequest) {
   try {
@@ -83,42 +84,104 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Internal notification email
+    // Build approve URL
+    const proto   = req.headers.get("x-forwarded-proto") ?? "https";
+    const host    = req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? "localhost";
+    const sig     = signApproveToken(name, email, position);
+    const approveUrl = `${proto}://${host}/api/careers/approve?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&position=${encodeURIComponent(position)}&sig=${sig}`;
+
+    // Format phone for tel: link (strip non-digits)
+    const phoneDigits = phone.replace(/\D/g, "");
+    const telLink     = `tel:+1${phoneDigits}`;
+
     const { error: notifyError } = await resend.emails.send({
       from: FROM_EMAIL,
       to: CONTACT_EMAIL,
-      subject: `New Job Application — ${name} for ${position}`,
+      subject: `New Application — ${name} for ${position}`,
       html: `
-        <div style="font-family: sans-serif; max-width: 620px; margin: 0 auto; color: #222;">
-          <h2 style="color: #1a4a8a; border-bottom: 2px solid #e35a1a; padding-bottom: 8px; margin-bottom: 20px;">
-            New Job Application — J&amp;O Pro Bros Construction
-          </h2>
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-            <tr><td style="padding: 8px 0; font-weight: bold; color: #555; width: 160px;">Name</td><td style="padding: 8px 0;">${name}</td></tr>
-            <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Email</td><td style="padding: 8px 0;"><a href="mailto:${email}" style="color:#1a4a8a;">${email}</a></td></tr>
-            <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Phone</td><td style="padding: 8px 0;">${phone}</td></tr>
-            <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Position</td><td style="padding: 8px 0;">${position}</td></tr>
-            <tr><td style="padding: 8px 0; font-weight: bold; color: #555;">Experience</td><td style="padding: 8px 0;">${experience || "Not specified"}</td></tr>
-          </table>
-          ${message ? `
-          <div style="padding: 14px 16px; background: #f5f8ff; border-radius: 8px; border-left: 4px solid #1a4a8a; margin-bottom: 20px;">
-            <strong style="color: #1a4a8a;">Additional Notes:</strong>
-            <p style="margin: 8px 0 0; line-height: 1.6; color: #444;">${message}</p>
-          </div>` : ""}
-          ${resumeSignedUrl || idSignedUrl ? `
-          <div style="padding: 14px 16px; background: #fff8f0; border-radius: 8px; border-left: 4px solid #e35a1a; margin-bottom: 20px;">
-            <strong style="color: #e35a1a; display: block; margin-bottom: 10px;">Uploaded Documents</strong>
-            <p style="margin: 0 0 6px; font-size: 13px; color: #888;">Private signed links — expire in 7 days, no login required.</p>
-            ${resumeSignedUrl ? `
-            <p style="margin: 10px 0 4px;"><strong>Resume:</strong></p>
-            <a href="${resumeSignedUrl}" style="display:inline-block; padding: 8px 16px; background:#1a4a8a; color:#fff; border-radius:6px; text-decoration:none; font-size:14px;">View Resume</a>` : ""}
-            ${idSignedUrl ? `
-            <p style="margin: 14px 0 4px;"><strong>Government-Issued ID:</strong></p>
-            <a href="${idSignedUrl}" style="display:inline-block; padding: 8px 16px; background:#1a4a8a; color:#fff; border-radius:6px; text-decoration:none; font-size:14px;">View ID Document</a>` : ""}
-          </div>` : `<p style="color: #999; font-style: italic;">No documents uploaded.</p>`}
-          <p style="font-size: 12px; color: #aaa; margin-top: 24px; border-top: 1px solid #eee; padding-top: 12px;">
-            Storage path: ${resumePath ? `Resume/${resumePath.split("/").pop()}` : "—"} &nbsp;|&nbsp; ${idPath ? `ID/${idPath.split("/").pop()}` : "—"}
-          </p>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 640px; margin: 0 auto; color: #1a1a2e;">
+
+          <!-- Header -->
+          <div style="background: linear-gradient(135deg, #040e28 0%, #0f2a6e 100%); border-radius: 16px 16px 0 0; padding: 32px 36px 28px;">
+            <p style="color: rgba(255,255,255,0.5); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px;">New Job Application</p>
+            <h1 style="color: #ffffff; font-size: 22px; font-weight: 800; margin: 0 0 4px;">${name}</h1>
+            <p style="color: #e35a1a; font-size: 15px; font-weight: 600; margin: 0;">Applying for: ${position}</p>
+          </div>
+
+          <!-- Body -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 16px 16px; padding: 32px 36px;">
+
+            <!-- Applicant details -->
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+              <tr style="border-bottom: 1px solid #f1f5f9;">
+                <td style="padding: 10px 0; font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px; width: 130px;">Full Name</td>
+                <td style="padding: 10px 0; font-size: 14px; color: #0f172a; font-weight: 600;">${name}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;">
+                <td style="padding: 10px 0; font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px;">Email</td>
+                <td style="padding: 10px 0; font-size: 14px;"><a href="mailto:${email}" style="color: #1a4a8a; text-decoration: none; font-weight: 600;">${email}</a></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;">
+                <td style="padding: 10px 0; font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px;">Phone</td>
+                <td style="padding: 10px 0; font-size: 14px;">
+                  <a href="${telLink}" style="color: #1a4a8a; font-weight: 700; text-decoration: none; font-size: 16px;">${phone}</a>
+                  &nbsp;
+                  <a href="${telLink}" style="display: inline-block; background: #1a4a8a; color: white; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 99px; text-decoration: none; vertical-align: middle;">Call Now</a>
+                </td>
+              </tr>
+              <tr style="border-bottom: 1px solid #f1f5f9;">
+                <td style="padding: 10px 0; font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px;">Position</td>
+                <td style="padding: 10px 0; font-size: 14px; color: #0f172a; font-weight: 600;">${position}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px;">Experience</td>
+                <td style="padding: 10px 0; font-size: 14px; color: #0f172a;">${experience || "Not specified"}</td>
+              </tr>
+            </table>
+
+            ${message ? `
+            <div style="background: #f8fafc; border-left: 4px solid #1a4a8a; border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 24px;">
+              <p style="font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px;">Additional Notes</p>
+              <p style="font-size: 14px; color: #334155; line-height: 1.6; margin: 0;">${message}</p>
+            </div>` : ""}
+
+            ${resumeSignedUrl || idSignedUrl ? `
+            <div style="background: #fff8f0; border: 1px solid #fde68a; border-radius: 12px; padding: 18px 20px; margin-bottom: 28px;">
+              <p style="font-size: 12px; font-weight: 700; color: #92400e; text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 12px;">Uploaded Documents — expires in 7 days</p>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                ${resumeSignedUrl ? `<a href="${resumeSignedUrl}" style="display:inline-block; padding: 8px 18px; background:#1a4a8a; color:#fff; border-radius:8px; text-decoration:none; font-size:13px; font-weight:700;">View Resume</a>` : ""}
+                ${idSignedUrl ? `<a href="${idSignedUrl}" style="display:inline-block; padding: 8px 18px; background:#1a4a8a; color:#fff; border-radius:8px; text-decoration:none; font-size:13px; font-weight:700;">View ID Document</a>` : ""}
+              </div>
+            </div>` : `
+            <p style="font-size: 13px; color: #94a3b8; font-style: italic; margin-bottom: 28px;">No documents uploaded with this application.</p>`}
+
+            <!-- Action buttons -->
+            <div style="border-top: 1px solid #f1f5f9; padding-top: 24px;">
+              <p style="font-size: 13px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 14px;">Actions</p>
+              <table style="border-collapse: collapse;">
+                <tr>
+                  <td style="padding-right: 12px;">
+                    <a href="${approveUrl}" style="display:inline-block; padding: 14px 28px; background: #16a34a; color: white; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 800; letter-spacing: 0.3px;">
+                      Approve Applicant
+                    </a>
+                  </td>
+                  <td>
+                    <a href="${telLink}" style="display:inline-block; padding: 14px 28px; background: #1a4a8a; color: white; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: 800; letter-spacing: 0.3px;">
+                      Call ${phone}
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <p style="font-size: 12px; color: #94a3b8; margin: 12px 0 0; line-height: 1.5;">
+                Clicking <strong>Approve Applicant</strong> sends an acceptance email to ${email} immediately.<br/>
+                Declined applicants should be called directly — no automated rejection is sent.
+              </p>
+            </div>
+
+            <p style="font-size: 11px; color: #cbd5e1; margin-top: 24px; border-top: 1px solid #f1f5f9; padding-top: 14px;">
+              Storage: ${resumePath ? `Resume/${resumePath.split("/").pop()}` : "—"} &nbsp;·&nbsp; ${idPath ? `ID/${idPath.split("/").pop()}` : "—"}
+            </p>
+          </div>
         </div>
       `,
     });
