@@ -64,7 +64,6 @@ export default function CareersPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-primary/30 via-foreground to-foreground z-0" />
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">{c.heroTitle}</h1>
-          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">{c.heroDesc}</p>
         </div>
       </section>
 
