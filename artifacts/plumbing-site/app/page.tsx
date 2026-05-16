@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* ── Van / Fleet ── */}
-      <section className="py-20 bg-foreground">
+      <section className="py-20 bg-[#040e28]">
         <div className="container mx-auto px-4 md:px-6">
 
           {/* Header */}

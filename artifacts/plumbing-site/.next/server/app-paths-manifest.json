@@ -1,7 +1,7 @@
 {
-  "/careers/page": "app/careers/page.js",
-  "/careers/apply/page": "app/careers/apply/page.js",
-  "/page": "app/page.js",
   "/estimate/page": "app/estimate/page.js",
-  "/services/page": "app/services/page.js"
+  "/services/page": "app/services/page.js",
+  "/page": "app/page.js",
+  "/careers/page": "app/careers/page.js",
+  "/careers/apply/page": "app/careers/apply/page.js"
 }
