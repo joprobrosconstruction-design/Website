@@ -162,11 +162,18 @@ export async function GET(req: NextRequest) {
           <!-- Contact footer -->
           <div style="background:#040e28;border-radius:14px;padding:22px 28px;text-align:center;">
             <p style="color:rgba(255,255,255,0.45);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:0 0 10px;">Contact Us</p>
-            <p style="margin:0 0 6px;">
-              <a href="tel:+14707096137" style="color:#e35a1a;font-weight:700;font-size:16px;text-decoration:none;">(470) 709-6137</a>
-              <span style="color:rgba(255,255,255,0.2);margin:0 10px;">|</span>
-              <a href="tel:+16789869084" style="color:#e35a1a;font-weight:700;font-size:16px;text-decoration:none;">(678) 986-9084</a>
-            </p>
+            <table cellpadding="0" cellspacing="0" style="margin:0 auto 6px;">
+              <tr>
+                <td style="padding-right:20px;text-align:center;">
+                  <p style="color:rgba(255,255,255,0.35);font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin:0 0 4px;">English</p>
+                  <a href="tel:+14707096137" style="color:#e35a1a;font-weight:700;font-size:16px;text-decoration:none;">(470) 709-6137</a>
+                </td>
+                <td style="border-left:1px solid rgba(255,255,255,0.1);padding-left:20px;text-align:center;">
+                  <p style="color:rgba(255,255,255,0.35);font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin:0 0 4px;">Español</p>
+                  <a href="tel:+16789869084" style="color:#e35a1a;font-weight:700;font-size:16px;text-decoration:none;">(678) 986-9084</a>
+                </td>
+              </tr>
+            </table>
             <p style="color:rgba(255,255,255,0.4);font-size:12px;margin:0;">joprobros.construction@gmail.com</p>
           </div>
         </td>
