@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SiSamsung } from "react-icons/si";
 import { Building2, Droplet, ArrowRight, Phone, ShieldCheck, Clock, Star } from "lucide-react";
@@ -10,15 +11,30 @@ export default function Home() {
   const { t } = useLanguage();
   const h = t.home;
 
+  const projectImages = [
+    {
+      src: "/images/project_workers_site.jpg",
+      alt: "Two workers in hard hats at commercial building site",
+    },
+    {
+      src: "/images/project_valve.jpg",
+      alt: "Technicians working on industrial valve",
+    },
+    {
+      src: "/images/project_pipes.jpg",
+      alt: "Worker inspecting industrial pipes and equipment",
+    },
+  ];
+
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative pt-44 pb-20 lg:pt-56 lg:pb-32 overflow-hidden bg-foreground">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/30 via-foreground to-foreground z-0"></div>
-        <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxyZWN0IHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgZmlsbD0ibm9uZSIvPgo8Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxIiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPg==')] z-0"></div>
+      {/* Hero Section — split layout */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-foreground">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-primary/25 via-foreground to-foreground z-0" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-3xl">
+        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-28 pb-16 lg:pt-32 lg:pb-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — text */}
             <motion.div
               initial={{ y: 20 }}
               animate={{ y: 0 }}
@@ -28,14 +44,14 @@ export default function Home() {
                 {h.heroBadge}
               </span>
 
-              <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-4 leading-[1.05]">
+              <h1 className="text-5xl md:text-6xl xl:text-7xl font-extrabold text-white tracking-tight mb-5 leading-[1.05]">
                 {h.heroLine1}{" "}
                 <span className="text-gradient-blue">{h.heroWord1}</span>
                 <br />
                 <span className="text-gradient-orange">{h.heroWord2}</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-white/70 mb-8 max-w-xl leading-relaxed">
+              <p className="text-lg md:text-xl text-white/70 mb-8 max-w-lg leading-relaxed">
                 {h.heroDesc}
               </p>
 
@@ -59,7 +75,7 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Inline trust badges */}
+              {/* Trust badges */}
               <div className="flex flex-wrap gap-x-6 gap-y-2">
                 <span className="flex items-center gap-1.5 text-white/60 text-sm">
                   <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
@@ -75,12 +91,37 @@ export default function Home() {
                 </span>
               </div>
             </motion.div>
+
+            {/* Right — crew photo */}
+            <motion.div
+              initial={{ x: 40 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="relative hidden lg:block"
+            >
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl shadow-black/50">
+                <Image
+                  src="/images/hero_crew.jpg"
+                  alt="J&O Pro Bro's crew working on commercial plumbing project"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-foreground/40 via-transparent to-transparent" />
+              </div>
+              {/* Floating stat card */}
+              <div className="absolute -bottom-6 -left-6 glass-dark rounded-xl px-6 py-4 border border-white/10 shadow-xl">
+                <div className="text-3xl font-black text-accent">500+</div>
+                <div className="text-sm text-white/70 font-medium">{h.stat1}</div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Stats Bar */}
-      <section className="relative -mt-12 z-20 container mx-auto px-4 md:px-6">
+      <section className="relative z-20 container mx-auto px-4 md:px-6 -mt-1 pb-4">
         <div className="glass-dark rounded-2xl p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10">
           {[
             { label: h.stat1, value: "500+" },
@@ -117,7 +158,6 @@ export default function Home() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            {/* Commercial */}
             <div className="space-y-8">
               <div className="flex items-center gap-4 border-b pb-4">
                 <div className="bg-primary/10 p-3 rounded-xl">
@@ -136,7 +176,7 @@ export default function Home() {
                     className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
                   >
                     <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                       {item.title}
                     </h4>
                     <p className="text-muted-foreground text-sm ml-3.5">{item.desc}</p>
@@ -145,7 +185,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Residential */}
             <div className="space-y-8">
               <div className="flex items-center gap-4 border-b pb-4">
                 <div className="bg-primary/10 p-3 rounded-xl">
@@ -164,7 +203,7 @@ export default function Home() {
                     className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
                   >
                     <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                       {item.title}
                     </h4>
                     <p className="text-muted-foreground text-sm ml-3.5">{item.desc}</p>
@@ -194,33 +233,32 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {h.projects.map((project, i) => {
-              const bgs = [
-                "bg-gradient-to-br from-slate-800 to-slate-900",
-                "bg-gradient-to-br from-blue-900 to-slate-900",
-                "bg-gradient-to-br from-slate-900 to-gray-800",
-              ];
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.2 }}
-                  className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
-                >
-                  <div className={`absolute inset-0 ${bgs[i]} opacity-90 transition-transform duration-500 group-hover:scale-105`}></div>
-                  <div className="absolute inset-0 bg-black/40"></div>
-                  <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <span className="inline-block py-1 px-3 rounded-md bg-accent text-white text-xs font-bold mb-3 w-max">
-                      {project.type}
-                    </span>
-                    <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-white/80 text-sm">{project.scale}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {h.projects.map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.97 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
+              >
+                <Image
+                  src={projectImages[i].src}
+                  alt={projectImages[i].alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                  <span className="inline-block py-1 px-3 rounded-md bg-accent text-white text-xs font-bold mb-3 w-max">
+                    {project.type}
+                  </span>
+                  <h3 className="text-2xl font-bold text-white mb-1">{project.title}</h3>
+                  <p className="text-white/75 text-sm">{project.scale}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -229,7 +267,7 @@ export default function Home() {
       <section className="py-24 relative">
         <div className="container mx-auto px-4 md:px-6">
           <div className="glass-dark rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-primary/20 z-0"></div>
+            <div className="absolute inset-0 bg-primary/20 z-0" />
             <div className="relative z-10 max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">{h.ctaTitle}</h2>
               <p className="text-xl text-white/70 mb-10">{h.ctaDesc}</p>
