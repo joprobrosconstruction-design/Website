@@ -77,3 +77,39 @@ id = "UDuF7AL5GssOjtbgXmLJU"
 uri = "file://attached_assets/image_search/worker_inspects_pipes.jpg"
 type = "image"
 title = "Worker inspecting industrial pipes & equipment"
+
+[[outputs]]
+id = "eChseQ2d1aUSQGhFtBNdG"
+uri = "file://attached_assets/image_search/option_a_large_site_crew.jpg"
+type = "image"
+title = "A — Large crew on big construction site"
+
+[[outputs]]
+id = "P6MNfyi93x2XyeSxWFdFG"
+uri = "file://attached_assets/image_search/option_b_trench_four_men.jpg"
+type = "image"
+title = "B — Four men digging trench / foundation"
+
+[[outputs]]
+id = "9B58J651RszSFnFCnBiNP"
+uri = "file://attached_assets/image_search/option_c_crew_walking_vests.jpg"
+type = "image"
+title = "C — Group in orange vests walking job site"
+
+[[outputs]]
+id = "zkpvIHT9Xp0rQTLJTMvax"
+uri = "file://attached_assets/image_search/option_d_diverse_team_outdoor.jpg"
+type = "image"
+title = "D — Diverse team collaborating outdoors"
+
+[[outputs]]
+id = "0Pk_pZ4dAIiKWtskr-zdL"
+uri = "file://attached_assets/image_search/option_e_road_crew.jpg"
+type = "image"
+title = "E — Road/pipe construction crew outdoors"
+
+[[outputs]]
+id = "KXyLvGkd2saPuloxuRtlA"
+uri = "file://attached_assets/image_search/option_f_steel_rebar_crew.jpg"
+type = "image"
+title = "F — Crew installing steel reinforcement"
