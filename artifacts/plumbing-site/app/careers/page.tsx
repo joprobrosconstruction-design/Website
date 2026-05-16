@@ -73,15 +73,14 @@ export default function CareersPage() {
                   {modalJob.es && (
                     <button
                       onClick={() => setModalEs((v) => !v)}
-                      title={modalEs ? "View in English" : "Ver en Español"}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm font-semibold transition-colors ${
+                      className={`flex items-center gap-2 px-4 py-1.5 rounded-lg border text-sm font-semibold transition-colors ${
                         modalEs
                           ? "bg-primary text-white border-primary"
                           : "border-border text-muted-foreground hover:border-primary hover:text-primary"
                       }`}
                     >
-                      <Languages className="w-4 h-4" />
-                      {modalEs ? "EN" : "ES"}
+                      <Languages className="w-4 h-4 shrink-0" />
+                      {modalEs ? "View in English" : "Ver en Español"}
                     </button>
                   )}
                   <button
