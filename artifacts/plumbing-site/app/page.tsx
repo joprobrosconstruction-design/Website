@@ -73,21 +73,41 @@ export default function Home() {
 
             </motion.div>
 
-            {/* Right — logo + company name */}
+            {/* Right — crew photo with logo badge */}
             <motion.div
               initial={{ x: 40 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className="hidden lg:flex flex-col items-center justify-center gap-8"
+              className="hidden lg:flex items-center justify-center relative"
             >
-              <Image
-                src="/images/logo.png"
-                alt="J&O Pro Bros Construction logo"
-                width={480}
-                height={480}
-                className="w-[420px] h-[420px] object-contain drop-shadow-[0_0_80px_rgba(30,100,220,0.4)]"
-                priority
-              />
+              {/* Crew photo */}
+              <div className="relative rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(30,100,220,0.3)] border border-white/10">
+                <Image
+                  src="/images/hero_crew.png"
+                  alt="J&O Pro Bros Construction crew"
+                  width={560}
+                  height={600}
+                  className="w-full max-w-[520px] object-cover"
+                  priority
+                />
+                {/* Gradient overlay — bottom fade for logo */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(5,15,45,0.75)] via-transparent to-transparent pointer-events-none" />
+
+                {/* Logo badge — bottom-left */}
+                <div className="absolute bottom-5 left-5 flex items-center gap-3 glass-dark rounded-xl px-4 py-2 border border-white/15 shadow-lg">
+                  <Image
+                    src="/images/logo.png"
+                    alt="J&O Pro Bros Construction logo"
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 object-contain"
+                  />
+                  <div>
+                    <p className="text-white font-bold text-sm leading-tight">J&amp;O Pro Bros</p>
+                    <p className="text-white/60 text-xs">Construction</p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
