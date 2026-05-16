@@ -71,7 +71,7 @@ export default function Navigation() {
       <div
         className={`transition-all duration-300 ${
           scrolled
-            ? "glass border-b border-white/10 shadow-lg py-3"
+            ? "glass-dark border-b border-white/10 shadow-lg py-3"
             : "bg-foreground/80 backdrop-blur-md border-b border-white/10 py-3"
         }`}
       >
