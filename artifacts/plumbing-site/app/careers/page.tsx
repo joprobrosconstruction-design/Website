@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { DollarSign, FileSignature, CalendarCheck, Info, X, Clock, Calendar, ListChecks, Briefcase } from "lucide-react";
+import { DollarSign, FileSignature, CalendarCheck, Info, X, Clock, Calendar, ListChecks, Briefcase, Languages } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { jobs, type Job } from "@/lib/jobs";
 import { useRouter } from "next/navigation";
@@ -13,7 +13,13 @@ export default function CareersPage() {
   const router = useRouter();
 
   const [modalJob, setModalJob] = useState<Job | null>(null);
+  const [modalEs, setModalEs] = useState(false);
   const activeJobs = jobs.filter((j) => j.active);
+
+  const openModal = (job: Job) => {
+    setModalJob(job);
+    setModalEs(false);
+  };
 
   const handleApplyClick = (title: string) => {
     setModalJob(null);
@@ -25,6 +31,11 @@ export default function CareersPage() {
     { Icon: FileSignature, title: c.benefit2Title },
     { Icon: CalendarCheck, title: c.benefit3Title },
   ];
+
+  const jobText = (job: Job) => {
+    if (!modalEs || !job.es) return null;
+    return job.es;
+  };
 
   return (
     <main className="min-h-screen bg-background pt-24 pb-24">
@@ -50,50 +61,87 @@ export default function CareersPage() {
               {/* Modal Header */}
               <div className="sticky top-0 bg-card border-b border-border px-8 py-5 flex items-start justify-between gap-4 rounded-t-3xl z-10">
                 <div>
-                  <h2 className="text-2xl font-bold text-foreground">{modalJob.title}</h2>
+                  <h2 className="text-2xl font-bold text-foreground">
+                    {(modalEs && modalJob.es?.title) ? modalJob.es.title : modalJob.title}
+                  </h2>
                   <span className="text-xs font-semibold bg-accent/10 text-accent px-2 py-1 rounded-md border border-accent/20 mt-1 inline-block">
                     {c.contractorBadge}
                   </span>
                 </div>
-                <button
-                  onClick={() => setModalJob(null)}
-                  className="shrink-0 w-9 h-9 flex items-center justify-center rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+                <div className="flex items-center gap-2 shrink-0">
+                  {/* Translate toggle */}
+                  {modalJob.es && (
+                    <button
+                      onClick={() => setModalEs((v) => !v)}
+                      title={modalEs ? "View in English" : "Ver en Español"}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm font-semibold transition-colors ${
+                        modalEs
+                          ? "bg-primary text-white border-primary"
+                          : "border-border text-muted-foreground hover:border-primary hover:text-primary"
+                      }`}
+                    >
+                      <Languages className="w-4 h-4" />
+                      {modalEs ? "EN" : "ES"}
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setModalJob(null)}
+                    className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
               </div>
 
               {/* Modal Body */}
               <div className="px-8 py-6 space-y-6">
-                <p className="text-muted-foreground leading-relaxed">{modalJob.desc}</p>
+                <p className="text-muted-foreground leading-relaxed">
+                  {jobText(modalJob)?.desc ?? modalJob.desc}
+                </p>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="bg-muted/40 rounded-2xl p-4 flex gap-3">
                     <DollarSign className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Pay</p>
-                      <p className="text-sm font-medium text-foreground">{modalJob.pay}</p>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                        {modalEs ? "Pago" : "Pay"}
+                      </p>
+                      <p className="text-sm font-medium text-foreground">
+                        {jobText(modalJob)?.pay ?? modalJob.pay}
+                      </p>
                     </div>
                   </div>
                   <div className="bg-muted/40 rounded-2xl p-4 flex gap-3">
                     <Clock className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Hours</p>
-                      <p className="text-sm font-medium text-foreground">{modalJob.hours}</p>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                        {modalEs ? "Horas" : "Hours"}
+                      </p>
+                      <p className="text-sm font-medium text-foreground">
+                        {jobText(modalJob)?.hours ?? modalJob.hours}
+                      </p>
                     </div>
                   </div>
                   <div className="bg-muted/40 rounded-2xl p-4 flex gap-3">
                     <Calendar className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Schedule</p>
-                      <p className="text-sm font-medium text-foreground">{modalJob.schedule}</p>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                        {modalEs ? "Horario" : "Schedule"}
+                      </p>
+                      <p className="text-sm font-medium text-foreground">
+                        {jobText(modalJob)?.schedule ?? modalJob.schedule}
+                      </p>
                     </div>
                   </div>
                   <div className="bg-muted/40 rounded-2xl p-4 flex gap-3">
                     <Briefcase className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Experience</p>
-                      <p className="text-sm font-medium text-foreground">{modalJob.experience}</p>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
+                        {modalEs ? "Experiencia" : "Experience"}
+                      </p>
+                      <p className="text-sm font-medium text-foreground">
+                        {jobText(modalJob)?.experience ?? modalJob.experience}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -101,10 +149,12 @@ export default function CareersPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <ListChecks className="w-5 h-5 text-accent" />
-                    <h3 className="font-semibold text-foreground">Requirements</h3>
+                    <h3 className="font-semibold text-foreground">
+                      {modalEs ? "Requisitos" : "Requirements"}
+                    </h3>
                   </div>
                   <ul className="space-y-2">
-                    {modalJob.requirements.map((req, i) => (
+                    {(jobText(modalJob)?.requirements ?? modalJob.requirements).map((req, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                         <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                         {req}
@@ -184,7 +234,7 @@ export default function CareersPage() {
                 </div>
                 <div className="flex items-center gap-3 mt-auto">
                   <button
-                    onClick={() => setModalJob(job)}
+                    onClick={() => openModal(job)}
                     className="bg-accent hover:bg-accent/90 text-white font-semibold px-5 py-2 rounded-lg transition-colors text-sm shadow-sm"
                   >
                     View More
