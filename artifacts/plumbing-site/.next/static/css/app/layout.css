@@ -476,6 +476,9 @@
   .max-h-\[90vh\] {
     max-height: 90vh;
   }
+  .min-h-\[82vh\] {
+    min-height: 82vh;
+  }
   .min-h-screen {
     min-height: 100vh;
   }

@@ -41,7 +41,7 @@ export default function Home() {
     <main className="min-h-screen">
 
       {/* ── Hero ── full-bleed photo + left-to-right fade overlay */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[82vh] flex items-center overflow-hidden">
 
         {/* Background photo — anchored right so plumber shows on the light side */}
         <Image
