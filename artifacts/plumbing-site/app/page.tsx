@@ -71,17 +71,6 @@ export default function Home() {
                 />
               </div>
 
-              {/* Trust badges */}
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                <span className="flex items-center gap-1.5 text-white/60 text-sm">
-                  <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
-                  {h.trustLicensed}
-                </span>
-                <span className="flex items-center gap-1.5 text-white/60 text-sm">
-                  <Star className="w-4 h-4 text-accent shrink-0" />
-                  {h.trustExperience}
-                </span>
-              </div>
             </motion.div>
 
             {/* Right — logo + company name */}
@@ -126,6 +115,10 @@ export default function Home() {
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
+            <span className="inline-flex items-center gap-1.5 bg-accent/10 border border-accent/25 text-accent text-sm font-semibold px-3 py-1 rounded-full mb-4">
+              <Star className="w-3.5 h-3.5" />
+              {h.trustExperience}
+            </span>
             <h2 className="text-4xl font-bold mb-4">{h.expertiseTitle}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{h.expertiseDesc}</p>
           </div>
