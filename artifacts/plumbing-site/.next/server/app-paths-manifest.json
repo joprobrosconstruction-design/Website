@@ -2,6 +2,5 @@
   "/page": "app/page.js",
   "/services/page": "app/services/page.js",
   "/estimate/page": "app/estimate/page.js",
-  "/careers/page": "app/careers/page.js",
-  "/careers/apply/page": "app/careers/apply/page.js"
+  "/careers/page": "app/careers/page.js"
 }

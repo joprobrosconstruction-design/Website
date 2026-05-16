@@ -167,7 +167,7 @@ export default function CareersPage() {
             {c.noPositions}
           </div>
         ) : (
-          <div className="grid lg:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="flex flex-col gap-6 max-w-3xl mx-auto">
             {activeJobs.map((job) => (
               <div
                 key={job.id}
