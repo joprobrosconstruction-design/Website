@@ -190,6 +190,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Van / Fleet Banner */}
+      <section className="relative h-[420px] md:h-[520px] overflow-hidden">
+        <Image
+          src="/images/van.png"
+          alt="J&O Pro Bros Construction service van"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/40 to-transparent" />
+        <div className="absolute inset-0 flex items-center">
+          <div className="container mx-auto px-4 md:px-6 max-w-xl">
+            <p className="text-accent font-semibold uppercase tracking-widest text-sm mb-3">On The Road Daily</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              Professional. Local. Ready.
+            </h2>
+            <p className="text-white/70 text-lg">
+              From Atlanta to your doorstep — our crews show up on time and get the job done right.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Recent Projects */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
