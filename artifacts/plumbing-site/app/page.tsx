@@ -216,16 +216,16 @@ export default function Home() {
           {/* Service area cards */}
           <motion.div {...revealUp(0.24)} className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto mb-12">
             {/* Residential */}
-            <div className="border border-white/10 rounded-2xl px-6 py-6">
+            <div className="border border-white/10 rounded-2xl px-6 py-6 text-center">
               <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Residential Services</p>
               <p className="text-white font-semibold text-base mb-2">Gwinnett County &amp; Greater Atlanta</p>
               <p className="text-white/50 text-sm leading-relaxed">Proudly serving homeowners throughout Gwinnett County and the Greater Atlanta area with fast, responsive, and dependable local service.</p>
             </div>
             {/* Commercial */}
-            <div className="border border-white/10 rounded-2xl px-6 py-6">
+            <div className="border border-white/10 rounded-2xl px-6 py-6 text-center">
               <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Commercial Project Reach</p>
               <p className="text-white font-semibold text-base mb-2">Trusted on large-scale commercial plumbing and construction projects across:</p>
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex flex-wrap gap-2 mt-3 justify-center">
                 {["Georgia", "Texas", "Arizona", "Ohio"].map((state) => (
                   <span key={state} className="text-xs font-semibold bg-white/8 border border-white/15 text-white/80 px-3 py-1 rounded-full">
                     {state}
