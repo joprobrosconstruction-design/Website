@@ -26,7 +26,6 @@ export default function Navigation() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
-    { name: "Projects", path: "/projects" },
     { name: "Estimate", path: "/estimate" },
     { name: "Careers", path: "/careers" },
   ];
@@ -44,7 +43,7 @@ export default function Navigation() {
               <Droplets className="w-6 h-6 text-primary" />
             </div>
             <span className="text-xl font-bold tracking-tight text-foreground">
-              Premier Plumbing
+              J&amp;O Pro Bro&apos;s
             </span>
           </Link>
 

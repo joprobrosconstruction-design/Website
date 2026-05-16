@@ -7,9 +7,9 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"], variable: "--app-font-sans" });
 
 export const metadata: Metadata = {
-  title: "Premier Plumbing Contractors | Commercial & Residential Services",
+  title: "J&O Pro Bro's | Commercial & Residential Plumbing Contractors",
   description:
-    "Full-service plumbing contractor specializing in commercial and residential projects. Trusted by Fortune 500 companies. Request a free estimate today.",
+    "J&O Pro Bro's — full-service plumbing contractor specializing in large commercial projects and residential services. Trusted by Samsung. Request a free estimate today.",
   keywords: [
     "plumbing contractor",
     "commercial plumbing",
@@ -17,11 +17,12 @@ export const metadata: Metadata = {
     "plumbing services",
     "pipe installation",
     "plumbing repair",
+    "J&O Pro Bros",
   ],
   openGraph: {
-    title: "Premier Plumbing Contractors | Commercial & Residential Services",
+    title: "J&O Pro Bro's | Commercial & Residential Plumbing Contractors",
     description:
-      "Full-service plumbing contractor specializing in commercial and residential projects.",
+      "Full-service plumbing contractor specializing in large commercial projects and residential services.",
     type: "website",
   },
 };

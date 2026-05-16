@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { SiSamsung, SiFord, SiSony, SiIntel } from "react-icons/si";
-import { Wrench, Building2, Factory, ShieldCheck, Droplet, Cog, ArrowRight, Hospital } from "lucide-react";
+import { SiSamsung } from "react-icons/si";
+import { Wrench, Building2, ShieldCheck, Droplet, Cog, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -77,18 +77,8 @@ export default function Home() {
           <h2 className="text-sm font-bold tracking-widest text-muted-foreground uppercase mb-12">
             Trusted by Industry Leaders
           </h2>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-            <SiSamsung className="w-32 h-16" />
-            <SiFord className="w-24 h-24" />
-            <div className="flex items-center gap-2 text-2xl font-bold">
-              <Hospital className="w-8 h-8" />
-              <span>Mercy Health</span>
-            </div>
-            <SiSony className="w-32 h-16" />
-            <div className="flex items-center gap-2 text-2xl font-bold">
-              <Factory className="w-8 h-8" />
-              <span>Global Tech</span>
-            </div>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
+            <SiSamsung className="w-40 h-20 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
           </div>
         </div>
       </section>
@@ -186,22 +176,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Projects Teaser */}
+      {/* Recent Projects */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
-              <p className="text-muted-foreground max-w-xl">
-                A glimpse into our massive commercial infrastructure work.
-              </p>
-            </div>
-            <Link
-              href="/projects"
-              className="hidden md:inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80"
-            >
-              View Gallery <ArrowRight className="w-4 h-4" />
-            </Link>
+          <div className="mb-12">
+            <h2 className="text-4xl font-bold mb-4">Recent Projects</h2>
+            <p className="text-muted-foreground max-w-xl">
+              A glimpse into our large-scale commercial infrastructure work.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

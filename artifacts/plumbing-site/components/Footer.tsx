@@ -11,7 +11,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-6">
               <Droplets className="w-6 h-6 text-primary-foreground" />
               <span className="text-xl font-bold text-primary-foreground tracking-tight">
-                Premier Plumbing
+                J&amp;O Pro Bro&apos;s
               </span>
             </Link>
             <p className="text-muted/80 mb-6 leading-relaxed">
@@ -36,11 +36,6 @@ export default function Footer() {
               <li>
                 <Link href="/services" className="hover:text-primary transition-colors">
                   Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="hover:text-primary transition-colors">
-                  Projects Gallery
                 </Link>
               </li>
               <li>
@@ -93,7 +88,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-muted/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted/60">
-          <p>&copy; {new Date().getFullYear()} Premier Plumbing Contractors. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} J&amp;O Pro Bro&apos;s. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
