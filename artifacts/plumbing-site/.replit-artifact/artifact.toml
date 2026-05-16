@@ -1,0 +1,27 @@
+kind = "web"
+  previewPath = "/"
+  title = "Plumbing Contractor Website"
+  version = "1.0.0"
+  id = "artifacts/plumbing-site"
+  router = "path"
+
+  [[integratedSkills]]
+  name = "react-vite"
+  version = "1.0.0"
+
+  [[services]]
+  name = "web"
+  paths = [ "/" ]
+  localPort = 20872
+
+  [services.development]
+  run = "pnpm --filter @workspace/plumbing-site run dev"
+
+  [services.production]
+  build = [ "pnpm", "--filter", "@workspace/plumbing-site", "run", "build" ]
+  run = "pnpm --filter @workspace/plumbing-site run start"
+
+  [services.env]
+  PORT = "20872"
+  BASE_PATH = "/"
+  

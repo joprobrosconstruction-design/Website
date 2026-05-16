@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "862Jcjc3akOu1JLlnpp8u"
+uri = "file://artifacts/plumbing-site/public/images/industrial.png"
+type = "image"
+title = "Industrial pipe installation"
+
+[[generated]]
+id = "BSaZNWwz11L7tHqoY18g0"
+uri = "file://artifacts/plumbing-site/public/images/hospital.png"
+type = "image"
+title = "Hospital medical gas plumbing"
+
+[[generated]]
+id = "t0nTjrxvPlpJFo88_sVsC"
+uri = "file://artifacts/plumbing-site/public/images/fab.png"
+type = "image"
+title = "Semiconductor fab piping"
+
+[[generated]]
+id = "Wg2eqc7qhSpBkytBeUj3F"
+uri = "file://artifacts/plumbing-site/public/images/office.png"
+type = "image"
+title = "Office tower mechanical room"
