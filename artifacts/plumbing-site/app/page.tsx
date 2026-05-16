@@ -94,18 +94,18 @@ export default function Home() {
       </section>
 
       {/* Corporate Clients Section */}
-      <section className="py-24 bg-background">
+      <section className="py-14 bg-background border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-sm font-bold tracking-widest text-muted-foreground uppercase mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">
             {h.trustedBy}
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
             <Image
               src="/images/samsung_logo.avif"
               alt="Samsung"
-              width={300}
-              height={90}
-              className="h-20 w-auto opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
+              width={400}
+              height={120}
+              className="h-28 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
             />
           </div>
         </div>
@@ -115,8 +115,8 @@ export default function Home() {
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-1.5 bg-accent/10 border border-accent/25 text-accent text-sm font-semibold px-3 py-1 rounded-full mb-4">
-              <Star className="w-3.5 h-3.5" />
+            <span className="inline-flex items-center gap-2 bg-accent/15 border border-accent/40 text-accent text-base font-bold px-5 py-2 rounded-full mb-5 shadow-[0_0_20px_rgba(227,90,26,0.2)]">
+              <Star className="w-4 h-4 fill-accent" />
               {h.trustExperience}
             </span>
             <h2 className="text-4xl font-bold mb-4">{h.expertiseTitle}</h2>
