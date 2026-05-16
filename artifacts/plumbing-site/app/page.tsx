@@ -201,12 +201,12 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
 
           {/* Header */}
-          <div className="text-center mb-10 max-w-3xl mx-auto">
-            <motion.p {...revealUp(0)} className="text-accent font-semibold uppercase tracking-widest text-sm mb-3">
-              Serving Residential &amp; Commercial Clients Across Multiple States
+          <div className="text-center mb-10 max-w-2xl mx-auto">
+            <motion.p {...revealUp(0)} className="text-accent font-semibold uppercase tracking-widest text-sm mb-4">
+              On the Road Daily
             </motion.p>
             <motion.h2 {...revealUp(0.1)} className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-              On the Road Daily. Built for Reliability.
+              Serving Homes, Businesses, and Large-Scale Projects.
             </motion.h2>
             <motion.p {...revealUp(0.18)} className="text-white/60 text-lg leading-relaxed">
               From local residential service calls to large-scale commercial projects, our team delivers professional plumbing and construction solutions wherever the job demands.
