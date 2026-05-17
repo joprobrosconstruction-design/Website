@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
 
-      {/* ── Hero ── solid left panel + photo right, blended at seam */}
+      {/* ── Hero ── solid left panel + photo right, blended at seams */}
       <section className="relative flex min-h-[78vh] bg-[#040e28]">
 
         {/* ── Left: solid dark panel ── */}
