@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, Suspense, useRef } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Upload, FileText, CheckCircle2, AlertCircle,
   ArrowLeft, Languages, User, Phone, Briefcase, FileUp, ShieldCheck, PenLine,
@@ -69,6 +69,7 @@ function ApplyForm() {
       const result = await response.json();
       if (response.ok) {
         setStatus("success");
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         setStatus("error");
         setErrorMessage(result.error || "Failed to submit application. Please try again.");
@@ -85,6 +86,27 @@ function ApplyForm() {
 
   return (
     <main className="min-h-screen bg-background pt-24 pb-32">
+
+      {/* ── Submitting overlay ── */}
+      <AnimatePresence>
+        {status === "submitting" && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#040e28]/80 backdrop-blur-sm"
+          >
+            <div className="bg-white rounded-2xl px-10 py-10 flex flex-col items-center gap-5 shadow-2xl max-w-xs w-full mx-4 text-center">
+              <div className="w-14 h-14 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
+              <div>
+                <p className="font-bold text-gray-900 text-base">Submitting Your Application</p>
+                <p className="text-sm text-gray-500 mt-1">This may take a moment — please don't close the page.</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="container mx-auto px-4 md:px-6 max-w-2xl">
 
         {/* Back link */}
