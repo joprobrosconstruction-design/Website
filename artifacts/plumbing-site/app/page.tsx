@@ -90,7 +90,7 @@ export default function Home() {
             alt="J&O Pro Bros Construction plumber at work"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-right"
             sizes="55vw"
           />
           {/* Seam fade: blends left edge of photo into the solid navy panel */}
