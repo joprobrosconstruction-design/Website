@@ -55,13 +55,6 @@ export const translations = {
         { title: "Sump Pump Installation", desc: "Basement flood prevention." },
         { title: "Emergency Plumbing Services", desc: "Fast response when you need it most." },
       ],
-      recentProjects: "Recent Projects",
-      recentProjectsDesc: "A look at some of the larger commercial jobs our crew has completed.",
-      projects: [
-        { title: "Semiconductor Cleanroom", type: "Industrial", scale: "$4.2M Plumbing Contract" },
-        { title: "Mercy General Hospital Wing", type: "Medical", scale: "Medical Gas & Waste Systems" },
-        { title: "Nexus Office Tower", type: "Commercial", scale: "40-Story Water Distribution" },
-      ],
       ctaTitle: "Let's Get Your Project Started",
       ctaDesc:
         "Residential or commercial — no job is too small or too large. Reach out today and we'll get you a straight, honest estimate.",
@@ -281,13 +274,6 @@ export const translations = {
         { title: "Remodelación de Baño y Cocina", desc: "Instalación de accesorios de alta gama." },
         { title: "Instalación de Bomba de Sumidero", desc: "Prevención de inundaciones en sótano." },
         { title: "Servicio de Plomería de Emergencia", desc: "Respuesta rápida cuando más lo necesita." },
-      ],
-      recentProjects: "Proyectos Recientes",
-      recentProjectsDesc: "Un vistazo a algunos de los trabajos comerciales más grandes que ha completado nuestro equipo.",
-      projects: [
-        { title: "Sala Limpia para Semiconductores", type: "Industrial", scale: "Contrato de Plomería de $4.2M" },
-        { title: "Ala del Hospital General Mercy", type: "Médico", scale: "Sistemas de Gas Médico y Desechos" },
-        { title: "Torre de Oficinas Nexus", type: "Comercial", scale: "Distribución de Agua en 40 Pisos" },
       ],
       ctaTitle: "Empecemos con su Proyecto",
       ctaDesc:
