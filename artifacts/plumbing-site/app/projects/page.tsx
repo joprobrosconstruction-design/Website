@@ -12,7 +12,7 @@ const PROJECTS = [
     title: "Global Tech Semiconductor Fab",
     type: "Commercial",
     location: "Austin, TX",
-    scale: "5M Plumbing & High-Purity Water Systems",
+    scale: "15M Plumbing & High-Purity Water Systems",
     image: "/images/fab.png",
   },
   {

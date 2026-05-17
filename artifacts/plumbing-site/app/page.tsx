@@ -31,12 +31,6 @@ export default function Home() {
   const { t } = useLanguage();
   const h = t.home;
 
-  const projectImages = [
-    { src: "/images/project_workers_site.jpg", alt: "Two workers in hard hats at commercial building site" },
-    { src: "/images/project_valve.jpg", alt: "Technicians working on industrial valve" },
-    { src: "/images/project_pipes.jpg", alt: "Worker inspecting industrial pipes and equipment" },
-  ];
-
   return (
     <main className="min-h-screen">
 
