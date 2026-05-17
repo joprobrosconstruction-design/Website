@@ -6,45 +6,10 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/api/careers/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/careers/route.js"
-    ],
-    "/api/estimate/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/estimate/route.js"
-    ],
     "/careers/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/careers/page.js"
-    ],
-    "/estimate/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/estimate/page.js"
-    ],
-    "/careers/apply/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/careers/apply/page.js"
-    ],
-    "/api/careers/approve/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/careers/approve/route.js"
-    ],
-    "/careers/sign/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/careers/sign/page.js"
     ]
   }
 }
