@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
 
-      {/* ── Hero ── solid left panel + photo right, blended at seam! */}
+      {/* ── Hero ── solid left panel + photo right, blended at seam */}
       <section className="relative flex min-h-[78vh] bg-[#040e28]">
 
         {/* ── Left: solid dark panel ── */}
@@ -90,8 +90,7 @@ export default function Home() {
             alt="J&O Pro Bros Construction plumber at work"
             fill
             priority
-            className="object-cover"
-            style={{ objectPosition: "55% 50%" }}
+            className="object-cover object-right"
             sizes="55vw"
           />
           {/* Seam fade: blends left edge of photo into the solid navy panel */}
