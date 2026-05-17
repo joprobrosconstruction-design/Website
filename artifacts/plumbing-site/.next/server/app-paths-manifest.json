@@ -1,3 +1,4 @@
 {
+  "/api/careers/approve/route": "app/api/careers/approve/route.js",
   "/page": "app/page.js"
 }
