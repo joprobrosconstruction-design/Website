@@ -297,15 +297,6 @@ export default function EstimatePage() {
                 </div>
                 <div className="flex gap-4">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground">{e.expertEvalTitle}</h4>
-                    <p className="text-sm text-muted-foreground mt-1">{e.expertEvalDesc}</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center shrink-0">
                     <ThumbsUp className="w-6 h-6 text-primary" />
                   </div>
                   <div>

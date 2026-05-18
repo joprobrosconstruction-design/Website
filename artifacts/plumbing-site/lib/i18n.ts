@@ -119,9 +119,6 @@ export const translations = {
       fastResponseTitle: "Fast Response",
       fastResponseDesc:
         "We aim to review and respond to all inquiries within 24-48 business hours.",
-      expertEvalTitle: "Expert Evaluation",
-      expertEvalDesc:
-        "A seasoned estimator or project manager will review your spec for accurate pricing.",
       noObligationsTitle: "No Obligations",
       noObligationsDesc: "Our initial consultations and estimates are provided pressure-free.",
       required: "*",
@@ -344,9 +341,6 @@ export const translations = {
       fastResponseTitle: "Respuesta Rápida",
       fastResponseDesc:
         "Nos esforzamos por revisar y responder a todas las consultas dentro de 24-48 horas hábiles.",
-      expertEvalTitle: "Evaluación Experta",
-      expertEvalDesc:
-        "Un estimador experimentado revisará su especificación para precios precisos.",
       noObligationsTitle: "Sin Compromiso",
       noObligationsDesc:
         "Nuestras consultas e estimados iniciales se proporcionan sin presión.",
