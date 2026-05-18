@@ -143,8 +143,10 @@ export default function Home() {
                     {...revealUp(i * 0.08)}
                     className="glass p-5 rounded-xl hover:shadow-lg transition-shadow"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent mb-3" />
-                    <h4 className="font-bold text-base mb-2">{item.title}</h4>
+                    <h4 className="font-bold text-base mb-2 flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      {item.title}
+                    </h4>
                     <p className="text-muted-foreground text-sm">{item.desc}</p>
                   </motion.div>
                 ))}
@@ -166,8 +168,10 @@ export default function Home() {
                     {...revealUp(i * 0.08)}
                     className="glass p-5 rounded-xl hover:shadow-lg transition-shadow"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mb-3" />
-                    <h4 className="font-bold text-base mb-2">{item.title}</h4>
+                    <h4 className="font-bold text-base mb-2 flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                      {item.title}
+                    </h4>
                     <p className="text-muted-foreground text-sm">{item.desc}</p>
                   </motion.div>
                 ))}
