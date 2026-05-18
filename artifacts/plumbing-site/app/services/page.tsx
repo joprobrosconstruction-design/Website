@@ -67,19 +67,6 @@ const COMMERCIAL_SERVICES: ServiceData[] = [
     },
   },
   {
-    Icon: Flame,
-    en: {
-      title: "Fire Suppression Plumbing",
-      desc: "Critical safety infrastructure for commercial buildings. Our certified fitters install reliable wet and dry standpipe systems that meet fire safety requirements.",
-      bullets: ["Wet/Dry systems", "Standpipe installation", "Pump rooms"],
-    },
-    es: {
-      title: "Plomería para Supresión de Incendios",
-      desc: "Infraestructura de seguridad crítica para edificios comerciales. Nuestros instaladores certificados colocan sistemas confiables de tuberías secas y húmedas que cumplen los requisitos de seguridad contra incendios.",
-      bullets: ["Sistemas húmedos/secos", "Instalación de tuberías verticales", "Salas de bombas"],
-    },
-  },
-  {
     Icon: Video,
     en: {
       title: "Sewer Line Inspection & Repair",

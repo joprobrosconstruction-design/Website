@@ -43,7 +43,6 @@ export const translations = {
         { title: "Pipe Installation", desc: "Large-scale plumbing and distribution systems." },
         { title: "Commercial HVAC Systems", desc: "Installation, replacement, and servicing for commercial heating and cooling systems." },
         { title: "Grease Trap Service", desc: "Commercial kitchen and restaurant solutions." },
-        { title: "Fire Suppression Plumbing", desc: "Critical safety infrastructure." },
         { title: "Sewer Line Inspection & Repair", desc: "Advanced camera diagnostics and repair solutions." },
       ],
       resItems: [
@@ -268,7 +267,6 @@ export const translations = {
         { title: "Instalación de Tuberías", desc: "Sistemas de plomería y distribución a gran escala." },
         { title: "Sistemas HVAC Comerciales", desc: "Instalación, reemplazo y mantenimiento de sistemas de calefacción y enfriamiento comerciales." },
         { title: "Servicio de Trampa de Grasa", desc: "Soluciones para cocinas comerciales y restaurantes." },
-        { title: "Plomería para Supresión de Incendios", desc: "Infraestructura de seguridad crítica." },
         { title: "Inspección y Reparación de Alcantarillado", desc: "Diagnóstico avanzado con cámara y soluciones de reparación." },
       ],
       resItems: [
