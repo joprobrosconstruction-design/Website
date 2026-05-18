@@ -1062,6 +1062,9 @@
   .bg-\[linear-gradient\(to_right\,\#040e28_0\%\,\#040e28_8\%\,rgba\(4\,14\,40\,0\.55\)_22\%\,transparent_42\%\)\] {
     background-image: linear-gradient(to right,#040e28 0%,#040e28 8%,rgba(4,14,40,0.55) 22%,transparent 42%);
   }
+  .bg-\[linear-gradient\(to_right\,\#040e28_0\%\,rgba\(4\,14\,40\,0\.93\)_10\%\,rgba\(4\,14\,40\,0\.72\)_20\%\,rgba\(4\,14\,40\,0\.42\)_32\%\,rgba\(4\,14\,40\,0\.14\)_44\%\,transparent_58\%\)\] {
+    background-image: linear-gradient(to right,#040e28 0%,rgba(4,14,40,0.93) 10%,rgba(4,14,40,0.72) 20%,rgba(4,14,40,0.42) 32%,rgba(4,14,40,0.14) 44%,transparent 58%);
+  }
   .bg-\[radial-gradient\(ellipse_at_bottom_left\,_var\(--tw-gradient-stops\)\)\] {
     background-image: radial-gradient(ellipse at bottom left, var(--tw-gradient-stops));
   }
