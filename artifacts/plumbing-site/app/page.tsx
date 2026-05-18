@@ -229,7 +229,8 @@ export default function Home() {
                 </div>
                 <div className="bg-[rgba(4,14,40,0.82)] backdrop-blur-md border border-white/20 rounded-2xl px-8 py-7">
                   <p className="text-accent text-xs font-bold uppercase tracking-widest mb-3">Commercial Project Reach</p>
-                  <p className="text-white font-bold text-xl mb-4">Trusted across large-scale projects in:</p>
+                  <p className="text-white font-bold text-xl mb-2">Large-Scale Commercial Projects</p>
+                  <p className="text-white/75 text-sm leading-relaxed mb-4">Active project experience across multiple states:</p>
                   <div className="flex flex-wrap gap-2">
                     {["Georgia", "Texas", "Arizona", "Ohio"].map((state) => (
                       <span key={state} className="text-sm font-semibold bg-white/10 border border-white/25 text-white px-4 py-1.5 rounded-full">
