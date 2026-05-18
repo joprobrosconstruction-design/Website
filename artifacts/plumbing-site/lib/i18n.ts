@@ -31,7 +31,7 @@ export const translations = {
       stat1: "Projects Completed",
       stat2: "Years Experience",
       stat3: "Insured & Bonded",
-      trustedBy: "Trusted by Clients Across the Region",
+      trustedBy: "Companies & Projects We've Worked With",
       expertiseTitle: "What We Do",
       expertiseDesc:
         "Whether it's a plumbing repair, HVAC issue, or a large-scale commercial installation, our crew has the experience to handle projects of every size — on time and on budget.",
@@ -254,7 +254,7 @@ export const translations = {
       stat1: "Proyectos Completados",
       stat2: "Años de Experiencia",
       stat3: "Asegurado y Afianzado",
-      trustedBy: "Con la Confianza de Clientes en Toda la Región",
+      trustedBy: "Empresas y Proyectos con los que Hemos Trabajado",
       expertiseTitle: "Lo Que Hacemos",
       expertiseDesc:
         "Ya sea una reparación de plomería, un problema de HVAC o una instalación comercial a gran escala, nuestro equipo tiene la experiencia para manejar proyectos de cualquier tamaño — a tiempo y dentro del presupuesto.",
