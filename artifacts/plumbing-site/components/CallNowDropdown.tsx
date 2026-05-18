@@ -12,6 +12,7 @@ interface Props {
 
 export function CallNowDropdown({ label, className = "", testId }: Props) {
   const [open, setOpen] = useState(false);
+  const [openUp, setOpenUp] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,6 +24,15 @@ export function CallNowDropdown({ label, className = "", testId }: Props) {
     if (open) document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [open]);
+
+  const handleToggle = () => {
+    if (!open && ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const spaceBelow = window.innerHeight - rect.bottom;
+      setOpenUp(spaceBelow < 160);
+    }
+    setOpen((v) => !v);
+  };
 
   const options = [
     {
@@ -42,7 +52,7 @@ export function CallNowDropdown({ label, className = "", testId }: Props) {
   return (
     <div ref={ref} className={`relative ${className}`}>
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={handleToggle}
         data-testid={testId}
         className="w-full glass-dark hover:bg-white/10 text-white border border-white/20 px-8 py-4 rounded-lg font-bold text-lg transition-all flex items-center justify-center gap-2"
       >
@@ -54,7 +64,9 @@ export function CallNowDropdown({ label, className = "", testId }: Props) {
       </button>
 
       {open && (
-        <div className="absolute top-full mt-2 left-0 z-50 glass-dark border border-white/20 rounded-xl overflow-hidden shadow-2xl min-w-[240px]">
+        <div
+          className={`absolute ${openUp ? "bottom-full mb-2" : "top-full mt-2"} left-0 z-50 glass-dark border border-white/20 rounded-xl overflow-hidden shadow-2xl min-w-[240px]`}
+        >
           {options.map((opt) => (
             <a
               key={opt.code}
