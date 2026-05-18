@@ -15,6 +15,7 @@ import {
   ArrowRight,
   Droplets,
   AlertTriangle,
+  Thermometer,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import type { LucideIcon } from "lucide-react";
@@ -30,13 +31,26 @@ const COMMERCIAL_SERVICES: ServiceData[] = [
     Icon: Settings,
     en: {
       title: "Pipe Installation",
-      desc: "Expert design and installation of complex distribution systems for large-scale commercial facilities. We handle everything from high-rise water supply to industrial process piping.",
+      desc: "Expert design and installation of complex distribution systems for commercial facilities. We handle everything from high-rise water supply to industrial process piping.",
       bullets: ["Copper & PEX systems", "Cast iron routing", "High-pressure lines"],
     },
     es: {
       title: "Instalación de Tuberías",
-      desc: "Diseño e instalación experta de sistemas de distribución complejos para instalaciones comerciales a gran escala. Manejamos todo, desde el suministro de agua en rascacielos hasta tuberías de procesos industriales.",
+      desc: "Diseño e instalación experta de sistemas de distribución complejos para instalaciones comerciales. Manejamos todo, desde el suministro de agua en rascacielos hasta tuberías de procesos industriales.",
       bullets: ["Sistemas de cobre y PEX", "Ruteo de hierro fundido", "Líneas de alta presión"],
+    },
+  },
+  {
+    Icon: Thermometer,
+    en: {
+      title: "Commercial HVAC Systems",
+      desc: "Professional installation, replacement, and servicing for commercial heating and cooling systems designed to keep facilities operating efficiently year-round.",
+      bullets: ["Rooftop units", "System replacements", "Preventative maintenance"],
+    },
+    es: {
+      title: "Sistemas HVAC Comerciales",
+      desc: "Instalación, reemplazo y mantenimiento profesional de sistemas de calefacción y enfriamiento comerciales diseñados para mantener las instalaciones funcionando eficientemente todo el año.",
+      bullets: ["Unidades en azotea", "Reemplazos de sistemas", "Mantenimiento preventivo"],
     },
   },
   {
@@ -56,12 +70,12 @@ const COMMERCIAL_SERVICES: ServiceData[] = [
     Icon: Flame,
     en: {
       title: "Fire Suppression Plumbing",
-      desc: "Critical safety infrastructure for commercial buildings. Our certified fitters install reliable wet and dry standpipe systems that meet all fire codes.",
+      desc: "Critical safety infrastructure for commercial buildings. Our certified fitters install reliable wet and dry standpipe systems that meet fire safety requirements.",
       bullets: ["Wet/Dry systems", "Standpipe installation", "Pump rooms"],
     },
     es: {
       title: "Plomería para Supresión de Incendios",
-      desc: "Infraestructura de seguridad crítica para edificios comerciales. Nuestros instaladores certificados colocan sistemas confiables de tuberías secas y húmedas que cumplen todos los códigos de incendios.",
+      desc: "Infraestructura de seguridad crítica para edificios comerciales. Nuestros instaladores certificados colocan sistemas confiables de tuberías secas y húmedas que cumplen los requisitos de seguridad contra incendios.",
       bullets: ["Sistemas húmedos/secos", "Instalación de tuberías verticales", "Salas de bombas"],
     },
   },
@@ -69,12 +83,12 @@ const COMMERCIAL_SERVICES: ServiceData[] = [
     Icon: Video,
     en: {
       title: "Sewer Line Inspection & Repair",
-      desc: "Advanced camera diagnostics to pinpoint blockages or structural failures without trenching. We offer trenchless repair options to minimize disruption.",
+      desc: "Advanced camera diagnostics to identify blockages or structural failures with minimal disruption. Trenchless repair solutions available.",
       bullets: ["Video diagnostics", "Hydro-jetting", "Trenchless relining"],
     },
     es: {
       title: "Inspección y Reparación de Alcantarillado",
-      desc: "Diagnóstico avanzado con cámara para localizar obstrucciones o fallas estructurales sin excavación. Ofrecemos opciones de reparación sin zanja para minimizar interrupciones.",
+      desc: "Diagnóstico avanzado con cámara para identificar obstrucciones o fallas estructurales con mínima interrupción. Soluciones de reparación sin zanja disponibles.",
       bullets: ["Diagnóstico por video", "Limpieza a alta presión", "Revestimiento sin zanja"],
     },
   },
@@ -82,12 +96,12 @@ const COMMERCIAL_SERVICES: ServiceData[] = [
     Icon: Factory,
     en: {
       title: "Industrial Process Piping",
-      desc: "Specialized piping for manufacturing and processing facilities. We handle corrosive, high-temp, or high-pressure materials safely.",
+      desc: "Specialized piping solutions for manufacturing and processing facilities handling corrosive, high-temperature, or high-pressure systems.",
       bullets: ["Stainless steel", "Chemical routing", "High-purity systems"],
     },
     es: {
       title: "Tuberías de Proceso Industrial",
-      desc: "Tuberías especializadas para instalaciones de manufactura y procesamiento. Manejamos materiales corrosivos, de alta temperatura o alta presión de forma segura.",
+      desc: "Soluciones de tuberías especializadas para instalaciones de manufactura y procesamiento que manejan sistemas corrosivos, de alta temperatura o alta presión.",
       bullets: ["Acero inoxidable", "Ruteo de químicos", "Sistemas de alta pureza"],
     },
   },
@@ -98,25 +112,51 @@ const RESIDENTIAL_SERVICES: ServiceData[] = [
     Icon: Flame,
     en: {
       title: "Water Heater Installation",
-      desc: "Upgrade to high-efficiency traditional or tankless water heaters. We ensure proper sizing for your household's peak demand.",
+      desc: "Upgrade to high-efficiency traditional or tankless water heaters professionally sized for your household's needs.",
       bullets: ["Tankless upgrades", "Gas & Electric", "Recirculation pumps"],
     },
     es: {
       title: "Instalación de Calentador de Agua",
-      desc: "Actualice a calentadores de agua sin tanque o tradicionales de alta eficiencia. Garantizamos el dimensionamiento correcto para la demanda máxima de su hogar.",
+      desc: "Actualice a calentadores de agua sin tanque o tradicionales de alta eficiencia, dimensionados profesionalmente para las necesidades de su hogar.",
       bullets: ["Actualizaciones sin tanque", "Gas y eléctrico", "Bombas de recirculación"],
+    },
+  },
+  {
+    Icon: Thermometer,
+    en: {
+      title: "HVAC Installation & Replacement",
+      desc: "Energy-efficient heating and cooling solutions for residential properties, including full system installations and equipment upgrades.",
+      bullets: ["Central air systems", "Furnace replacement", "Energy-efficient upgrades"],
+    },
+    es: {
+      title: "Instalación y Reemplazo de HVAC",
+      desc: "Soluciones de calefacción y enfriamiento energéticamente eficientes para propiedades residenciales, incluyendo instalaciones completas y actualizaciones de equipos.",
+      bullets: ["Sistemas de aire central", "Reemplazo de calefacción", "Actualizaciones eficientes"],
+    },
+  },
+  {
+    Icon: Wrench,
+    en: {
+      title: "HVAC Repair & Maintenance",
+      desc: "Reliable diagnostics, repairs, and preventative maintenance to keep your heating and cooling systems operating at peak performance.",
+      bullets: ["AC troubleshooting", "Furnace repair", "Seasonal maintenance"],
+    },
+    es: {
+      title: "Reparación y Mantenimiento de HVAC",
+      desc: "Diagnóstico, reparaciones y mantenimiento preventivo confiables para mantener sus sistemas de calefacción y enfriamiento en máximo rendimiento.",
+      bullets: ["Diagnóstico de A/C", "Reparación de calefacción", "Mantenimiento estacional"],
     },
   },
   {
     Icon: Droplet,
     en: {
       title: "Drain Cleaning & Unclogging",
-      desc: "Fast, effective clearing of stubborn blockages. We use professional-grade augers and hydro-jetters to restore full flow to your drains.",
+      desc: "Fast, effective clearing of stubborn blockages using professional-grade equipment.",
       bullets: ["Main line clearing", "Root removal", "Hydro-jetting"],
     },
     es: {
       title: "Limpieza y Desatasco de Drenajes",
-      desc: "Limpieza rápida y eficaz de obstrucciones persistentes. Usamos equipo profesional para restaurar el flujo completo en sus drenajes.",
+      desc: "Limpieza rápida y eficaz de obstrucciones persistentes usando equipo de grado profesional.",
       bullets: ["Limpieza de línea principal", "Eliminación de raíces", "Limpieza a alta presión"],
     },
   },
@@ -124,12 +164,12 @@ const RESIDENTIAL_SERVICES: ServiceData[] = [
     Icon: AlertTriangle,
     en: {
       title: "Leak Detection & Repair",
-      desc: "Pinpointing hidden slab leaks or wall leaks using non-invasive electronic detection. We fix the problem fast to minimize water damage.",
+      desc: "Non-invasive electronic detection for hidden leaks behind walls or beneath slabs, minimizing unnecessary damage to your home.",
       bullets: ["Slab leaks", "Electronic detection", "Pipe rerouting"],
     },
     es: {
       title: "Detección y Reparación de Fugas",
-      desc: "Localización de fugas ocultas usando detección electrónica no invasiva. Solucionamos el problema rápidamente para minimizar daños por agua.",
+      desc: "Detección electrónica no invasiva para fugas ocultas detrás de paredes o bajo losas, minimizando daños innecesarios a su hogar.",
       bullets: ["Fugas de losa", "Detección electrónica", "Rerouting de tuberías"],
     },
   },
@@ -137,12 +177,12 @@ const RESIDENTIAL_SERVICES: ServiceData[] = [
     Icon: Bath,
     en: {
       title: "Bathroom & Kitchen Remodeling",
-      desc: "High-end fixture installation and complete plumbing rough-ins for your renovation projects. We turn your design vision into reality.",
+      desc: "Fixture installation and complete plumbing rough-ins tailored to your renovation vision.",
       bullets: ["Custom showers", "Island sinks", "Fixture upgrades"],
     },
     es: {
       title: "Remodelación de Baño y Cocina",
-      desc: "Instalación de accesorios de alta gama y trabajos de plomería completos para sus proyectos de renovación. Hacemos realidad su visión de diseño.",
+      desc: "Instalación de accesorios y trabajos de plomería completos adaptados a su visión de renovación.",
       bullets: ["Duchas personalizadas", "Fregaderos de isla", "Actualización de accesorios"],
     },
   },
@@ -150,12 +190,12 @@ const RESIDENTIAL_SERVICES: ServiceData[] = [
     Icon: Droplets,
     en: {
       title: "Sump Pump Installation",
-      desc: "Protect your basement from flooding. We install primary and battery-backup sump systems for reliable groundwater management.",
+      desc: "Protect your basement from flooding with reliable primary and battery-backup sump pump systems.",
       bullets: ["Battery backups", "Pit installation", "Discharge routing"],
     },
     es: {
       title: "Instalación de Bomba de Sumidero",
-      desc: "Proteja su sótano de inundaciones. Instalamos sistemas de bombeo primarios y de respaldo con batería para un manejo confiable de aguas subterráneas.",
+      desc: "Proteja su sótano de inundaciones con sistemas de bomba de sumidero primarios y de respaldo con batería confiables.",
       bullets: ["Respaldo con batería", "Instalación de foso", "Ruteo de descarga"],
     },
   },
@@ -163,12 +203,12 @@ const RESIDENTIAL_SERVICES: ServiceData[] = [
     Icon: Settings,
     en: {
       title: "Whole-House Repiping",
-      desc: "Replace aging galvanized or polybutylene pipes with modern PEX or copper. Improve water pressure and eliminate rusty water.",
+      desc: "Replace outdated galvanized or polybutylene piping with modern PEX or copper systems to improve reliability and water pressure.",
       bullets: ["PEX routing", "Copper systems", "Minimal drywall impact"],
     },
     es: {
       title: "Retuberización de Casa Completa",
-      desc: "Reemplace tuberías de galvanizado o polibutileno antiguas con PEX moderno o cobre. Mejore la presión del agua y elimine el agua oxidada.",
+      desc: "Reemplace tuberías de galvanizado o polibutileno antiguas con sistemas modernos de PEX o cobre para mejorar la confiabilidad y la presión del agua.",
       bullets: ["Ruteo de PEX", "Sistemas de cobre", "Mínimo impacto en drywall"],
     },
   },
@@ -176,12 +216,12 @@ const RESIDENTIAL_SERVICES: ServiceData[] = [
     Icon: ShieldCheck,
     en: {
       title: "Water Filtration Systems",
-      desc: "Enjoy pure, great-tasting water from every tap. We install whole-house softeners, reverse osmosis systems, and under-sink filters.",
+      desc: "Whole-home filtration and softening solutions for cleaner, better-tasting water throughout your property.",
       bullets: ["Whole-house systems", "Reverse osmosis", "Water softeners"],
     },
     es: {
       title: "Sistemas de Filtración de Agua",
-      desc: "Disfrute agua pura y de buen sabor de cada grifo. Instalamos suavizadores para toda la casa, sistemas de ósmosis inversa y filtros bajo el fregadero.",
+      desc: "Soluciones de filtración y suavización para todo el hogar para agua más limpia y de mejor sabor en toda su propiedad.",
       bullets: ["Sistemas para toda la casa", "Ósmosis inversa", "Suavizadores de agua"],
     },
   },

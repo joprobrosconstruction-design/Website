@@ -66,9 +66,9 @@ export const translations = {
       heroDesc:
         "From multi-phase commercial infrastructure to critical residential repairs, our teams deliver precision and reliability.",
       commercialTitle: "Commercial Services",
-      commercialSubtitle: "Engineered for scale and strict code compliance.",
+      commercialSubtitle: "Engineered for performance, reliability, and large-scale commercial projects.",
       residentialTitle: "Residential Services",
-      residentialSubtitle: "Premium care for your home's most vital systems.",
+      residentialSubtitle: "Professional solutions for your home's plumbing, heating, and cooling systems.",
       ctaTitle: "Need Service?",
       ctaDesc:
         "Whether it's a minor repair or a massive installation, our team is ready to deliver premier results.",
@@ -291,9 +291,9 @@ export const translations = {
       heroDesc:
         "Desde infraestructura comercial multifase hasta reparaciones residenciales críticas, nuestros equipos con licencia ofrecen precisión y confiabilidad.",
       commercialTitle: "Servicios Comerciales",
-      commercialSubtitle: "Diseñado para escala y cumplimiento estricto de normativas.",
+      commercialSubtitle: "Diseñados para el rendimiento, la confiabilidad y proyectos comerciales a gran escala.",
       residentialTitle: "Servicios Residenciales",
-      residentialSubtitle: "Cuidado premium para los sistemas más vitales de su hogar.",
+      residentialSubtitle: "Soluciones profesionales para la plomería, calefacción y enfriamiento de su hogar.",
       ctaTitle: "¿Necesita Servicio?",
       ctaDesc:
         "Ya sea una reparación menor o una instalación masiva, nuestro equipo está listo para brindar resultados de primer nivel.",
