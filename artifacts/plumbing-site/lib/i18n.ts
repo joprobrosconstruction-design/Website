@@ -18,11 +18,11 @@ export const translations = {
     home: {
       heroBadge: "Residential & Commercial Plumbing — Done Right",
       heroLine1: "Professional",
-      heroWord1: "Plumbing & Property Services",
+      heroWord1: "Plumbing & HVAC Services",
       heroLine2: "",
-      heroWord2: "for Projects of Every Scale.",
+      heroWord2: "Built for Projects of Every Scale.",
       heroDesc:
-        "From residential repairs to large-scale commercial plumbing systems, we deliver reliable plumbing solutions backed by quality workmanship, responsive service, and the experience to support projects from start to finish.",
+        "From residential repairs to large-scale commercial systems, we deliver dependable plumbing and HVAC solutions backed by quality workmanship, responsive service, and the experience to support projects from start to finish.",
       ctaEstimate: "Get a Free Estimate",
       ctaCall: "Call Now",
       ctaCareers: "Join Our Team",
@@ -238,11 +238,11 @@ export const translations = {
     home: {
       heroBadge: "Plomería Residencial y Comercial — Bien Hecha",
       heroLine1: "Servicios Profesionales de",
-      heroWord1: "Plomería y Construcción",
+      heroWord1: "Plomería y HVAC",
       heroLine2: "",
-      heroWord2: "para Proyectos de Toda Escala.",
+      heroWord2: "Construidos para Proyectos de Toda Escala.",
       heroDesc:
-        "Desde reparaciones residenciales hasta sistemas de plomería comercial a gran escala, ofrecemos soluciones confiables respaldadas por mano de obra de calidad, servicio ágil y la experiencia para apoyar proyectos de inicio a fin.",
+        "Desde reparaciones residenciales hasta sistemas comerciales a gran escala, ofrecemos soluciones confiables de plomería y HVAC respaldadas por mano de obra de calidad, servicio ágil y la experiencia para apoyar proyectos de principio a fin.",
       ctaEstimate: "Obtener Estimado Gratis",
       ctaCall: "Llamar Ahora",
       ctaCareers: "Únase al Equipo",
