@@ -38,7 +38,7 @@ export default function Home() {
       <section className="relative flex min-h-[78vh] bg-[#040e28]">
 
         {/* ── Left: solid dark panel ── */}
-        <div className="relative z-10 flex items-center justify-center w-full lg:w-[38%] shrink-0 pt-40 pb-28 px-8 md:px-12 lg:px-16 bg-[#040e28]">
+        <div className="relative z-10 flex items-center justify-center w-full lg:w-[38%] shrink-0 pt-28 pb-16 lg:pt-40 lg:pb-28 px-6 md:px-12 lg:px-16 bg-[#040e28]">
           <div className="max-w-md lg:max-w-xl">
 
             <motion.span
@@ -214,8 +214,7 @@ export default function Home() {
               alt="J&O Pro Bros Construction service van"
               width={1200}
               height={600}
-              className="w-full object-cover"
-              style={{ height: "480px" }}
+              className="w-full object-cover h-[600px] sm:h-[540px] md:h-[480px]"
               sizes="(max-width: 1024px) 100vw, 1200px"
             />
             {/* Bottom fade */}
@@ -224,20 +223,20 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(4,14,40,0.5)] via-transparent to-[rgba(4,14,40,0.5)]" />
 
             {/* Cards overlaid at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <div className="grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
-                <div className="bg-[rgba(4,14,40,0.82)] backdrop-blur-md border border-white/20 rounded-2xl px-8 py-7">
-                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-3">Residential Services</p>
-                  <p className="text-white font-bold text-xl mb-3">Gwinnett County &amp; Greater Atlanta</p>
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-10">
+              <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                <div className="bg-[rgba(4,14,40,0.88)] backdrop-blur-md border border-white/20 rounded-2xl px-5 py-5 sm:px-8 sm:py-7">
+                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3">Residential Services</p>
+                  <p className="text-white font-bold text-lg sm:text-xl mb-2 sm:mb-3">Gwinnett County &amp; Greater Atlanta</p>
                   <p className="text-white/75 text-sm leading-relaxed">Fast, responsive service for homeowners throughout Gwinnett County and the Greater Atlanta area.</p>
                 </div>
-                <div className="bg-[rgba(4,14,40,0.82)] backdrop-blur-md border border-white/20 rounded-2xl px-8 py-7">
-                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-3">Commercial Project Reach</p>
-                  <p className="text-white font-bold text-xl mb-2">Large-Scale Commercial Projects</p>
-                  <p className="text-white/75 text-sm leading-relaxed mb-4">Active project experience across multiple states:</p>
+                <div className="bg-[rgba(4,14,40,0.88)] backdrop-blur-md border border-white/20 rounded-2xl px-5 py-5 sm:px-8 sm:py-7">
+                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3">Commercial Project Reach</p>
+                  <p className="text-white font-bold text-lg sm:text-xl mb-1 sm:mb-2">Large-Scale Commercial Projects</p>
+                  <p className="text-white/75 text-sm leading-relaxed mb-3 sm:mb-4">Active project experience across multiple states:</p>
                   <div className="flex flex-wrap gap-2">
                     {["Georgia", "Texas", "Arizona", "Ohio"].map((state) => (
-                      <span key={state} className="text-sm font-semibold bg-white/10 border border-white/25 text-white px-4 py-1.5 rounded-full">
+                      <span key={state} className="text-sm font-semibold bg-white/10 border border-white/25 text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full">
                         {state}
                       </span>
                     ))}
@@ -271,7 +270,7 @@ export default function Home() {
       {/* ── Final CTA ── */}
       <section className="py-24 relative">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...revealScale(0)} className="glass-dark rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+          <motion.div {...revealScale(0)} className="glass-dark rounded-3xl p-8 sm:p-12 lg:p-20 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-primary/20 z-0" />
             <div className="relative z-10 max-w-3xl mx-auto">
               <motion.h2 {...revealUp(0.05)} className="text-4xl md:text-5xl font-bold text-white mb-6">

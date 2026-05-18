@@ -91,7 +91,7 @@ export default function CareersPage() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="sticky top-0 bg-card border-b border-border px-8 py-5 flex items-start justify-between gap-4 rounded-t-3xl z-10">
+              <div className="sticky top-0 bg-card border-b border-border px-5 py-4 sm:px-8 sm:py-5 flex items-start justify-between gap-4 rounded-t-3xl z-10">
                 <div>
                   <h2 className="text-2xl font-bold text-foreground">
                     {(modalEs && modalJob.es?.title) ? modalJob.es.title : modalJob.title}
@@ -145,7 +145,7 @@ export default function CareersPage() {
               </div>
 
               {/* Modal Body */}
-              <div className="px-8 py-6 space-y-6">
+              <div className="px-5 py-5 sm:px-8 sm:py-6 space-y-6">
                 <p className="text-muted-foreground leading-relaxed">
                   {jobText(modalJob)?.desc ?? modalJob.desc}
                 </p>
@@ -182,7 +182,7 @@ export default function CareersPage() {
               </div>
 
               {/* Modal Footer */}
-              <div className="sticky bottom-0 bg-card border-t border-border px-8 py-5 rounded-b-3xl">
+              <div className="sticky bottom-0 bg-card border-t border-border px-5 py-4 sm:px-8 sm:py-5 rounded-b-3xl">
                 <button
                   onClick={() => handleApplyClick(modalJob.title)}
                   className="w-full bg-accent hover:bg-accent/90 text-white font-bold py-3.5 rounded-xl transition-colors text-base shadow-md"

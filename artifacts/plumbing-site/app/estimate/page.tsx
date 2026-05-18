@@ -114,7 +114,7 @@ export default function EstimatePage() {
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Form Area */}
           <div className="lg:col-span-2">
-            <div className="glass p-8 md:p-10 rounded-3xl shadow-sm border border-border/50 bg-card">
+            <div className="glass p-5 sm:p-8 md:p-10 rounded-3xl shadow-sm border border-border/50 bg-card">
               {status === "success" ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -283,7 +283,7 @@ export default function EstimatePage() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="bg-muted/30 p-8 rounded-3xl border border-border/50">
+            <div className="bg-muted/30 p-5 sm:p-8 rounded-3xl border border-border/50">
               <h3 className="text-xl font-bold mb-6 text-foreground">{e.sidebarTitle}</h3>
               <div className="space-y-6">
                 <div className="flex gap-4">

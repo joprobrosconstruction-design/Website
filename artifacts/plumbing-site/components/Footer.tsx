@@ -52,16 +52,16 @@ export default function Footer() {
             <h3 className="text-primary-foreground font-semibold mb-6">{f.servicesHeader}</h3>
             <ul className="space-y-4">
               <li className="text-muted/80">
-                {t.lang === "en" ? "Commercial Pipe Routing" : "Ruteo de Tuberías Comerciales"}
+                {t.lang === "en" ? "Commercial Pipe Installation" : "Instalación de Tuberías Comerciales"}
               </li>
               <li className="text-muted/80">
-                {t.lang === "en" ? "Medical Gas Systems" : "Sistemas de Gas Médico"}
-              </li>
-              <li className="text-muted/80">
-                {t.lang === "en" ? "Fire Suppression" : "Supresión de Incendios"}
+                {t.lang === "en" ? "HVAC Systems" : "Sistemas HVAC"}
               </li>
               <li className="text-muted/80">
                 {t.lang === "en" ? "Industrial Process Piping" : "Tuberías de Proceso Industrial"}
+              </li>
+              <li className="text-muted/80">
+                {t.lang === "en" ? "Grease Trap Service" : "Servicio de Trampa de Grasa"}
               </li>
               <li className="text-muted/80">
                 {t.lang === "en" ? "Residential Repiping" : "Retuberización Residencial"}

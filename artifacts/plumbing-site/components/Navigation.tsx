@@ -141,7 +141,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-white/10 overflow-hidden"
+            className="md:hidden bg-[#040e28]/95 backdrop-blur-md border-t border-white/10 overflow-hidden"
           >
             <nav className="flex flex-col p-4 gap-3">
               {navLinks.map((link) => (
