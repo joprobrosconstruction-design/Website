@@ -127,52 +127,48 @@ export default function Home() {
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{h.expertiseDesc}</p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="space-y-14">
             {/* Commercial */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               <motion.div {...revealUp(0)} className="flex items-center gap-4 border-b pb-4">
                 <div className="bg-primary/10 p-3 rounded-xl">
                   <Building2 className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-3xl font-bold">{h.commercialServices}</h3>
+                <h3 className="text-2xl font-bold">{h.commercialServices}</h3>
               </motion.div>
-              <div className="grid gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {h.commItems.map((item, i) => (
                   <motion.div
                     key={i}
                     {...revealUp(i * 0.08)}
-                    className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
+                    className="glass p-5 rounded-xl hover:shadow-lg transition-shadow"
                   >
-                    <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                      {item.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm ml-3.5">{item.desc}</p>
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent mb-3" />
+                    <h4 className="font-bold text-base mb-2">{item.title}</h4>
+                    <p className="text-muted-foreground text-sm">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
 
             {/* Residential */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               <motion.div {...revealUp(0.05)} className="flex items-center gap-4 border-b pb-4">
                 <div className="bg-primary/10 p-3 rounded-xl">
                   <Droplet className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-3xl font-bold">{h.residentialServices}</h3>
+                <h3 className="text-2xl font-bold">{h.residentialServices}</h3>
               </motion.div>
-              <div className="grid gap-6">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                 {h.resItems.map((item, i) => (
                   <motion.div
                     key={i}
                     {...revealUp(i * 0.08)}
-                    className="glass p-6 rounded-xl hover:shadow-lg transition-shadow"
+                    className="glass p-5 rounded-xl hover:shadow-lg transition-shadow"
                   >
-                    <h4 className="font-bold text-lg mb-2 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      {item.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm ml-3.5">{item.desc}</p>
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mb-3" />
+                    <h4 className="font-bold text-base mb-2">{item.title}</h4>
+                    <p className="text-muted-foreground text-sm">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
