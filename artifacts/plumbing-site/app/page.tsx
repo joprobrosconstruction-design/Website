@@ -263,6 +263,13 @@ export default function Home() {
               height={160}
               className="h-40 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
             />
+            <Image
+              src="/images/hyundai_logo.png"
+              alt="Hyundai"
+              width={500}
+              height={160}
+              className="h-16 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
+            />
           </motion.div>
         </div>
       </section>
