@@ -94,7 +94,7 @@ export default function Home() {
             sizes="55vw"
           />
           {/* Seam fade: blends left edge of photo into the solid navy panel */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#040e28_0%,#040e28_8%,rgba(4,14,40,0.55)_22%,transparent_42%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#040e28_0%,#040e28_3%,rgba(4,14,40,0.55)_13%,transparent_28%)]" />
           {/* Subtle top/bottom vignette */}
           <div className="absolute inset-0 bg-gradient-to-b from-[rgba(4,14,40,0.35)] via-transparent to-[rgba(4,14,40,0.3)]" />
         </div>
