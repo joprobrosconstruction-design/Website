@@ -10,9 +10,7 @@ import {
   Wrench,
   Flame,
   Video,
-  Wind,
   Factory,
-  Stethoscope,
   Bath,
   ArrowRight,
   Droplets,
@@ -31,27 +29,14 @@ const COMMERCIAL_SERVICES: ServiceData[] = [
   {
     Icon: Settings,
     en: {
-      title: "Pipe Installation & Routing",
+      title: "Pipe Installation",
       desc: "Expert design and installation of complex distribution systems for large-scale commercial facilities. We handle everything from high-rise water supply to industrial process piping.",
       bullets: ["Copper & PEX systems", "Cast iron routing", "High-pressure lines"],
     },
     es: {
-      title: "Instalación y Ruteo de Tuberías",
+      title: "Instalación de Tuberías",
       desc: "Diseño e instalación experta de sistemas de distribución complejos para instalaciones comerciales a gran escala. Manejamos todo, desde el suministro de agua en rascacielos hasta tuberías de procesos industriales.",
       bullets: ["Sistemas de cobre y PEX", "Ruteo de hierro fundido", "Líneas de alta presión"],
-    },
-  },
-  {
-    Icon: ShieldCheck,
-    en: {
-      title: "Backflow Prevention & Testing",
-      desc: "Protecting municipal water supplies from contamination. We install, test, and certify commercial backflow assemblies to ensure strict code compliance.",
-      bullets: ["Annual certification", "RPZ installation", "Code compliance"],
-    },
-    es: {
-      title: "Prevención y Pruebas de Contraflujo",
-      desc: "Protegemos los suministros de agua municipales de la contaminación. Instalamos, probamos y certificamos ensambles comerciales de contraflujo para garantizar el estricto cumplimiento del código.",
-      bullets: ["Certificación anual", "Instalación de RPZ", "Cumplimiento de normativas"],
     },
   },
   {
@@ -94,19 +79,6 @@ const COMMERCIAL_SERVICES: ServiceData[] = [
     },
   },
   {
-    Icon: Wind,
-    en: {
-      title: "Commercial HVAC Plumbing",
-      desc: "Supporting large-scale climate control systems. We route chilled water, boiler feeds, and condensation lines for massive commercial HVAC units.",
-      bullets: ["Chiller piping", "Boiler systems", "Condensation routing"],
-    },
-    es: {
-      title: "Plomería HVAC Comercial",
-      desc: "Apoyo a sistemas de control climático a gran escala. Rutamos agua fría, alimentaciones de caldera y líneas de condensación para unidades HVAC comerciales masivas.",
-      bullets: ["Tuberías de enfriador", "Sistemas de calderas", "Ruteo de condensación"],
-    },
-  },
-  {
     Icon: Factory,
     en: {
       title: "Industrial Process Piping",
@@ -117,19 +89,6 @@ const COMMERCIAL_SERVICES: ServiceData[] = [
       title: "Tuberías de Proceso Industrial",
       desc: "Tuberías especializadas para instalaciones de manufactura y procesamiento. Manejamos materiales corrosivos, de alta temperatura o alta presión de forma segura.",
       bullets: ["Acero inoxidable", "Ruteo de químicos", "Sistemas de alta pureza"],
-    },
-  },
-  {
-    Icon: Stethoscope,
-    en: {
-      title: "Medical Gas Systems",
-      desc: "Certified installation of medical gas piping for hospitals and clinics. We ensure absolute purity and reliable pressure for life-saving equipment.",
-      bullets: ["Oxygen lines", "Vacuum systems", "Nitrous oxide"],
-    },
-    es: {
-      title: "Sistemas de Gas Médico",
-      desc: "Instalación certificada de tuberías de gas médico para hospitales y clínicas. Garantizamos pureza absoluta y presión confiable para equipos que salvan vidas.",
-      bullets: ["Líneas de oxígeno", "Sistemas de vacío", "Óxido nitroso"],
     },
   },
 ];
@@ -198,19 +157,6 @@ const RESIDENTIAL_SERVICES: ServiceData[] = [
       title: "Instalación de Bomba de Sumidero",
       desc: "Proteja su sótano de inundaciones. Instalamos sistemas de bombeo primarios y de respaldo con batería para un manejo confiable de aguas subterráneas.",
       bullets: ["Respaldo con batería", "Instalación de foso", "Ruteo de descarga"],
-    },
-  },
-  {
-    Icon: Wrench,
-    en: {
-      title: "Emergency 24/7 Plumbing",
-      desc: "When disaster strikes, our rapid response team is ready. We handle burst pipes, major backups, and no-hot-water emergencies around the clock.",
-      bullets: ["Rapid dispatch", "Burst pipes", "After-hours support"],
-    },
-    es: {
-      title: "Plomería de Emergencia 24/7",
-      desc: "Cuando surge un desastre, nuestro equipo de respuesta rápida está listo. Manejamos tuberías reventadas, grandes obstrucciones y emergencias sin agua caliente a cualquier hora.",
-      bullets: ["Despacho rápido", "Tuberías reventadas", "Soporte fuera de horario"],
     },
   },
   {

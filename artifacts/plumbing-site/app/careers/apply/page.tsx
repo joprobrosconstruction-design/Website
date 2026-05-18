@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Upload, FileText, CheckCircle2, AlertCircle,
-  ArrowLeft, Languages, User, Phone, Briefcase, FileUp, ShieldCheck, PenLine,
+  ArrowLeft, Languages, User, Phone, Briefcase, FileUp, ShieldCheck, PenLine, MapPin,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { jobs } from "@/lib/jobs";
@@ -205,7 +205,40 @@ function ApplyForm() {
                 </div>
               </div>
 
-              {/* ── Section 2: Position ── */}
+              {/* ── Section 2: Address ── */}
+              <div>
+                <SectionHeader icon={MapPin} label={lang === "es" ? "Dirección" : "Address"} />
+                <div className="space-y-4">
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-semibold text-foreground" htmlFor="street">
+                      {c.labelStreet} <span className="text-accent">{c.required}</span>
+                    </label>
+                    <input type="text" id="street" name="street" required className={inputCls} placeholder={c.placeholderStreet} />
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="space-y-1.5 md:col-span-1">
+                      <label className="text-sm font-semibold text-foreground" htmlFor="city">
+                        {c.labelCity} <span className="text-accent">{c.required}</span>
+                      </label>
+                      <input type="text" id="city" name="city" required className={inputCls} placeholder={c.placeholderCity} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-semibold text-foreground" htmlFor="state">
+                        {c.labelState} <span className="text-accent">{c.required}</span>
+                      </label>
+                      <input type="text" id="state" name="state" required className={inputCls} placeholder={c.placeholderState} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-semibold text-foreground" htmlFor="zip">
+                        {c.labelZip} <span className="text-accent">{c.required}</span>
+                      </label>
+                      <input type="text" id="zip" name="zip" required className={inputCls} placeholder={c.placeholderZip} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Section 3: Position ── */}
               <div>
                 <SectionHeader icon={Briefcase} label={lang === "es" ? "Puesto e Experiencia" : "Position & Experience"} />
                 <div className="space-y-4">

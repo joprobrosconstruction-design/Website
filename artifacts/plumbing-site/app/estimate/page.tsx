@@ -6,8 +6,59 @@ import { Clock, ShieldCheck, ThumbsUp, Send, CheckCircle2, AlertCircle } from "l
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function EstimatePage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const e = t.estimate;
+
+  const SERVICES = {
+    en: {
+      commercial: "Commercial Services",
+      residential: "Residential Services",
+      items: {
+        commercial: [
+          "Pipe Installation",
+          "Grease Trap Service",
+          "Fire Suppression Plumbing",
+          "Sewer Line Inspection & Repair",
+          "Industrial Process Piping",
+        ],
+        residential: [
+          "Water Heater Installation",
+          "Drain Cleaning & Unclogging",
+          "Leak Detection & Repair",
+          "Bathroom & Kitchen Remodeling",
+          "Sump Pump Installation",
+          "Whole-House Repiping",
+          "Water Filtration Systems",
+        ],
+      },
+      other: "Other / Not Listed",
+    },
+    es: {
+      commercial: "Servicios Comerciales",
+      residential: "Servicios Residenciales",
+      items: {
+        commercial: [
+          "Instalación de Tuberías",
+          "Servicio de Trampa de Grasa",
+          "Plomería para Supresión de Incendios",
+          "Inspección y Reparación de Alcantarillado",
+          "Tuberías de Proceso Industrial",
+        ],
+        residential: [
+          "Instalación de Calentador de Agua",
+          "Limpieza y Desatasco de Drenajes",
+          "Detección y Reparación de Fugas",
+          "Remodelación de Baño y Cocina",
+          "Instalación de Bomba de Sumidero",
+          "Retuberización de Casa Completa",
+          "Sistemas de Filtración de Agua",
+        ],
+      },
+      other: "Otro / No en la lista",
+    },
+  };
+
+  const svc = SERVICES[lang] ?? SERVICES.en;
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -122,14 +173,22 @@ export default function EstimatePage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground" htmlFor="projectType">
-                      {e.labelProjectType} {e.required}
+                    <label className="text-sm font-semibold text-foreground" htmlFor="service">
+                      {lang === "es" ? "Servicio Solicitado" : "Service Requested"} {e.required}
                     </label>
-                    <select id="projectType" name="projectType" required className={selectCls} defaultValue="">
+                    <select id="service" name="service" required className={selectCls} defaultValue="">
                       <option value="" disabled>{e.selectOption}</option>
-                      <option value="commercial">{e.optCommercial}</option>
-                      <option value="residential">{e.optResidential}</option>
-                      <option value="other">{e.optOther}</option>
+                      <optgroup label={svc.commercial}>
+                        {svc.items.commercial.map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
+                      </optgroup>
+                      <optgroup label={svc.residential}>
+                        {svc.items.residential.map((s) => (
+                          <option key={s} value={s}>{s}</option>
+                        ))}
+                      </optgroup>
+                      <option value="Other">{svc.other}</option>
                     </select>
                   </div>
 
