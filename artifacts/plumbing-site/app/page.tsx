@@ -268,7 +268,7 @@ export default function Home() {
               alt="Hyundai"
               width={500}
               height={160}
-              className="h-16 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
+              className="h-10 w-auto opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-contain"
             />
           </motion.div>
         </div>
