@@ -277,7 +277,7 @@ export default function Home() {
       {/* ── Final CTA ── */}
       <section className="py-24 relative">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...revealScale(0)} className="glass-dark rounded-3xl p-8 sm:p-12 lg:p-20 text-center relative overflow-hidden">
+          <motion.div {...revealScale(0)} className="glass-dark rounded-3xl p-8 sm:p-12 lg:p-20 text-center relative">
             <div className="absolute inset-0 bg-primary/20 z-0" />
             <div className="relative z-10 max-w-3xl mx-auto">
               <motion.h2 {...revealUp(0.05)} className="text-4xl md:text-5xl font-bold text-white mb-6">
