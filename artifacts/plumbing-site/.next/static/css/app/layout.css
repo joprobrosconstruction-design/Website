@@ -2072,6 +2072,11 @@
       width: calc(1 / 2 * 100%);
     }
   }
+  .lg\:w-\[38\%\] {
+    @media (width >= 64rem) {
+      width: 38%;
+    }
+  }
   .lg\:max-w-xl {
     @media (width >= 64rem) {
       max-width: var(--container-xl);

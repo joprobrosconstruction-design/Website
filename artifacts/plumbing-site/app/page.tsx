@@ -38,7 +38,7 @@ export default function Home() {
       <section className="relative flex min-h-[78vh] bg-[#040e28]">
 
         {/* ── Left: solid dark panel ── */}
-        <div className="relative z-10 flex items-center justify-center w-full lg:w-1/2 shrink-0 pt-40 pb-28 px-8 md:px-12 lg:px-16 bg-[#040e28]">
+        <div className="relative z-10 flex items-center justify-center w-full lg:w-[38%] shrink-0 pt-40 pb-28 px-8 md:px-12 lg:px-16 bg-[#040e28]">
           <div className="max-w-md lg:max-w-xl">
 
             <motion.span
