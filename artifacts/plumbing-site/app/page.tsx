@@ -220,19 +220,19 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-[rgba(4,14,40,0.5)] via-transparent to-[rgba(4,14,40,0.5)]" />
 
             {/* Cards overlaid at bottom */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-              <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-                <div className="bg-white/8 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-5 text-center">
-                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Residential Services</p>
-                  <p className="text-white font-semibold text-sm mb-2">Gwinnett County &amp; Greater Atlanta</p>
-                  <p className="text-white/55 text-xs leading-relaxed">Fast, responsive service for homeowners throughout Gwinnett County and the Greater Atlanta area.</p>
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+              <div className="grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
+                <div className="bg-[rgba(4,14,40,0.82)] backdrop-blur-md border border-white/20 rounded-2xl px-8 py-7">
+                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-3">Residential Services</p>
+                  <p className="text-white font-bold text-xl mb-3">Gwinnett County &amp; Greater Atlanta</p>
+                  <p className="text-white/75 text-sm leading-relaxed">Fast, responsive service for homeowners throughout Gwinnett County and the Greater Atlanta area.</p>
                 </div>
-                <div className="bg-white/8 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-5 text-center">
-                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Commercial Project Reach</p>
-                  <p className="text-white font-semibold text-sm mb-3">Trusted across large-scale commercial projects in:</p>
-                  <div className="flex flex-wrap gap-2 justify-center">
+                <div className="bg-[rgba(4,14,40,0.82)] backdrop-blur-md border border-white/20 rounded-2xl px-8 py-7">
+                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-3">Commercial Project Reach</p>
+                  <p className="text-white font-bold text-xl mb-4">Trusted across large-scale projects in:</p>
+                  <div className="flex flex-wrap gap-2">
                     {["Georgia", "Texas", "Arizona", "Ohio"].map((state) => (
-                      <span key={state} className="text-xs font-semibold bg-white/10 border border-white/20 text-white/80 px-3 py-1 rounded-full">
+                      <span key={state} className="text-sm font-semibold bg-white/10 border border-white/25 text-white px-4 py-1.5 rounded-full">
                         {state}
                       </span>
                     ))}
