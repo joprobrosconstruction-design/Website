@@ -31,7 +31,6 @@ export const translations = {
       stat1: "Projects Completed",
       stat2: "Years Experience",
       stat3: "Insured & Bonded",
-      stat4: "Emergency Service",
       trustedBy: "Trusted by Clients Across the Region",
       expertiseTitle: "What We Do",
       expertiseDesc:
@@ -255,7 +254,6 @@ export const translations = {
       stat1: "Proyectos Completados",
       stat2: "Años de Experiencia",
       stat3: "Asegurado y Afianzado",
-      stat4: "Servicio de Emergencia",
       trustedBy: "Con la Confianza de Clientes en Toda la Región",
       expertiseTitle: "Lo Que Hacemos",
       expertiseDesc:

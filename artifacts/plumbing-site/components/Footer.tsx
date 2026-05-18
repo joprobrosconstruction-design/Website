@@ -66,9 +66,6 @@ export default function Footer() {
               <li className="text-muted/80">
                 {t.lang === "en" ? "Residential Repiping" : "Retuberización Residencial"}
               </li>
-              <li className="text-muted/80">
-                {t.lang === "en" ? "Emergency Plumbing Services" : "Servicio de Plomería de Emergencia"}
-              </li>
             </ul>
           </div>
 
