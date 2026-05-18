@@ -1061,6 +1061,9 @@
   .bg-\[linear-gradient\(to_right\,\#040e28_0\%\,rgba\(4\,14\,40\,0\.72\)_7\%\,rgba\(4\,14\,40\,0\.35\)_15\%\,rgba\(4\,14\,40\,0\.08\)_22\%\,transparent_32\%\)\] {
     background-image: linear-gradient(to right,#040e28 0%,rgba(4,14,40,0.72) 7%,rgba(4,14,40,0.35) 15%,rgba(4,14,40,0.08) 22%,transparent 32%);
   }
+  .bg-\[linear-gradient\(to_right\,\#040e28_0\%\,rgba\(4\,14\,40\,0\.72\)_9\%\,rgba\(4\,14\,40\,0\.35\)_19\%\,rgba\(4\,14\,40\,0\.08\)_28\%\,transparent_40\%\)\] {
+    background-image: linear-gradient(to right,#040e28 0%,rgba(4,14,40,0.72) 9%,rgba(4,14,40,0.35) 19%,rgba(4,14,40,0.08) 28%,transparent 40%);
+  }
   .bg-\[linear-gradient\(to_right\,\#040e28_0\%\,rgba\(4\,14\,40\,0\.72\)_12\%\,rgba\(4\,14\,40\,0\.35\)_24\%\,rgba\(4\,14\,40\,0\.08\)_36\%\,transparent_48\%\)\] {
     background-image: linear-gradient(to right,#040e28 0%,rgba(4,14,40,0.72) 12%,rgba(4,14,40,0.35) 24%,rgba(4,14,40,0.08) 36%,transparent 48%);
   }
