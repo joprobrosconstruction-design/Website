@@ -197,13 +197,13 @@ export default function Home() {
           {/* Header */}
           <div className="text-center mb-10 max-w-2xl mx-auto">
             <motion.p {...revealUp(0)} className="text-accent font-semibold uppercase tracking-widest text-sm mb-4">
-              Professional Service Across Every Project
+              {h.vanEyebrow}
             </motion.p>
             <motion.h2 {...revealUp(0.1)} className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-              Serving Homes, Businesses, and Large-Scale Projects
+              {h.vanTitle}
             </motion.h2>
             <motion.p {...revealUp(0.18)} className="text-white/60 text-lg leading-relaxed">
-              From local residential service calls to large-scale commercial projects, our team delivers professional plumbing and construction solutions wherever the job demands.
+              {h.vanDesc}
             </motion.p>
           </div>
 
@@ -226,14 +226,14 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-10">
               <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
                 <div className="bg-[rgba(4,14,40,0.88)] backdrop-blur-md border border-white/20 rounded-2xl px-5 py-5 sm:px-8 sm:py-7">
-                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3">Residential Services</p>
-                  <p className="text-white font-bold text-lg sm:text-xl mb-2 sm:mb-3">Gwinnett County &amp; Greater Atlanta</p>
-                  <p className="text-white/75 text-sm leading-relaxed">Fast, responsive service for homeowners throughout Gwinnett County and the Greater Atlanta area.</p>
+                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3">{h.vanResLabel}</p>
+                  <p className="text-white font-bold text-lg sm:text-xl mb-2 sm:mb-3">{h.vanResTitle}</p>
+                  <p className="text-white/75 text-sm leading-relaxed">{h.vanResDesc}</p>
                 </div>
                 <div className="bg-[rgba(4,14,40,0.88)] backdrop-blur-md border border-white/20 rounded-2xl px-5 py-5 sm:px-8 sm:py-7">
-                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3">Commercial Project Reach</p>
-                  <p className="text-white font-bold text-lg sm:text-xl mb-1 sm:mb-2">Large-Scale Commercial Projects</p>
-                  <p className="text-white/75 text-sm leading-relaxed mb-3 sm:mb-4">Active project experience across multiple states:</p>
+                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3">{h.vanCommLabel}</p>
+                  <p className="text-white font-bold text-lg sm:text-xl mb-1 sm:mb-2">{h.vanCommTitle}</p>
+                  <p className="text-white/75 text-sm leading-relaxed mb-3 sm:mb-4">{h.vanCommDesc}</p>
                   <div className="flex flex-wrap gap-2">
                     {["Georgia", "Texas", "Arizona", "Ohio"].map((state) => (
                       <span key={state} className="text-sm font-semibold bg-white/10 border border-white/25 text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full">

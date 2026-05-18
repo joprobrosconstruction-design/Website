@@ -206,7 +206,7 @@ export default function EstimatePage() {
                       </label>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-1">
-                          <span className="text-xs text-muted-foreground font-medium">Start Date</span>
+                          <span className="text-xs text-muted-foreground font-medium">{e.startDate}</span>
                           <input
                             type="date"
                             id="timelineStart"
@@ -221,7 +221,7 @@ export default function EstimatePage() {
                           />
                         </div>
                         <div className="space-y-1">
-                          <span className="text-xs text-muted-foreground font-medium">End Date</span>
+                          <span className="text-xs text-muted-foreground font-medium">{e.endDate}</span>
                           <input
                             type="date"
                             id="timelineEnd"

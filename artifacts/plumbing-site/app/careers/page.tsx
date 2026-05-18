@@ -32,7 +32,7 @@ function playOpenSound() {
 }
 
 export default function CareersPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const c = t.careers;
   const router = useRouter();
 
@@ -151,10 +151,10 @@ export default function CareersPage() {
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
-                    { Icon: DollarSign, label: modalEs ? "Pago" : "Pay",             val: jobText(modalJob)?.pay        ?? modalJob.pay },
-                    { Icon: Clock,      label: modalEs ? "Horas" : "Hours",           val: jobText(modalJob)?.hours      ?? modalJob.hours },
-                    { Icon: Calendar,   label: modalEs ? "Horario" : "Schedule",      val: jobText(modalJob)?.schedule   ?? modalJob.schedule },
-                    { Icon: Briefcase,  label: modalEs ? "Experiencia" : "Experience",val: jobText(modalJob)?.experience ?? modalJob.experience },
+                    { Icon: DollarSign, label: c.detailPay,        val: jobText(modalJob)?.pay        ?? modalJob.pay },
+                    { Icon: Clock,      label: c.detailHours,      val: jobText(modalJob)?.hours      ?? modalJob.hours },
+                    { Icon: Calendar,   label: c.detailSchedule,   val: jobText(modalJob)?.schedule   ?? modalJob.schedule },
+                    { Icon: Briefcase,  label: c.detailExperience, val: jobText(modalJob)?.experience ?? modalJob.experience },
                   ].map(({ Icon, label, val }) => (
                     <div key={label} className="bg-muted/40 rounded-2xl p-4 flex gap-3">
                       <Icon className="w-5 h-5 text-accent shrink-0 mt-0.5" />
@@ -168,7 +168,7 @@ export default function CareersPage() {
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <ListChecks className="w-5 h-5 text-accent" />
-                    <h3 className="font-semibold text-foreground">{modalEs ? "Requisitos" : "Requirements"}</h3>
+                    <h3 className="font-semibold text-foreground">{c.detailRequirements}</h3>
                   </div>
                   <ul className="space-y-2">
                     {(jobText(modalJob)?.requirements ?? modalJob.requirements).map((req, i) => (
@@ -248,7 +248,7 @@ export default function CareersPage() {
           <div>
             <h2 className="text-3xl font-bold text-foreground">{c.openPositions}</h2>
             <p className="text-muted-foreground mt-1 text-sm">
-              {activeJobs.length} {activeJobs.length === 1 ? "position" : "positions"} available
+              {activeJobs.length} {activeJobs.length === 1 ? c.positionAvailable : c.positionsAvailable}
             </p>
           </div>
         </div>
@@ -274,23 +274,27 @@ export default function CareersPage() {
                       {c.contractorBadge}
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">{job.desc}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                    {(lang === "es" && job.es?.desc) ? job.es.desc : job.desc}
+                  </p>
                   <div className="grid grid-cols-1 gap-2 mb-6">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <DollarSign className="w-4 h-4 text-accent shrink-0" />
-                      <span className="font-medium text-foreground/80">{job.pay}</span>
+                      <span className="font-medium text-foreground/80">
+                        {(lang === "es" && job.es?.pay) ? job.es.pay : job.pay}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="w-4 h-4 text-accent shrink-0" />
-                      <span>{job.hours}</span>
+                      <span>{(lang === "es" && job.es?.hours) ? job.es.hours : job.hours}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Calendar className="w-4 h-4 text-accent shrink-0" />
-                      <span>{job.schedule}</span>
+                      <span>{(lang === "es" && job.es?.schedule) ? job.es.schedule : job.schedule}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Briefcase className="w-4 h-4 text-accent shrink-0" />
-                      <span>{job.experience}</span>
+                      <span>{(lang === "es" && job.es?.experience) ? job.es.experience : job.experience}</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 mt-auto">
@@ -305,7 +309,7 @@ export default function CareersPage() {
                       onClick={() => openModal(job)}
                       className="px-4 py-2.5 rounded-xl border border-border text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
                     >
-                      Full Details
+                      {c.fullDetails}
                     </button>
                   </div>
                 </div>

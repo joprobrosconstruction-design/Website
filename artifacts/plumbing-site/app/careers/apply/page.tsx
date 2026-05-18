@@ -99,8 +99,8 @@ function ApplyForm() {
             <div className="bg-white rounded-2xl px-10 py-10 flex flex-col items-center gap-5 shadow-2xl max-w-xs w-full mx-4 text-center">
               <div className="w-14 h-14 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
               <div>
-                <p className="font-bold text-gray-900 text-base">Submitting Your Application</p>
-                <p className="text-sm text-gray-500 mt-1">This may take a moment — please don't close the page.</p>
+                <p className="font-bold text-gray-900 text-base">{c.submittingTitle}</p>
+                <p className="text-sm text-gray-500 mt-1">{c.submittingDesc}</p>
               </div>
             </div>
           </motion.div>
@@ -115,7 +115,7 @@ function ApplyForm() {
           className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Open Roles
+          {c.backToRoles}
         </button>
 
         {/* Success state */}
@@ -146,7 +146,7 @@ function ApplyForm() {
                 <h1 className="text-3xl font-bold text-foreground">{c.formTitle}</h1>
                 {roleParam && (
                   <p className="text-muted-foreground mt-1 text-sm">
-                    {lang === "es" ? "Aplicando para:" : "Applying for:"}{" "}
+                    {c.applyingFor}{" "}
                     <span className="font-semibold text-foreground">{roleParam}</span>
                   </p>
                 )}
