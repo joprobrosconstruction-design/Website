@@ -203,39 +203,45 @@ export default function Home() {
             </motion.p>
           </div>
 
-          {/* Service area cards */}
-          <motion.div {...revealUp(0.24)} className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto mb-12">
-            {/* Residential */}
-            <div className="border border-white/10 rounded-2xl px-6 py-6 text-center">
-              <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Residential Services</p>
-              <p className="text-white font-semibold text-base mb-2">Gwinnett County &amp; Greater Atlanta</p>
-              <p className="text-white/50 text-sm leading-relaxed">Proudly serving homeowners throughout Gwinnett County and the Greater Atlanta area with fast, responsive, and dependable local service.</p>
-            </div>
-            {/* Commercial */}
-            <div className="border border-white/10 rounded-2xl px-6 py-6 text-center">
-              <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Commercial Project Reach</p>
-              <p className="text-white font-semibold text-base mb-2">Trusted on large-scale commercial plumbing and construction projects across:</p>
-              <div className="flex flex-wrap gap-2 mt-3 justify-center">
-                {["Georgia", "Texas", "Arizona", "Ohio"].map((state) => (
-                  <span key={state} className="text-xs font-semibold bg-white/8 border border-white/15 text-white/80 px-3 py-1 rounded-full">
-                    {state}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Van photo */}
-          <motion.div {...revealScale(0.25)} className="rounded-2xl overflow-hidden shadow-2xl max-w-4xl mx-auto">
+          {/* Photo + overlaid cards */}
+          <motion.div {...revealScale(0.2)} className="relative rounded-3xl overflow-hidden shadow-2xl">
             <Image
               src="/images/van.png"
               alt="J&O Pro Bros Construction service van"
               width={1200}
-              height={800}
-              className="w-full h-auto object-contain"
-              sizes="(max-width: 1024px) 100vw, 896px"
+              height={600}
+              className="w-full object-cover"
+              style={{ height: "480px" }}
+              sizes="(max-width: 1024px) 100vw, 1200px"
             />
+            {/* Bottom fade */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#040e28] via-[rgba(4,14,40,0.35)] to-transparent" />
+            {/* Side vignette */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[rgba(4,14,40,0.5)] via-transparent to-[rgba(4,14,40,0.5)]" />
+
+            {/* Cards overlaid at bottom */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+              <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                <div className="bg-white/8 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-5 text-center">
+                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Residential Services</p>
+                  <p className="text-white font-semibold text-sm mb-2">Gwinnett County &amp; Greater Atlanta</p>
+                  <p className="text-white/55 text-xs leading-relaxed">Fast, responsive service for homeowners throughout Gwinnett County and the Greater Atlanta area.</p>
+                </div>
+                <div className="bg-white/8 backdrop-blur-md border border-white/15 rounded-2xl px-6 py-5 text-center">
+                  <p className="text-accent text-xs font-bold uppercase tracking-widest mb-2">Commercial Project Reach</p>
+                  <p className="text-white font-semibold text-sm mb-3">Trusted across large-scale commercial projects in:</p>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {["Georgia", "Texas", "Arizona", "Ohio"].map((state) => (
+                      <span key={state} className="text-xs font-semibold bg-white/10 border border-white/20 text-white/80 px-3 py-1 rounded-full">
+                        {state}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
+
         </div>
       </section>
 
